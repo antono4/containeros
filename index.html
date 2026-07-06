@@ -3,211 +3,706 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ContainerOS - Android 16 & HarmonyOS Style</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>ContainerOS - HarmonyOS Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=HarmonyOS+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4285f4;
-            --primary-dark: #1a73e8;
-            --primary-light: #e8f0fe;
-            --secondary: #34a853;
-            --tertiary: #ff6d00;
-            --error: #ea4335;
-            --warning: #fbbc04;
-            --surface: #ffffff;
-            --surface-variant: #f3f4f6;
-            --surface-elevated: #ffffff;
-            --surface-container: #ebedef;
-            --text-primary: #1c1b1f;
-            --text-secondary: #49454f;
-            --text-tertiary: #79747e;
-            --status-bar-bg: rgba(255, 255, 255, 0.9);
-            --status-bar-text: #1c1b1f;
-            --nav-bar-bg: rgba(255, 255, 255, 0.9);
-            --nav-button: #79747e;
-            --shadow-1: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.15);
-            --shadow-2: 0 2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.15);
-            --shadow-3: 0 4px 8px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.15);
-            --shadow-4: 0 6px 12px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.15);
-            --shadow-5: 0 8px 16px rgba(0,0,0,0.3), 0 16px 32px rgba(0,0,0,0.15);
-            --transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
-            --transition-normal: 300ms cubic-bezier(0.2, 0, 0, 1);
-            --transition-slow: 500ms cubic-bezier(0.2, 0, 0, 1);
-            --transition-spring: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --status-bar-height: 28px;
-            --nav-bar-height: 80px;
-            --icon-size: 60px;
-            --icon-grid-gap: 20px;
-            --radius-xs: 8px;
+            --primary: #007DFF;
+            --primary-light: #66B5FF;
+            --primary-dark: #005BB5;
+            --secondary: #00D5A7;
+            --accent: #FF6B35;
+            --surface: #FFFFFF;
+            --surface-glass: rgba(255, 255, 255, 0.85);
+            --surface-variant: #F5F7FA;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --border: rgba(0, 0, 0, 0.06);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
             --radius-sm: 12px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 28px;
-            --radius-full: 9999px;
-            --gradient-start: #667eea;
-            --gradient-mid: #764ba2;
-            --gradient-end: #f64f59;
-            --wallpaper: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-mid) 50%, var(--gradient-end) 100%);
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 36px;
         }
 
         [data-theme="dark"] {
-            --surface: #1c1b1f;
-            --surface-variant: #2b2930;
-            --surface-elevated: #36343b;
-            --surface-container: #211f26;
-            --text-primary: #e6e1e5;
-            --text-secondary: #cac4d0;
-            --text-tertiary: #938f99;
-            --status-bar-bg: rgba(28, 27, 31, 0.9);
-            --status-bar-text: #e6e1e5;
-            --nav-bar-bg: rgba(28, 27, 31, 0.9);
-            --nav-button: #cac4d0;
-            --gradient-start: #1a1a2e;
-            --gradient-mid: #16213e;
-            --gradient-end: #0f3460;
-        }
-
-        [data-theme="amoled"] {
-            --surface: #000000;
-            --surface-variant: #0a0a0a;
-            --surface-elevated: #121212;
-            --surface-container: #000000;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --status-bar-bg: rgba(0, 0, 0, 0.95);
-            --status-bar-text: #ffffff;
-            --nav-bar-bg: rgba(0, 0, 0, 0.95);
-            --gradient-start: #000000;
-            --gradient-mid: #0d0d1a;
-            --gradient-end: #1a1a2e;
+            --surface: #0D0D0D;
+            --surface-glass: rgba(30, 30, 30, 0.9);
+            --surface-variant: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-tertiary: #666666;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
 
         [data-theme="aurora"] {
-            --primary: #007dff;
-            --primary-dark: #005bb0;
-            --primary-light: #b3d9ff;
-            --secondary: #00bfa5;
-            --gradient-start: #667eea;
-            --gradient-mid: #764ba2;
-            --gradient-end: #f093fb;
-        }
-
-        [data-theme="ocean"] {
-            --primary: #00bcd4;
-            --primary-dark: #0097a7;
-            --gradient-start: #0d47a1;
-            --gradient-mid: #1976d2;
-            --gradient-end: #006064;
+            --primary: #007DFF;
+            --primary-light: #66B5FF;
+            --primary-dark: #005BB5;
+            --secondary: #00D5A7;
+            --accent: #FF6B35;
         }
 
         [data-theme="forest"] {
-            --primary: #4caf50;
-            --primary-dark: #388e3c;
-            --gradient-start: #1b5e20;
-            --gradient-mid: #2e7d32;
-            --gradient-end: #004d40;
+            --primary: #07C160;
+            --primary-light: #4CAF50;
+            --primary-dark: #059669;
+            --secondary: #8B5CF6;
+            --accent: #F59E0B;
         }
 
         [data-theme="sunset"] {
-            --primary: #ff7043;
-            --primary-dark: #f4511e;
-            --gradient-start: #ff5722;
-            --gradient-mid: #ff7043;
-            --gradient-end: #ff9800;
+            --primary: #FF6B35;
+            --primary-light: #FF8F66;
+            --primary-dark: #E55A2B;
+            --secondary: #FFB800;
+            --accent: #FF4D6D;
         }
 
         [data-theme="purple"] {
-            --primary: #9c27b0;
-            --primary-dark: #7b1fa2;
-            --primary-light: #f3e5f5;
-            --secondary: #ab47bc;
-            --gradient-start: #9c27b0;
-            --gradient-mid: #7b1fa2;
-            --gradient-end: #673ab7;
+            --primary: #8B5CF6;
+            --primary-light: #A78BFA;
+            --primary-dark: #7C3AED;
+            --secondary: #EC4899;
+            --accent: #06B6D4;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Google Sans', 'Roboto', sans-serif;
-            background: var(--wallpaper);
-            background-size: 200% 200%;
-            animation: gradientShift 20s ease infinite;
+            font-family: 'HarmonyOS Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, #007DFF 0%, #66B5FF 50%, #B8E0FF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
             overflow: hidden;
-            touch-action: none;
-            user-select: none;
+        }
+
+        .phone {
+            width: 100%;
+            max-width: 380px;
             height: 100vh;
-            width: 100vw;
+            max-height: 820px;
+            background: var(--surface);
+            border-radius: 44px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 100px rgba(0, 0, 0, 0.25);
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @media (min-width: 500px) {
+            .phone { border-radius: 44px; }
         }
 
-        .theme-toggle {
-            position: fixed; top: 10px; right: 10px; z-index: 2001;
-            width: 48px; height: 48px; border-radius: var(--radius-lg);
-            background: var(--surface); box-shadow: var(--shadow-3);
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            transition: var(--transition-fast); border: none;
+        /* Status Bar */
+        .status-bar {
+            height: 54px;
+            padding: 14px 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 50;
         }
-        .theme-toggle:hover { transform: scale(1.08); }
-        .theme-toggle svg { width: 26px; height: 26px; fill: var(--text-primary); }
+        .status-bar .left {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .status-bar .right {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .status-bar .right svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+        }
+        .status-bar .right .battery {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .status-bar .right .battery-body {
+            width: 22px;
+            height: 10px;
+            border: 1.5px solid white;
+            border-radius: 3px;
+            position: relative;
+            padding: 1.5px;
+        }
+        .status-bar .right .battery-body::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 5px;
+            background: white;
+            border-radius: 0 1px 1px 0;
+        }
+        .status-bar .right .battery-level {
+            height: 100%;
+            background: white;
+            border-radius: 1px;
+            width: 80%;
+        }
+
+        /* Main Content */
+        .content {
+            height: calc(100vh - 54px - 90px);
+            overflow-y: auto;
+            padding: 0 20px 20px;
+            position: relative;
+        }
+        .content::-webkit-scrollbar { display: none; }
+
+        /* Greeting */
+        .greeting {
+            margin-bottom: 24px;
+        }
+        .greeting h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 4px;
+        }
+        .greeting p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Widgets Container */
+        .widgets {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Card Base */
+        .card {
+            background: white;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:active { transform: scale(0.98); }
+
+        /* Time Card */
+        .time-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .time-card .time {
+            font-size: 52px;
+            font-weight: 300;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+        .time-card .time span {
+            font-size: 24px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .time-card .date {
+            text-align: right;
+        }
+        .time-card .date .day {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .time-card .date .weather {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .quick-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .quick-action .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
+        }
+        .quick-action:active .icon { transform: scale(0.9); }
+        .quick-action .label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* Services Grid */
+        .services-card {
+            padding: 16px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px 8px;
+        }
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .service-item .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .service-item .label {
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Apps Section */
+        .apps-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            padding: 0 4px;
+        }
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 16px;
+        }
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .app-item .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        .app-item:active .icon {
+            transform: scale(0.9);
+        }
+        .app-item .label {
+            font-size: 11px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 12px 24px 30px;
+            z-index: 100;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            padding: 4px 16px;
+            border-radius: 16px;
+            transition: background 0.2s ease;
+        }
+        .nav-item:hover { background: var(--surface-variant); }
+        .nav-item.active { background: var(--surface-variant); }
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-tertiary);
+        }
+        .nav-item.active svg { fill: var(--primary); }
+        .nav-item span {
+            font-size: 10px;
+            color: var(--text-tertiary);
+        }
+        .nav-item.active span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Control Center */
+        .control-center {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface);
+            z-index: 200;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .control-center.open { transform: translateY(0); }
+
+        .cc-header {
+            height: 120px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 16px 24px 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+        .cc-header .back-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .cc-header .back-btn:active { background: rgba(255,255,255,0.3); }
+        .cc-header .back-btn svg { width: 20px; height: 20px; fill: white; }
+        .cc-header > div:not(.back-btn) {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .cc-header h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+        }
+        .cc-header p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 4px;
+        }
+
+        .cc-content {
+            padding: 24px;
+            height: calc(100% - 120px);
+            overflow-y: auto;
+        }
+
+        .cc-section {
+            margin-bottom: 24px;
+        }
+        .cc-section h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .cc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .cc-tile {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            background: var(--surface-variant);
+            transition: all 0.2s ease;
+        }
+        .cc-tile:active { transform: scale(0.95); }
+        .cc-tile.active { background: var(--primary); }
+        .cc-tile.active svg { fill: white; }
+        .cc-tile.active span { color: white; }
+        .cc-tile svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-primary);
+        }
+        .cc-tile span {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .cc-wifi {
+            background: var(--primary);
+        }
+        .cc-wifi svg { fill: white; }
+        .cc-wifi span { color: white; }
+
+        /* App Drawer */
+        .app-drawer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface);
+            z-index: 200;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .app-drawer.open { transform: translateY(0); }
+
+        .drawer-header {
+            height: 120px;
+            background: linear-gradient(180deg, #5856D6 0%, #AF52DE 100%);
+            padding: 16px 24px 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+        .drawer-header .back-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .drawer-header .back-btn:active { background: rgba(255,255,255,0.3); }
+        .drawer-header .back-btn svg { width: 20px; height: 20px; fill: white; }
+        .drawer-header > div:not(.back-btn) {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .drawer-header h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+        }
+        .drawer-header p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 4px;
+        }
+
+        .drawer-content {
+            padding: 20px 24px;
+            height: calc(100% - 120px);
+            overflow-y: auto;
+        }
+        .drawer-search {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--surface-variant);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+        }
+        .drawer-search svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-tertiary);
+        }
+        .drawer-search input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 14px;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .drawer-category {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            margin-top: 16px;
+        }
+        .drawer-category:first-of-type { margin-top: 0; }
+
+        .drawer-apps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 16px;
+            margin-bottom: 16px;
+        }
+        .drawer-app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .drawer-app .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .drawer-app .label {
+            font-size: 10px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        /* Theme Selector */
+        .theme-btn {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 150;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.2s ease;
+        }
+        .theme-btn:active { transform: scale(0.9); }
+        .theme-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
 
         .theme-selector {
-            position: fixed; top: 10px; right: 10px; z-index: 2000;
-            background: var(--surface); border-radius: var(--radius-xl); padding: 12px;
-            box-shadow: var(--shadow-4); display: none; flex-direction: column;
-            gap: 8px; max-height: 85vh; overflow-y: auto; width: 300px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 600;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .theme-selector.show { display: flex; }
+
+        .theme-panel {
+            width: 100%;
+            max-width: 380px;
+            background: var(--surface);
+            border-radius: 28px 28px 0 0;
+            padding: 24px;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
         }
 
-        .theme-header { padding: 12px 16px 16px; border-bottom: 1px solid var(--surface-container); }
-        .theme-title { font-size: 18px; font-weight: 600; color: var(--text-primary); }
-        .theme-subtitle { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
-
-        .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 8px; }
-
-        .theme-btn {
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            padding: 12px 8px; border-radius: var(--radius-md); cursor: pointer;
-            transition: var(--transition-fast); border: 2px solid transparent;
-            background: var(--surface-variant);
-        }
-        .theme-btn:hover { transform: translateY(-2px); background: var(--surface-container); }
-        .theme-btn.active { border-color: var(--primary); background: var(--primary-light); }
-
-        .theme-color { width: 56px; height: 56px; border-radius: var(--radius-sm); position: relative; }
-        .theme-color::after {
-            content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: white; font-size: 20px; opacity: 0; transition: var(--transition-fast);
-        }
-        .theme-btn.active .theme-color::after { opacity: 1; }
-        .theme-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
-        .theme-desc { font-size: 11px; color: var(--text-tertiary); }
-
-        .phone-frame {
-            position: relative; width: 100%; max-width: 430px; height: 100vh;
-            max-height: 932px; margin: 0 auto; background: var(--surface);
-            overflow: hidden; box-shadow: var(--shadow-5); border-radius: var(--radius-xl);
+        .theme-panel h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        @media (min-width: 600px) {
-            .phone-frame { border-radius: 44px; margin: 16px auto; height: calc(100vh - 32px); max-height: none; }
-            .theme-selector { top: 26px; right: 26px; }
-            .theme-toggle { top: 26px; right: 26px; }
+        .theme-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .theme-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .theme-option .color {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease;
+        }
+        .theme-option:active .color { transform: scale(0.9); }
+        .theme-option .name {
+            font-size: 12px;
+            color: var(--text-secondary);
         }
 
-        .status-bar {
-            position: absolute; top: 0; left: 0; right: 0; height: var(--status-bar-height);
-            display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
-            background: var(--status-bar-bg); backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px); z-index: 100; font-size: 13px; font-weight: 600;
-            color: var(--status-bar-text);
+        /* App Window */
+        .app-window {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface);
+            z-index: 250;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
         }
+<<<<<<< HEAD
         .status-left, .status-right { display: flex; align-items: center; gap: 8px; }
         .status-icon svg { width: 18px; height: 18px; fill: var(--status-bar-text); }
         .battery-container { display: flex; align-items: center; gap: 4px; }
@@ -344,433 +839,736 @@
 
         .app-window { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--surface); z-index: 400; transform: translateY(100%); transition: transform var(--transition-slow); overflow: hidden; }
         .app-window.open { transform: translateY(0); }
-        .app-header { height: calc(var(--status-bar-height) + 56px); padding-top: var(--status-bar-height); background: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .app-back { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: var(--radius-full); transition: var(--transition-fast); margin-left: 4px; }
-        .app-back:active { background: rgba(255,255,255,0.2); }
-        .app-back svg { width: 26px; height: 26px; fill: white; }
-        .app-title { font-size: 20px; font-weight: 500; color: white; flex: 1; }
-        .app-menu { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .app-menu svg { width: 24px; height: 24px; fill: white; }
-        .app-content { height: calc(100% - calc(var(--status-bar-height) + 56px)); overflow-y: auto; background: var(--surface); }
 
-        .settings-list { padding: 16px; }
-        .settings-section { margin-bottom: 24px; }
-        .settings-section-title { font-size: 13px; font-weight: 600; color: var(--primary); padding: 8px 16px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .settings-card { background: var(--surface-variant); border-radius: var(--radius-md); overflow: hidden; }
-        .settings-item { display: flex; align-items: center; padding: 16px; cursor: pointer; transition: var(--transition-fast); }
-        .settings-item:active { background: var(--surface-container); }
-        .settings-item + .settings-item { border-top: 1px solid var(--surface-container); }
-        .settings-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-right: 16px; font-size: 22px; }
-        .settings-info { flex: 1; min-width: 0; }
-        .settings-label { font-size: 16px; font-weight: 500; color: var(--text-primary); }
-        .settings-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
-        .settings-arrow { width: 24px; height: 24px; fill: var(--text-tertiary); margin-left: 12px; }
-        .settings-toggle { width: 52px; height: 32px; background: var(--surface-container); border-radius: var(--radius-full); position: relative; cursor: pointer; transition: var(--transition-fast); }
-        .settings-toggle.on { background: var(--primary); }
-        .settings-toggle::after { content: ''; position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; background: white; border-radius: 50%; box-shadow: var(--shadow-1); transition: var(--transition-fast); }
-        .settings-toggle.on::after { left: 24px; }
+        .app-header {
+            height: 120px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 16px 24px 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+        .app-header .back-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .app-header .back-btn:active { background: rgba(255,255,255,0.3); }
+        .app-header .back-btn svg { width: 20px; height: 20px; fill: white; }
+        .app-header > div:not(.back-btn) {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .app-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+        }
 
-        .boot-screen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%); z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity var(--transition-slow); }
-        .boot-screen.hidden { opacity: 0; pointer-events: none; }
-        .boot-logo { width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 26px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(66, 133, 244, 0.4); animation: bootPulse 2s ease-in-out infinite; }
-        @keyframes bootPulse { 0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(66, 133, 244, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 25px 80px rgba(66, 133, 244, 0.5); } }
-        .boot-logo svg { width: 60px; height: 60px; fill: white; }
-        .boot-text { font-size: 28px; font-weight: 500; color: white; margin-bottom: 8px; }
-        .boot-tagline { font-size: 14px; color: rgba(255,255,255,0.6); }
-        .boot-loader { margin-top: 40px; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.2); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .app-content {
+            height: calc(100% - 120px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .app-content::-webkit-scrollbar { display: none; }
 
-        .toast { position: absolute; bottom: calc(var(--nav-bar-height) + 20px); left: 50%; transform: translateX(-50%) translateY(100px); background: var(--surface-elevated); color: var(--text-primary); padding: 14px 24px; border-radius: var(--radius-full); font-size: 14px; font-weight: 500; z-index: 600; opacity: 0; transition: transform var(--transition-normal), opacity var(--transition-normal); box-shadow: var(--shadow-3); }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--text-primary);
+            color: var(--surface);
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 700;
+            pointer-events: none;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Theme Colors */
+        .bg-default { background: linear-gradient(180deg, #007DFF 0%, #66B5FF 50%, #B8E0FF 100%); }
+        .bg-dark { background: linear-gradient(180deg, #1A1A1A 0%, #2D2D2D 50%, #3D3D3D 100%); }
+        .bg-forest { background: linear-gradient(180deg, #07C160 0%, #4CAF50 50%, #81C784 100%); }
+        .bg-sunset { background: linear-gradient(180deg, #FF6B35 0%, #FF8F66 50%, #FFB800 100%); }
+        .bg-purple { background: linear-gradient(180deg, #8B5CF6 0%, #A78BFA 50%, #C4B5FD 100%); }
     </style>
 </head>
-<body>
-    <button class="theme-toggle" onclick="toggleThemeSelector()">
+<body class="bg-default">
+    <button class="theme-btn" onclick="toggleTheme()">
         <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
     </button>
 
-    <div class="theme-selector" id="themeSelector">
-        <div class="theme-header">
-            <div class="theme-title">Pilih Tema</div>
-            <div class="theme-subtitle">Android 16 + HarmonyOS Style</div>
-        </div>
-        <div class="theme-grid">
-            <div class="theme-btn active" data-theme="default" onclick="setTheme('default')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #667eea 0%, #764ba2 50%, #f64f59 100%);"></div>
-                <div class="theme-name">Aurora</div>
-                <div class="theme-desc">Default</div>
-            </div>
-            <div class="theme-btn" data-theme="dark" onclick="setTheme('dark')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
-                <div class="theme-name">Dark</div>
-                <div class="theme-desc">Dark Mode</div>
-            </div>
-            <div class="theme-btn" data-theme="amoled" onclick="setTheme('amoled')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #000000 0%, #0d0d1a 50%, #1a1a2e 100%);"></div>
-                <div class="theme-name">AMOLED</div>
-                <div class="theme-desc">Pure Black</div>
-            </div>
-            <div class="theme-btn" data-theme="aurora" onclick="setTheme('aurora')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #667eea 0%, #764ba2 50%, #f093fb 100%);"></div>
-                <div class="theme-name">Harmony</div>
-                <div class="theme-desc">Elegant</div>
-            </div>
-            <div class="theme-btn" data-theme="ocean" onclick="setTheme('ocean')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #0d47a1 0%, #1976d2 50%, #006064 100%);"></div>
-                <div class="theme-name">Ocean</div>
-                <div class="theme-desc">Deep Blue</div>
-            </div>
-            <div class="theme-btn" data-theme="forest" onclick="setTheme('forest')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 50%, #004d40 100%);"></div>
-                <div class="theme-name">Forest</div>
-                <div class="theme-desc">Nature</div>
-            </div>
-            <div class="theme-btn" data-theme="sunset" onclick="setTheme('sunset')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #ff5722 0%, #ff7043 50%, #ff9800 100%);"></div>
-                <div class="theme-name">Sunset</div>
-                <div class="theme-desc">Warm</div>
-            </div>
-            <div class="theme-btn" data-theme="purple" onclick="setTheme('purple')">
-                <div class="theme-color" style="background: linear-gradient(160deg, #9c27b0 0%, #7b1fa2 50%, #673ab7 100%);"></div>
-                <div class="theme-name">Royal</div>
-                <div class="theme-desc">Purple</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="boot-screen" id="bootScreen">
-        <div class="boot-logo">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-        </div>
-        <div class="boot-text">ContainerOS</div>
-        <div class="boot-tagline">Powered by Docker</div>
-        <div class="boot-loader"></div>
-    </div>
-
-    <div class="phone-frame">
-        <div class="lock-screen" id="lockScreen">
-            <div class="lock-content">
-                <div class="lock-time" id="lockTime">12<span class="lock-seconds">:00</span></div>
-                <div class="lock-date" id="lockDate">Sunday, January 1</div>
-            </div>
-            <div class="lock-swipe">
-                <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                <span class="lock-swipe-text">Swipe up to unlock</span>
-            </div>
-        </div>
-
+    <div class="phone">
+        <!-- Status Bar -->
         <div class="status-bar">
-            <div class="status-left"><span id="statusTime">12:00</span></div>
-            <div class="status-right">
-                <div class="status-icon"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
-                <div class="status-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l11 11c.18.18.43.29.71.29.28 0 .53-.11.71-.29l11-11c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/></svg></div>
-                <div class="battery-container"><span style="font-size:12px;">80%</span><div class="battery-icon"><div class="battery-level"></div></div></div>
+            <div class="left" id="statusTime">9:41</div>
+            <div class="right">
+                <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/></svg>
+                <div class="battery">
+                    <div class="battery-body"><div class="battery-level"></div></div>
+                </div>
             </div>
         </div>
 
-        <div class="pill-bar" onclick="openControlCenter()">
-            <div class="pill-icon">💬</div>
-            <div class="pill-content">
-                <div class="pill-app">Messages</div>
-                <div class="pill-text">You have 3 new messages</div>
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Greeting -->
+            <div class="greeting">
+                <h1 id="greetingText">Good Morning</h1>
+                <p id="greetingDate">Loading...</p>
             </div>
-            <span class="pill-time">now</span>
-            <div class="pill-close" onclick="event.stopPropagation(); dismissPill()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+
+            <div class="widgets">
+                <!-- Time & Weather Card -->
+                <div class="card time-card">
+                    <div class="time">
+                        <span id="homeTime">9</span>:<span id="homeMin">00</span>
+                    </div>
+                    <div class="date">
+                        <div class="day" id="cardDate">Loading...</div>
+                        <div class="weather">☀️ 28°C, Jakarta</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="quick-actions">
+                        <div class="quick-action" onclick="openControlCenter()">
+                            <div class="icon" style="background: #007DFF;">
+                                <span>⚡</span>
+                            </div>
+                            <span class="label">Control</span>
+                        </div>
+                        <div class="quick-action" onclick="openAppDrawer()">
+                            <div class="icon" style="background: #5856D6;">
+                                <span>📱</span>
+                            </div>
+                            <span class="label">Apps</span>
+                        </div>
+                        <div class="quick-action" onclick="openApp('files')">
+                            <div class="icon" style="background: #FF9500;">
+                                <span>📁</span>
+                            </div>
+                            <span class="label">Files</span>
+                        </div>
+                        <div class="quick-action" onclick="openApp('camera')">
+                            <div class="icon" style="background: #FF3B30;">
+                                <span>📷</span>
+                            </div>
+                            <span class="label">Camera</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="card services-card">
+                    <div class="services-grid">
+                        <div class="service-item" onclick="openApp('wifi')">
+                            <div class="icon" style="background: linear-gradient(135deg, #007DFF, #0055CC);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                            </div>
+                            <span class="label">WiFi</span>
+                        </div>
+                        <div class="service-item" onclick="openApp('bluetooth')">
+                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
+                            </div>
+                            <span class="label">Bluetooth</span>
+                        </div>
+                        <div class="service-item" onclick="openApp('airplane')">
+                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                            </div>
+                            <span class="label">Flight</span>
+                        </div>
+                        <div class="service-item" onclick="openApp('location')">
+                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <span class="label">Location</span>
+                        </div>
+                        <div class="service-item" onclick="openApp('flashlight')">
+                            <div class="icon" style="background: linear-gradient(135deg, #FFD60A, #E6BE00);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M6 14l3 3v5h6v-5l3-3V9H6v5zm5-12h2v3h-2V2zM3.5 5.875L4.914 4.46l2.12 2.122L5.622 8 3.5 5.875zm13.46.71l2.123-2.12 1.414 1.414L18.375 8l-1.414-1.414z"/></svg>
+                            </div>
+                            <span class="label">Light</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apps Section -->
+                <div class="apps-section">
+                    <h3>Frequently Used</h3>
+                    <div class="apps-grid">
+                        <div class="app-item" onclick="openApp('phone')">
+                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                            </div>
+                            <span class="label">Phone</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('messages')">
+                            <div class="icon" style="background: linear-gradient(135deg, #007AFF, #0056CC);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                            </div>
+                            <span class="label">Messages</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('browser')">
+                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            </div>
+                            <span class="label">Browser</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('camera')">
+                            <div class="icon" style="background: linear-gradient(135deg, #FF3B30, #CC2F26);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 15.2c1.86 0 3.41-1.55 3.41-3.46 0-1.91-1.55-3.46-3.41-3.46s-3.41 1.55-3.41 3.46c0 1.91 1.55 3.46 3.41 3.46zm-6.1 1.68l-.6-1.09c-.16-.28-.45-.46-.76-.46H4.5c-.31 0-.6.18-.76.46l-.6 1.09C2.67 17.6 2 19.06 2 20.64V21h16v-.36c0-1.58-.67-3.04-1.9-4.12l-.6-1.09zM9.5 12.74c1.82 0 3.35 1.17 3.86 2.76H5.64c.51-1.59 2.04-2.76 3.86-2.76z"/></svg>
+                            </div>
+                            <span class="label">Camera</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('gallery')">
+                            <div class="icon" style="background: linear-gradient(135deg, #FF9500, #CC7700);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/></svg>
+                            </div>
+                            <span class="label">Gallery</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('terminal')">
+                            <div class="icon" style="background: linear-gradient(135deg, #1C1C1E, #000000);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-5 14H7v-2h8v2zm3-4H7v-2h11v2zm0-4H7V8h11v2z"/></svg>
+                            </div>
+                            <span class="label">Terminal</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('settings')">
+                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                            </div>
+                            <span class="label">Settings</span>
+                        </div>
+                        <div class="app-item" onclick="openApp('store')">
+                            <div class="icon" style="background: linear-gradient(135deg, #00D4AA, #00A080);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+                            </div>
+                            <span class="label">Store</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" onclick="openAppDrawer()">
+                <svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+                <span>Apps</span>
+            </div>
+            <div class="nav-item" onclick="openControlCenter()">
+                <svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2h-4v2h4zm0-6v-2h-4v2h4z"/></svg>
+                <span>Control</span>
+            </div>
+            <div class="nav-item" onclick="openApp('settings')">
+                <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                <span>Settings</span>
+            </div>
+        </div>
+
+        <!-- Control Center -->
         <div class="control-center" id="controlCenter">
-            <div class="cc-header"><span class="cc-title">Control Center</span></div>
-            <div class="cc-grid">
-                <div class="cc-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>WiFi</span></div>
-                <div class="cc-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29z"/></svg><span>Data</span></div>
-                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg><span>Flight</span></div>
-                <div class="cc-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg><span>Flash</span></div>
-                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29z"/></svg><span>Blue</span></div>
-                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg><span>Sound</span></div>
-                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg><span>Cloud</span></div>
-                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg><span>Share</span></div>
+            <div class="cc-header">
+                <div class="back-btn" onclick="closeAllModals()">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <div>
+                    <h2>Control Center</h2>
+                    <p>Quick access to settings</p>
+                </div>
             </div>
-            <div class="cc-slider">
-                <svg viewBox="0 0 24 24"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                <input type="range" min="0" max="100" value="70" id="brightnessSlider">
-                <span class="cc-value" id="brightnessValue">70%</span>
+            <div class="cc-content">
+                <div class="cc-section">
+                    <h4>Network</h4>
+                    <div class="cc-grid">
+                        <div class="cc-tile cc-wifi active" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                            <span>WiFi</span>
+                        </div>
+                        <div class="cc-tile active" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29z"/></svg>
+                            <span>Mobile</span>
+                        </div>
+                        <div class="cc-tile" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                            <span>Flight</span>
+                        </div>
+                        <div class="cc-tile" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>NFC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cc-section">
+                    <h4>Quick Settings</h4>
+                    <div class="cc-grid">
+                        <div class="cc-tile active" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                            <span>Flash</span>
+                        </div>
+                        <div class="cc-tile" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                            <span>Sound</span>
+                        </div>
+                        <div class="cc-tile" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <span>Bright</span>
+                        </div>
+                        <div class="cc-tile" onclick="toggleTile(this)">
+                            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                            <span>Cloud</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- App Drawer -->
         <div class="app-drawer" id="appDrawer">
-            <div class="drawer-handle" onclick="closeDrawer()"></div>
-            <div class="drawer-search"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" placeholder="Search apps..."></div>
-            <div class="drawer-categories">
-                <div class="drawer-category active">All</div>
-                <div class="drawer-category">Social</div>
-                <div class="drawer-category">Work</div>
-                <div class="drawer-category">Media</div>
-                <div class="drawer-category">Tools</div>
+            <div class="drawer-header">
+                <div class="back-btn" onclick="closeAllModals()">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <div>
+                    <h2>Apps</h2>
+                    <p>All your applications</p>
+                </div>
             </div>
             <div class="drawer-content">
-                <div class="drawer-section">
-                    <div class="drawer-section-title">Frequently Used</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div><span class="label">Chrome</span></div>
-                        <div class="drawer-app" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div><span class="label">Messages</span></div>
-                        <div class="drawer-app" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div><span class="label">Camera</span></div>
-                        <div class="drawer-app" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div><span class="label">Gallery</span></div>
+                <div class="drawer-search">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" placeholder="Search apps...">
+                </div>
+
+                <div class="drawer-category">Social</div>
+                <div class="drawer-apps">
+                    <div class="drawer-app" onclick="openApp('phone')">
+                        <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">📞</div>
+                        <span class="label">Phone</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('messages')">
+                        <div class="icon" style="background: linear-gradient(135deg, #007AFF, #0056CC);">💬</div>
+                        <span class="label">Messages</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('whatsapp')">
+                        <div class="icon" style="background: linear-gradient(135deg, #25D366, #128C7E);">📱</div>
+                        <span class="label">WhatsApp</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('telegram')">
+                        <div class="icon" style="background: linear-gradient(135deg, #0088CC, #006699);">✈️</div>
+                        <span class="label">Telegram</span>
                     </div>
                 </div>
-                <div class="drawer-section">
-                    <div class="drawer-section-title">Social</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('whatsapp')"><div class="icon" style="background: linear-gradient(135deg, #25D366, #128C7E);"><span>📱</span></div><span class="label">WhatsApp</span></div>
-                        <div class="drawer-app" onclick="openApp('telegram')"><div class="icon" style="background: linear-gradient(135deg, #0088cc, #006699);"><span>✈️</span></div><span class="label">Telegram</span></div>
-                        <div class="drawer-app" onclick="openApp('discord')"><div class="icon" style="background: linear-gradient(135deg, #5865F2, #4752c4);"><span>🎮</span></div><span class="label">Discord</span></div>
-                        <div class="drawer-app" onclick="openApp('gmail')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📧</span></div><span class="label">Gmail</span></div>
+
+                <div class="drawer-category">Productivity</div>
+                <div class="drawer-apps">
+                    <div class="drawer-app" onclick="openApp('browser')">
+                        <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">🌐</div>
+                        <span class="label">Browser</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('files')">
+                        <div class="icon" style="background: linear-gradient(135deg, #FF9500, #CC7700);">📁</div>
+                        <span class="label">Files</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('calendar')">
+                        <div class="icon" style="background: linear-gradient(135deg, #FF3B30, #CC2F26);">📅</div>
+                        <span class="label">Calendar</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('notes')">
+                        <div class="icon" style="background: linear-gradient(135deg, #FFD60A, #E6BE00);">📝</div>
+                        <span class="label">Notes</span>
                     </div>
                 </div>
-                <div class="drawer-section">
-                    <div class="drawer-section-title">Productivity</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('drive')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📁</span></div><span class="label">Drive</span></div>
-                        <div class="drawer-app" onclick="openApp('docs')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>📄</span></div><span class="label">Docs</span></div>
-                        <div class="drawer-app" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #34a853, #1e8e3e);"><span>🛒</span></div><span class="label">Store</span></div>
-                        <div class="drawer-app" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📂</span></div><span class="label">Files</span></div>
+
+                <div class="drawer-category">Media</div>
+                <div class="drawer-apps">
+                    <div class="drawer-app" onclick="openApp('camera')">
+                        <div class="icon" style="background: linear-gradient(135deg, #FF3B30, #CC2F26);">📷</div>
+                        <span class="label">Camera</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('gallery')">
+                        <div class="icon" style="background: linear-gradient(135deg, #FF9500, #CC7700);">🖼️</div>
+                        <span class="label">Gallery</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('youtube')">
+                        <div class="icon" style="background: linear-gradient(135deg, #FF0000, #CC0000);">▶️</div>
+                        <span class="label">YouTube</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('music')">
+                        <div class="icon" style="background: linear-gradient(135deg, #E91E63, #C2185B);">🎵</div>
+                        <span class="label">Music</span>
                     </div>
                 </div>
-                <div class="drawer-section">
-                    <div class="drawer-section-title">System</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #5f6368, #3c4043);"><span>⚙️</span></div><span class="label">Settings</span></div>
-                        <div class="drawer-app" onclick="openApp('terminal')"><div class="icon" style="background: linear-gradient(135deg, #202124, #3c4043);"><span>⌨️</span></div><span class="label">Terminal</span></div>
-                        <div class="drawer-app" onclick="openApp('calculator')"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #0097a7);"><span>🔢</span></div><span class="label">Calculator</span></div>
-                        <div class="drawer-app" onclick="openApp('clock')"><div class="icon" style="background: linear-gradient(135deg, #673ab7, #512da8);"><span>⏰</span></div><span class="label">Clock</span></div>
+
+                <div class="drawer-category">Tools</div>
+                <div class="drawer-apps">
+                    <div class="drawer-app" onclick="openApp('terminal')">
+                        <div class="icon" style="background: linear-gradient(135deg, #1C1C1E, #000000);">💻</div>
+                        <span class="label">Terminal</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('calculator')">
+                        <div class="icon" style="background: linear-gradient(135deg, #1C1C1E, #3A3A3C);">🧮</div>
+                        <span class="label">Calculator</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('settings')">
+                        <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">⚙️</div>
+                        <span class="label">Settings</span>
+                    </div>
+                    <div class="drawer-app" onclick="openApp('store')">
+                        <div class="icon" style="background: linear-gradient(135deg, #00D4AA, #00A080);">🛒</div>
+                        <span class="label">Store</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="home-screen" id="homeScreen">
-            <div class="page">
-                <div class="widget-card datetime-widget">
-                    <div class="time-display" id="homeTime">12<span class="time-seconds">:00</span></div>
-                    <div class="date-display" id="homeDate">Sunday, January 1</div>
-                </div>
-
-                <div class="widget-card weather-widget">
-                    <div class="weather-main"><span class="weather-icon">☀️</span><span class="weather-temp">28°</span></div>
-                    <div class="weather-info"><div class="weather-location">Jakarta</div><div class="weather-desc">Sunny • Air Quality: Good</div></div>
-                </div>
-
-                <div class="widget-card">
-                    <div class="app-section-title" style="margin-bottom: 16px;">Health Connect</div>
-                    <div class="health-widget">
-                        <div class="health-item">
-                            <div class="health-ring"><div class="health-ring-inner">👟</div></div>
-                            <div class="health-value">5,432</div>
-                            <div class="health-label">Steps</div>
-                        </div>
-                        <div class="health-item">
-                            <div class="health-ring"><div class="health-ring-inner">🔥</div></div>
-                            <div class="health-value">182</div>
-                            <div class="health-label">Calories</div>
-                        </div>
-                        <div class="health-item">
-                            <div class="health-ring"><div class="health-ring-inner">💤</div></div>
-                            <div class="health-value">7h 23m</div>
-                            <div class="health-label">Sleep</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quick-shortcuts">
-                    <div class="shortcut-item" onclick="openApp('phone')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);">📞</div><span class="shortcut-label">Phone</span></div>
-                    <div class="shortcut-item" onclick="openApp('messages')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">💬</div><span class="shortcut-label">Chat</span></div>
-                    <div class="shortcut-item" onclick="openApp('camera')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);">📷</div><span class="shortcut-label">Camera</span></div>
-                    <div class="shortcut-item" onclick="openApp('chrome')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">🌐</div><span class="shortcut-label">Browser</span></div>
-                    <div class="shortcut-item" onclick="openApp('files')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);">📂</div><span class="shortcut-label">Files</span></div>
-                </div>
-
-                <div class="app-section-title">Apps</div>
-                <div class="app-grid">
-                    <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div><span class="label">Chrome</span></div>
-                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #5f6368, #3c4043);"><span>⚙️</span></div><span class="label">Settings</span></div>
-                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📂</span></div><span class="label">Files</span></div>
-                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #34a853, #1e8e3e);"><span>🛒</span></div><span class="label">Store</span></div>
-                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div><span class="label"> Camera</span></div>
-                    <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: linear-gradient(135deg, #202124, #3c4043);"><span>⌨️</span></div><span class="label">Terminal</span></div>
-                    <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div><span class="label">Gallery</span></div>
-                    <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);"><span>📞</span></div><span class="label">Phone</span></div>
-                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div><span class="label">Messages</span></div>
-                    <div class="app-icon" onclick="openApp('youtube')"><div class="icon" style="background: linear-gradient(135deg, #ff0000, #cc0000);"><span>▶️</span></div><span class="label">YouTube</span></div>
-                    <div class="app-icon" onclick="openApp('spotify')"><div class="icon" style="background: linear-gradient(135deg, #1db954, #169c46);"><span>🎵</span></div><span class="label">Spotify</span></div>
-                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: linear-gradient(135deg, #f44336, #d32f2f);"><span>📅</span></div><span class="label">Calendar</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="dock">
-            <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);"><span>📞</span></div></div>
-            <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div></div>
-            <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div></div>
-            <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div></div>
-            <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div></div>
-        </div>
-
-        <div class="nav-bar">
-            <div class="nav-item active" onclick="handleNav('home')"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></div>
-            <div class="nav-item" onclick="openDrawer()"><svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg><span>Apps</span></div>
-            <div class="nav-item" onclick="openControlCenter()"><svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2h-4v2h4zm0-6v-2h-4v2h4z"/></svg><span>Control</span></div>
-            <div class="nav-item" onclick="openApp('settings')"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg><span>Settings</span></div>
-        </div>
-
+        <!-- App Windows -->
         <div class="app-window" id="appWindow">
             <div class="app-header">
-                <div class="app-back" onclick="closeApp()"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
-                <span class="app-title" id="appTitle">Settings</span>
-                <div class="app-menu"><svg viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="back-btn" onclick="closeApp()">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <div>
+                    <h2 id="appTitle">App</h2>
+                </div>
             </div>
-            <div class="app-content" id="appContent"></div>
+            <div class="app-content" id="appContent">
+                <!-- App content will be inserted here -->
+            </div>
         </div>
-
-        <div class="toast" id="toast">App opened</div>
     </div>
 
+    <!-- Theme Selector -->
+    <div class="theme-selector" id="themeSelector">
+        <div class="theme-panel">
+            <h3>Change Theme</h3>
+            <div class="theme-options">
+                <div class="theme-option" onclick="setTheme('default', 'bg-default')">
+                    <div class="color bg-default"></div>
+                    <span class="name">Default</span>
+                </div>
+                <div class="theme-option" onclick="setTheme('dark', 'bg-dark')">
+                    <div class="color bg-dark"></div>
+                    <span class="name">Dark</span>
+                </div>
+                <div class="theme-option" onclick="setTheme('forest', 'bg-forest')">
+                    <div class="color bg-forest"></div>
+                    <span class="name">Forest</span>
+                </div>
+                <div class="theme-option" onclick="setTheme('sunset', 'bg-sunset')">
+                    <div class="color bg-sunset"></div>
+                    <span class="name">Sunset</span>
+                </div>
+                <div class="theme-option" onclick="setTheme('purple', 'bg-purple')">
+                    <div class="color bg-purple"></div>
+                    <span class="name">Purple</span>
+                </div>
+                <div class="theme-option" onclick="setTheme('aurora', 'bg-default')">
+                    <div class="color" style="background: linear-gradient(180deg, #007DFF 0%, #5856D6 50%, #AF52DE 100%);"></div>
+                    <span class="name">Aurora</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">App opened</div>
+
     <script>
-        let isLocked = true, isDrawerOpen = false, isControlOpen = false;
-        let startY = 0, currentY = 0;
-        
-        const bootScreen = document.getElementById('bootScreen');
-        const lockScreen = document.getElementById('lockScreen');
-        const appDrawer = document.getElementById('appDrawer');
-        const controlCenter = document.getElementById('controlCenter');
-        const appWindow = document.getElementById('appWindow');
-        const toast = document.getElementById('toast');
-        const phoneFrame = document.querySelector('.phone-frame');
-
-        function init() {
-            updateTime();
-            setInterval(updateTime, 1000);
-            
-            setTimeout(() => {
-                bootScreen.classList.add('hidden');
-                setTimeout(() => { lockScreen.classList.add('hidden'); isLocked = false; }, 1000);
-            }, 3000);
-            
-            setupGestures();
-            const savedTheme = localStorage.getItem('containeros-theme');
-            if (savedTheme) setTheme(savedTheme);
-            
-            document.getElementById('brightnessSlider').addEventListener('input', function() {
-                document.getElementById('brightnessValue').textContent = this.value + '%';
-            });
-        }
-
+        // Update time and greeting - realtime
         function updateTime() {
             const now = new Date();
             const h = now.getHours();
-            const m = now.getMinutes().toString().padStart(2, '0');
-            const s = now.getSeconds().toString().padStart(2, '0');
-            const time = `${h}:${m}`;
-            const seconds = `:${s}`;
+            const m = now.getMinutes();
+            const s = now.getSeconds();
             
-            const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            const date = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+            // Update status bar time
+            document.getElementById('statusTime').textContent = h + ':' + String(m).padStart(2, '0');
             
-            document.getElementById('statusTime').textContent = time;
-            document.getElementById('homeTime').innerHTML = time + `<span class="time-seconds">${seconds}</span>`;
-            document.getElementById('homeDate').textContent = date;
-            document.getElementById('lockTime').innerHTML = time + `<span class="lock-seconds">${seconds}</span>`;
-            document.getElementById('lockDate').textContent = date;
+            // Update home time card
+            document.getElementById('homeTime').textContent = h;
+            document.getElementById('homeMin').textContent = String(m).padStart(2, '0');
+            
+            // Format date
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const dayName = days[now.getDay()];
+            const monthName = months[now.getMonth()];
+            const dateNum = now.getDate();
+            const dateStr = dayName + ', ' + monthName + ' ' + dateNum;
+            
+            // Update greeting and date
+            let greeting = 'Good Morning';
+            if (h >= 12 && h < 17) greeting = 'Good Afternoon';
+            else if (h >= 17 && h < 21) greeting = 'Good Evening';
+            else if (h >= 21 || h < 5) greeting = 'Good Night';
+            
+            document.getElementById('greetingText').textContent = greeting;
+            document.getElementById('greetingDate').textContent = dateStr;
+            document.getElementById('cardDate').textContent = dateStr;
         }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
 
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
-            localStorage.setItem('containeros-theme', theme);
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.theme === theme);
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); });
+                this.classList.add('active');
             });
-            document.getElementById('themeSelector').style.display = 'none';
-            showToast(`Theme applied`);
+        });
+
+        // Control Center
+        function openControlCenter() {
+            document.getElementById('controlCenter').classList.add('open');
         }
 
-        function toggleThemeSelector() {
-            const selector = document.getElementById('themeSelector');
-            selector.style.display = selector.style.display === 'none' ? 'flex' : 'none';
+        // App Drawer
+        function openAppDrawer() {
+            document.getElementById('appDrawer').classList.add('open');
         }
 
-        function setupGestures() {
-            phoneFrame.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: false });
-            phoneFrame.addEventListener('touchmove', e => { currentY = e.touches[0].clientY; }, { passive: false });
-            phoneFrame.addEventListener('touchend', handleGesture);
-            phoneFrame.addEventListener('mousedown', e => { startY = e.clientY; });
-            phoneFrame.addEventListener('mouseup', handleMouse);
+        // Close all modals
+        function closeAllModals() {
+            document.getElementById('controlCenter').classList.remove('open');
+            document.getElementById('appDrawer').classList.remove('open');
         }
 
-        function handleGesture(e) {
-            const dY = currentY - startY;
-            if (startY > window.innerHeight - 150 && dY < -80) {
-                if (!isDrawerOpen && !isControlOpen && !appWindow.classList.contains('open')) openDrawer();
-            } else if (dY > 80 && isDrawerOpen) {
-                closeDrawer();
-            } else if (dY < -80 && !isControlOpen && !appWindow.classList.contains('open') && startY < 200) {
-                openControlCenter();
-            } else if (dY > 80 && isControlOpen) {
-                closeControlCenter();
-            } else if (dY < -100 && !isLocked) {
-                lockScreen.classList.add('hidden');
+        // Swipe down to close (optional gesture)
+        let touchStartY = 0;
+        document.getElementById('controlCenter').addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        });
+        document.getElementById('controlCenter').addEventListener('touchend', function(e) {
+            if (e.changedTouches[0].clientY - touchStartY > 100) {
+                closeAllModals();
+            }
+        });
+
+        document.getElementById('appDrawer').addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        });
+        document.getElementById('appDrawer').addEventListener('touchend', function(e) {
+            if (e.changedTouches[0].clientY - touchStartY > 100) {
+                closeAllModals();
+            }
+        });
+
+        // Toggle tiles
+        function toggleTile(el) {
+            el.classList.toggle('active');
+        }
+
+        // Calculator state
+        let calcValue = '0';
+        let calcMemory = 0;
+        let calcOperator = null;
+        let calcWaiting = false;
+
+        function calcDigit(d) {
+            if (calcWaiting) { calcValue = d; calcWaiting = false; }
+            else { calcValue = calcValue === '0' ? d : calcValue + d; }
+            document.getElementById('calcDisplay').textContent = calcValue;
+        }
+        function calcOp(op) {
+            const cur = parseFloat(calcValue);
+            if (calcOperator && !calcWaiting) {
+                const r = (calcOperator === '+') ? calcMemory + cur : (calcOperator === '-') ? calcMemory - cur : (calcOperator === 'x') ? calcMemory * cur : (cur !== 0) ? calcMemory / cur : 'Error';
+                calcValue = String(r);
+            }
+            calcMemory = parseFloat(calcValue);
+            calcOperator = op;
+            calcWaiting = true;
+            document.getElementById('calcDisplay').textContent = calcValue;
+        }
+        function calcEq() {
+            if (!calcOperator) return;
+            const cur = parseFloat(calcValue);
+            const r = (calcOperator === '+') ? calcMemory + cur : (calcOperator === '-') ? calcMemory - cur : (calcOperator === 'x') ? calcMemory * cur : (cur !== 0) ? calcMemory / cur : 'Error';
+            calcValue = String(r);
+            calcMemory = 0; calcOperator = null; calcWaiting = true;
+            document.getElementById('calcDisplay').textContent = calcValue;
+        }
+        function calcClear() { calcValue = '0'; calcMemory = 0; calcOperator = null; calcWaiting = false; document.getElementById('calcDisplay').textContent = '0'; }
+        function calcDec() { if (calcWaiting) { calcValue = '0.'; calcWaiting = false; } else if (!calcValue.includes('.')) { calcValue += '.'; } document.getElementById('calcDisplay').textContent = calcValue; }
+        function calcNeg() { calcValue = String(-parseFloat(calcValue)); document.getElementById('calcDisplay').textContent = calcValue; }
+        function calcPct() { calcValue = String(parseFloat(calcValue) / 100); document.getElementById('calcDisplay').textContent = calcValue; }
+
+        // Phone state
+        let phoneNum = '';
+        function phoneDigit(d) { if (phoneNum.length < 15) { phoneNum += d; document.getElementById('phoneDisplay').textContent = phoneNum || '0'; } }
+        function phoneDel() { phoneNum = phoneNum.slice(0,-1); document.getElementById('phoneDisplay').textContent = phoneNum || '0'; }
+        function phoneCall() { if (phoneNum) showToast('Calling ' + phoneNum + '...'); }
+
+        // Calendar state
+        let calMonth = new Date().getMonth();
+        let calYear = new Date().getFullYear();
+        function calPrev() { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCal(); }
+        function calNext() { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCal(); }
+        function renderCal() {
+            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            const first = new Date(calYear, calMonth, 1).getDay();
+            const total = new Date(calYear, calMonth + 1, 0).getDate();
+            const today = new Date().getDate();
+            const curM = new Date().getMonth();
+            const curY = new Date().getFullYear();
+            let h = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;"><div style="font-size:20px;font-weight:600;color:var(--text-primary);">' + months[calMonth] + ' ' + calYear + '</div><div style="display:flex;gap:8px;"><button onclick="calPrev()" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--surface-variant);cursor:pointer;">◀</button><button onclick="calNext()" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--surface-variant);cursor:pointer;">▶</button></div></div>';
+            h += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-bottom:8px;">';
+            days.forEach(d => h += '<div style="font-size:11px;color:var(--text-tertiary);">' + d + '</div>');
+            h += '</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;">';
+            for (let i = 0; i < first; i++) h += '<div></div>';
+            for (let d = 1; d <= total; d++) {
+                const isToday = (d === today && calMonth === curM && calYear === curY);
+                h += '<div onclick="showToast(\'' + d + ' ' + months[calMonth] + '\')" style="padding:8px;font-size:13px;color:var(--text-primary);cursor:pointer;border-radius:50%;' + (isToday ? 'background:var(--primary);color:white;' : '') + '">' + d + '</div>';
+            }
+            h += '</div>';
+            document.getElementById('calContent').innerHTML = h;
+        }
+
+        // Terminal state
+        let termLines = ['containeros@localhost:~$ ls -la', 'drwxr-xr-x  12 user  staff   384 Jan  1 10:00 .', 'drwxr-xr-x   3 user  staff    96 Jan  1 10:00 ..', '-rw-r--r--   1 user  staff  4096 Jan  1 10:00 README.md', 'drwxr-xr-x   8 user  staff   256 Jan  1 09:00 projects', 'containeros@localhost:~$ docker ps', 'CONTAINER ID   IMAGE          STATUS', 'abc1234def5   gui:latest     Up 2 hours', 'def5678ghi9   api:latest     Up 1 hour', 'ghi9012jkl3   db:latest      Up 3 hours', 'containeros@localhost:~$'];
+        function termCmd(cmd) {
+            termLines[termLines.length - 1] = 'containeros@localhost:~$ ' + cmd;
+            if (cmd === 'clear') termLines = ['containeros@localhost:~$'];
+            else if (cmd === 'date') termLines.push(new Date().toString());
+            else if (cmd === 'whoami') termLines.push('containeros');
+            else if (cmd === 'pwd') termLines.push('/home/user');
+            else if (cmd === 'help') termLines.push('Commands: clear, date, whoami, pwd, help');
+            else if (cmd.trim()) termLines.push('bash: ' + cmd + ': command not found');
+            termLines.push('containeros@localhost:~$');
+            document.getElementById('termContent').innerHTML = termLines.join('<br>');
+        }
+
+        // App content templates
+        const appContents = {
+            calculator: {
+                title: 'Calculator',
+                content: '<div style="padding:20px;"><div style="background:var(--surface-variant);border-radius:12px;padding:20px;text-align:right;margin-bottom:16px;"><div id="calcDisplay" style="font-size:48px;font-weight:300;color:var(--text-primary);">0</div></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"><button onclick="calcClear()" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">AC</button><button onclick="calcNeg()" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">+/-</button><button onclick="calcPct()" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">%</button><button onclick="calcOp(\'/\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">÷</button><button onclick="calcDigit(\'7\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">7</button><button onclick="calcDigit(\'8\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">8</button><button onclick="calcDigit(\'9\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">9</button><button onclick="calcOp(\'x\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">×</button><button onclick="calcDigit(\'4\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">4</button><button onclick="calcDigit(\'5\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">5</button><button onclick="calcDigit(\'6\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">6</button><button onclick="calcOp(\'-\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">-</button><button onclick="calcDigit(\'1\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">1</button><button onclick="calcDigit(\'2\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">2</button><button onclick="calcDigit(\'3\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">3</button><button onclick="calcOp(\'+\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">+</button><button onclick="calcDigit(\'0\')" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);grid-column:span 2;cursor:pointer;">0</button><button onclick="calcDec()" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">.</button><button onclick="calcEq()" style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">=</button></div></div>'
+            },
+            phone: {
+                title: 'Phone',
+                content: '<div style="padding:20px;text-align:center;"><div id="phoneDisplay" style="font-size:36px;font-weight:300;color:var(--text-primary);margin-bottom:20px;min-height:44px;">0</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:300px;margin:0 auto;"><button onclick="phoneDigit(\'1\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">1</button><button onclick="phoneDigit(\'2\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">2</button><button onclick="phoneDigit(\'3\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">3</button><button onclick="phoneDigit(\'4\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">4</button><button onclick="phoneDigit(\'5\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">5</button><button onclick="phoneDigit(\'6\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">6</button><button onclick="phoneDigit(\'7\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">7</button><button onclick="phoneDigit(\'8\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">8</button><button onclick="phoneDigit(\'9\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">9</button><button onclick="phoneDigit(\'+\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">+</button><button onclick="phoneDigit(\'0\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">0</button><button onclick="phoneDigit(\'#\')" style="padding:16px;border-radius:50%;border:none;font-size:24px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">#</button></div><div style="display:flex;justify-content:center;gap:24px;margin-top:24px;"><button onclick="phoneDel()" style="width:56px;height:56px;border-radius:50%;border:none;background:var(--surface-variant);cursor:pointer;font-size:20px;">⌫</button><button onclick="phoneCall()" style="width:64px;height:64px;border-radius:50%;border:none;background:#00C853;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg style="width:28px;height:28px;fill:white;" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg></button></div></div>'
+            },
+            calendar: {
+                title: 'Calendar',
+                content: '<div style="padding:20px;" id="calContent"></div>'
+            },
+            terminal: {
+                title: 'Terminal',
+                content: '<div style="padding:16px;font-family:monospace;background:#1a1a1a;color:#00ff00;height:100%;border-radius:12px;font-size:13px;line-height:1.6;overflow-y:auto;" id="termContent"></div><div style="position:absolute;bottom:20px;left:16px;right:16px;display:flex;gap:8px;"><input id="termInput" onkeypress="if(event.key===\'Enter\'){termCmd(this.value);this.value=\'\';}" placeholder="Type command..." style="flex:1;padding:12px;border-radius:8px;border:none;background:#2a2a2a;color:#00ff00;font-family:monospace;font-size:13px;"><button onclick="termCmd(document.getElementById(\'termInput\').value);document.getElementById(\'termInput\').value=\'\';" style="padding:12px 20px;border-radius:8px;border:none;background:#007DFF;color:white;cursor:pointer;">Run</button></div>'
+            },
+            messages: {
+                title: 'Messages',
+                content: '<div style="padding:20px;"><div onclick="showToast(\'Opening chat with Alice\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:12px;cursor:pointer;"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00C853,#009624);display:flex;align-items:center;justify-content:center;font-size:20px;color:white;">A</div><div style="flex:1;"><div style="font-weight:600;color:var(--text-primary);">Alice</div><div style="font-size:13px;color:var(--text-secondary);">Hey, are you coming to the meeting?</div></div><div style="font-size:11px;color:var(--text-tertiary);">10:30</div></div><div onclick="showToast(\'Opening chat with Bob\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:12px;cursor:pointer;"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#007AFF,#0056CC);display:flex;align-items:center;justify-content:center;font-size:20px;color:white;">B</div><div style="flex:1;"><div style="font-weight:600;color:var(--text-primary);">Bob</div><div style="font-size:13px;color:var(--text-secondary);">The project is ready!</div></div><div style="font-size:11px;color:var(--text-tertiary);">09:15</div></div><div onclick="showToast(\'Opening chat with Charlie\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;cursor:pointer;"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FF9500,#CC7700);display:flex;align-items:center;justify-content:center;font-size:20px;color:white;">C</div><div style="flex:1;"><div style="font-weight:600;color:var(--text-primary);">Charlie</div><div style="font-size:13px;color:var(--text-secondary);">See you tomorrow!</div></div><div style="font-size:11px;color:var(--text-tertiary);">Yesterday</div></div></div>'
+            },
+            gallery: {
+                title: 'Gallery',
+                content: '<div style="padding:20px;"><h3 style="color:var(--text-primary);margin-bottom:16px;">Recent Photos</h3><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"><div onclick="showToast(\'Opening photo 1\')" style="aspect-ratio:1;background:linear-gradient(135deg,#FF6B35,#FF8F66);border-radius:8px;cursor:pointer;"></div><div onclick="showToast(\'Opening photo 2\')" style="aspect-ratio:1;background:linear-gradient(135deg,#5856D6,#AF52DE);border-radius:8px;cursor:pointer;"></div><div onclick="showToast(\'Opening photo 3\')" style="aspect-ratio:1;background:linear-gradient(135deg,#00C853,#4CAF50);border-radius:8px;cursor:pointer;"></div><div onclick="showToast(\'Opening photo 4\')" style="aspect-ratio:1;background:linear-gradient(135deg,#007AFF,#5856D6);border-radius:8px;cursor:pointer;"></div><div onclick="showToast(\'Opening photo 5\')" style="aspect-ratio:1;background:linear-gradient(135deg,#FF9500,#FFD60A);border-radius:8px;cursor:pointer;"></div><div onclick="showToast(\'Opening photo 6\')" style="aspect-ratio:1;background:linear-gradient(135deg,#FF3B30,#FF6B6B);border-radius:8px;cursor:pointer;"></div></div></div>'
+            },
+            browser: {
+                title: 'Browser',
+                content: '<div style="padding:20px;"><div style="display:flex;align-items:center;gap:12px;background:var(--surface-variant);border-radius:12px;padding:12px 16px;margin-bottom:20px;"><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" id="browserInput" placeholder="Search or enter URL" style="flex:1;border:none;background:none;font-size:14px;color:var(--text-primary);outline:none;"><button onclick="showToast(\'Searching: \' + document.getElementById(\'browserInput\').value)" style="padding:8px 16px;border:none;background:var(--primary);color:white;border-radius:8px;cursor:pointer;">Go</button></div><div style="text-align:center;padding:40px;"><h3 style="color:var(--text-primary);margin-bottom:20px;">Quick Links</h3><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;"><div onclick="showToast(\'Opening YouTube\')" style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:32px;margin-bottom:8px;">📺</div><div style="font-size:12px;color:var(--text-secondary);">YouTube</div></div><div onclick="showToast(\'Opening Google\')" style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:32px;margin-bottom:8px;">🔍</div><div style="font-size:12px;color:var(--text-secondary);">Google</div></div><div onclick="showToast(\'Opening Gmail\')" style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:32px;margin-bottom:8px;">📧</div><div style="font-size:12px;color:var(--text-secondary);">Gmail</div></div><div onclick="showToast(\'Opening GitHub\')" style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:32px;margin-bottom:8px;">💻</div><div style="font-size:12px;color:var(--text-secondary);">GitHub</div></div></div></div></div>'
+            },
+            camera: {
+                title: 'Camera',
+                content: '<div style="padding:20px;text-align:center;"><div style="width:100%;aspect-ratio:4/3;background:#000;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;"><div style="font-size:80px;opacity:0.5;">📷</div><div style="position:absolute;bottom:12px;right:12px;font-size:12px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:4px;" id="camTime">00:00</div></div><div style="display:flex;justify-content:center;gap:24px;"><button style="width:48px;height:48px;border-radius:50%;border:2px solid white;background:transparent;cursor:pointer;"></button><button onclick="showToast(\'Photo taken!\')" style="width:64px;height:64px;border-radius:50%;border:4px solid white;background:white;cursor:pointer;"></button><button style="width:48px;height:48px;border-radius:50%;background:var(--surface-variant);cursor:pointer;font-size:20px;">🔄</button></div></div>'
+            },
+            files: {
+                title: 'Files',
+                content: '<div style="padding:20px;"><div onclick="showToast(\'Opening Documents\')" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="font-size:32px;">📁</div><div><div style="font-weight:500;color:var(--text-primary);">Documents</div><div style="font-size:12px;color:var(--text-secondary);">5 items</div></div></div><div onclick="showToast(\'Opening Downloads\')" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="font-size:32px;">📁</div><div><div style="font-weight:500;color:var(--text-primary);">Downloads</div><div style="font-size:12px;color:var(--text-secondary);">12 items</div></div></div><div onclick="showToast(\'Opening Pictures\')" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="font-size:32px;">🖼️</div><div><div style="font-weight:500;color:var(--text-primary);">Pictures</div><div style="font-size:12px;color:var(--text-secondary);">24 items</div></div></div><div onclick="showToast(\'Opening Projects\')" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="font-size:32px;">💼</div><div><div style="font-weight:500;color:var(--text-primary);">Projects</div><div style="font-size:12px;color:var(--text-secondary);">8 items</div></div></div></div>'
+            },
+            settings: {
+                title: 'Settings',
+                content: '<div style="padding:20px;max-height:100%;overflow-y:auto;"><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin-bottom:12px;">Network</h4><div onclick="toggleWifi()" id="wifiToggle" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#007AFF;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">WiFi</div><div id="wifiStatus" style="font-size:12px;color:var(--text-secondary);">Connected to HomeNetwork</div></div><div id="wifiSwitch" style="width:50px;height:28px;background:var(--primary);border-radius:14px;position:relative;"><div style="width:24px;height:24px;background:white;border-radius:12px;position:absolute;right:2px;top:2px;"></div></div></div><div onclick="toggleBluetooth()" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#5856D6;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Bluetooth</div><div id="btStatus" style="font-size:12px;color:var(--text-secondary);">On</div></div><div id="btSwitch" style="width:50px;height:28px;background:var(--primary);border-radius:14px;position:relative;"><div style="width:24px;height:24px;background:white;border-radius:12px;position:absolute;right:2px;top:2px;"></div></div></div><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin:20px 0 12px;">Display</h4><div onclick="toggleDarkMode()" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#FF9500;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Dark Mode</div><div id="darkStatus" style="font-size:12px;color:var(--text-secondary);">Off</div></div><div id="darkSwitch" style="width:50px;height:28px;background:#ccc;border-radius:14px;position:relative;"><div style="width:24px;height:24px;background:white;border-radius:12px;position:absolute;left:2px;top:2px;"></div></div></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><div style="font-weight:500;color:var(--text-primary);">Brightness</div><div id="brightValue" style="color:var(--text-secondary);">70%</div></div><input type="range" id="brightSlider" min="0" max="100" value="70" onchange="updateBrightness(this.value)" style="width:100%;accent-color:var(--primary);"></div><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin:20px 0 12px;">System</h4><div onclick="showToast(\'Opening Docker Dashboard\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#2496ed;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73-1.63 7.03L12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Docker</div><div style="font-size:12px;color:var(--text-secondary);">v24.0.7 - 12 containers</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'Checking for updates...\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#00C853;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Software Update</div><div style="font-size:12px;color:var(--text-secondary);">Up to date</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'About ContainerOS\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;">C</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">About</div><div style="font-size:12px;color:var(--text-secondary);">ContainerOS v4.0</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div>'
+            },
+            store: {
+                title: 'App Store',
+                content: '<div style="padding:20px;"><h3 style="color:var(--text-primary);margin-bottom:16px;">Featured Apps</h3><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;"><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;"><div style="width:56px;height:56px;background:linear-gradient(135deg,#ff0000,#cc0000);border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;">📺</div><div style="font-weight:600;color:var(--text-primary);margin-bottom:4px;">Netflix</div><div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Entertainment</div><button onclick="showToast(\'Installing Netflix...\')" style="background:var(--primary);color:white;border:none;padding:8px 20px;border-radius:20px;font-weight:500;cursor:pointer;">Install</button></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;"><div style="width:56px;height:56px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;">💬</div><div style="font-weight:600;color:var(--text-primary);margin-bottom:4px;">WhatsApp</div><div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Communication</div><button style="background:#34C759;color:white;border:none;padding:8px 20px;border-radius:20px;font-weight:500;cursor:pointer;">Update</button></div></div></div>'
+            }
+        };
+
+        // Open app
+        function openApp(name) {
+            closeAllModals();
+            
+            const app = appContents[name] || { title: name.charAt(0).toUpperCase() + name.slice(1), content: '<div style="text-align:center;padding:40px;"><div style="font-size:60px;margin-bottom:16px;">📱</div><h3 style="color:var(--text-primary);">' + name + '</h3><p style="color:var(--text-secondary);margin-top:8px;">Coming soon</p></div>' };
+            
+            document.getElementById('appTitle').textContent = app.title;
+            document.getElementById('appContent').innerHTML = app.content;
+            document.getElementById('appWindow').classList.add('open');
+            
+            // Initialize app-specific content
+            if (name === 'calendar') setTimeout(renderCal, 50);
+            if (name === 'terminal') setTimeout(function() { document.getElementById('termContent').innerHTML = termLines.join('<br>'); }, 50);
+            if (name === 'camera') {
+                setTimeout(function() {
+                    var camTimer = setInterval(function() {
+                        var t = new Date();
+                        var el = document.getElementById('camTime');
+                        if (el) el.textContent = t.getHours().toString().padStart(2,'0') + ':' + t.getMinutes().toString().padStart(2,'0');
+                    }, 1000);
+                }, 50);
             }
         }
 
-        function handleMouse(e) {
-            const dY = e.clientY - startY;
-            if (startY > window.innerHeight - 150 && dY > 40 && !isDrawerOpen && !isControlOpen && !appWindow.classList.contains('open')) openDrawer();
-            if (startY < 50 && dY < -40 && !isControlOpen) openControlCenter();
-            if (dY < -100 && !isLocked) lockScreen.classList.add('hidden');
+        // Close app
+        function closeApp() {
+            document.getElementById('appWindow').classList.remove('open');
         }
 
-        function openDrawer() { isDrawerOpen = true; appDrawer.classList.add('open'); closeControlCenter(); }
-        function closeDrawer() { isDrawerOpen = false; appDrawer.classList.remove('open'); }
-        function openControlCenter() { isControlOpen = true; controlCenter.classList.add('open'); closeDrawer(); }
-        function closeControlCenter() { isControlOpen = false; controlCenter.classList.remove('open'); }
-        function dismissPill() { document.querySelector('.pill-bar').style.display = 'none'; }
-
-        function handleNav(page) {
-            if (page === 'home') { closeApp(); closeDrawer(); closeControlCenter(); }
+        // Theme
+        function toggleTheme() {
+            document.getElementById('themeSelector').classList.add('show');
         }
 
-        function toggleTile(el) { el.classList.toggle('on'); }
+        document.getElementById('themeSelector').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+            }
+        });
 
-        function openApp(name) {
-            closeDrawer(); closeControlCenter();
-            document.getElementById('appTitle').textContent = getAppTitle(name);
-            document.getElementById('appContent').innerHTML = getAppContent(name);
-            appWindow.classList.add('open');
-            showToast(`${getAppTitle(name)} opened`);
+        function setTheme(theme, bgClass) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.className = bgClass || 'bg-default';
+            document.getElementById('themeSelector').classList.remove('show');
+            showToast('Theme applied');
         }
 
-        function closeApp() { appWindow.classList.remove('open'); }
-
-        function getAppTitle(n) {
-            const t = {settings:'Settings',files:'Files',store:'App Store',chrome:'Chrome',terminal:'Terminal',camera:'Camera',gmail:'Gmail',phone:'Phone',messages:'Messages',gallery:'Gallery',youtube:'YouTube',spotify:'Spotify',calculator:'Calculator',clock:'Clock',calendar:'Calendar',notes:'Notes',drive:'Drive',docs:'Docs',whatsapp:'WhatsApp',telegram:'Telegram',discord:'Discord'};
-            return t[n] || 'App';
-        }
-
-        function getAppContent(name) {
-            if (name === 'settings') return `<div class="settings-list"><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-card"><div class="settings-item" onclick="showToast('WiFi Settings')"><div class="settings-icon" style="background: var(--primary);"><span>📶</span></div><div class="settings-info"><div class="settings-label">WiFi</div><div class="settings-desc">Connected</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="this.querySelector('.settings-toggle').classList.toggle('on'); event.stopPropagation();"><div class="settings-icon" style="background: var(--primary);"><span>📱</span></div><div class="settings-info"><div class="settings-label">Bluetooth</div><div class="settings-desc">On</div></div><div class="settings-toggle on"></div></div></div></div><div class="settings-section"><div class="settings-section-title">Display</div><div class="settings-card"><div class="settings-item"><div class="settings-icon" style="background: var(--warning);"><span>☀️</span></div><div class="settings-info"><div class="settings-label">Brightness</div><div class="settings-desc">70%</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-card"><div class="settings-item"><div class="settings-icon" style="background: linear-gradient(135deg, #2496ed, #1a73e8);"><span>🐳</span></div><div class="settings-info"><div class="settings-label">Docker</div><div class="settings-desc">v24.0.7 • 12 containers</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div></div>`;
-            
-            if (name === 'terminal') return `<div style="padding: 16px; font-family: monospace; background: #1e1e1e; color: #0f0; height: 100%; font-size: 13px; line-height: 1.6;"><div style="color: #6a9955;"># ContainerOS Terminal</div><br><div>containeros@localhost:~$ docker ps</div><div style="color: #888;">CONTAINER ID   IMAGE          STATUS<br>abc123   gui:latest     Up 2 hours<br>def456   network:latest Up 2 hours<br>ghi789   audio:latest   Up 2 hours</div><br><div>containeros@localhost:~$ <span style="animation: blink 1s infinite;">█</span></div></div><style>@keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }</style>`;
-            
-            if (name === 'store') return `<div style="padding: 16px;"><div class="app-section-title" style="margin-bottom: 16px;">Featured Apps</div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;"><div style="background: var(--surface-variant); border-radius: var(--radius-lg); padding: 16px; text-align: center;"><div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff0000, #cc0000); border-radius: var(--radius-md); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📺</div><div style="font-weight: 600; margin-bottom: 4px;">Netflix</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Entertainment</div><button style="background: var(--primary); color: white; border: none; padding: 8px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer;">Install</button></div><div style="background: var(--surface-variant); border-radius: var(--radius-lg); padding: 16px; text-align: center;"><div style="width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: var(--radius-md); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📱</div><div style="font-weight: 600; margin-bottom: 4px;">WhatsApp</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Communication</div><button style="background: var(--secondary); color: white; border: none; padding: 8px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer;">Update</button></div></div></div>`;
-            
-            return `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary);"><div style="font-size: 64px; margin-bottom: 16px;">📱</div><div style="font-size: 18px; font-weight: 500;">${getAppTitle(name)}</div><div style="font-size: 14px; margin-top: 8px;">Coming soon</div></div>`;
-        }
-
+        // Toast
         function showToast(msg) {
+            const toast = document.getElementById('toast');
             toast.textContent = msg;
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2000);
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 2000);
         }
-
-        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
