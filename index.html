@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ContainerOS - Android Style Interface</title>
+    <title>ContainerOS - Android 16 & HarmonyOS Style</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -13,131 +13,118 @@
             --primary-dark: #1a73e8;
             --primary-light: #e8f0fe;
             --secondary: #34a853;
+            --tertiary: #ff6d00;
             --error: #ea4335;
             --warning: #fbbc04;
             --surface: #ffffff;
-            --surface-variant: #f8f9fa;
+            --surface-variant: #f3f4f6;
             --surface-elevated: #ffffff;
-            --text-primary: #202124;
-            --text-secondary: #5f6368;
-            --text-disabled: #9aa0a6;
-            --text-on-primary: #ffffff;
-            --status-bar-bg: rgba(255, 255, 255, 0.95);
-            --status-bar-text: #202124;
-            --nav-bar-bg: rgba(255, 255, 255, 0.95);
-            --nav-button: #5f6368;
-            --icon-bg-chrome: #4285f4;
-            --icon-bg-settings: #5f6368;
-            --icon-bg-files: #fbbc04;
-            --icon-bg-store: #34a853;
-            --icon-bg-terminal: #202124;
-            --icon-bg-camera: #ea4335;
-            --icon-bg-gallery: #ff6d00;
-            --icon-bg-phone: #0f9d58;
-            --icon-bg-messages: #4285f4;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
-            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
-            --shadow-xl: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-            --status-bar-height: 24px;
-            --nav-bar-height: 48px;
-            --icon-size: 56px;
-            --icon-grid-gap: 16px;
+            --surface-container: #ebedef;
+            --text-primary: #1c1b1f;
+            --text-secondary: #49454f;
+            --text-tertiary: #79747e;
+            --status-bar-bg: rgba(255, 255, 255, 0.9);
+            --status-bar-text: #1c1b1f;
+            --nav-bar-bg: rgba(255, 255, 255, 0.9);
+            --nav-button: #79747e;
+            --shadow-1: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.15);
+            --shadow-2: 0 2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.15);
+            --shadow-3: 0 4px 8px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-4: 0 6px 12px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.15);
+            --shadow-5: 0 8px 16px rgba(0,0,0,0.3), 0 16px 32px rgba(0,0,0,0.15);
+            --transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
+            --transition-normal: 300ms cubic-bezier(0.2, 0, 0, 1);
+            --transition-slow: 500ms cubic-bezier(0.2, 0, 0, 1);
+            --transition-spring: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --status-bar-height: 28px;
+            --nav-bar-height: 80px;
+            --icon-size: 60px;
+            --icon-grid-gap: 20px;
+            --radius-xs: 8px;
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
             --gradient-start: #667eea;
-            --gradient-end: #764ba2;
-            --wallpaper: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            --gradient-mid: #764ba2;
+            --gradient-end: #f64f59;
+            --wallpaper: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-mid) 50%, var(--gradient-end) 100%);
         }
 
-        /* Dark Theme */
         [data-theme="dark"] {
-            --surface: #1e1e1e;
-            --surface-variant: #2d2d2d;
-            --surface-elevated: #2d2d2d;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-disabled: #6b6b6b;
-            --status-bar-bg: rgba(30, 30, 30, 0.95);
-            --status-bar-text: #ffffff;
-            --nav-bar-bg: rgba(30, 30, 30, 0.95);
-            --nav-button: #b0b0b0;
+            --surface: #1c1b1f;
+            --surface-variant: #2b2930;
+            --surface-elevated: #36343b;
+            --surface-container: #211f26;
+            --text-primary: #e6e1e5;
+            --text-secondary: #cac4d0;
+            --text-tertiary: #938f99;
+            --status-bar-bg: rgba(28, 27, 31, 0.9);
+            --status-bar-text: #e6e1e5;
+            --nav-bar-bg: rgba(28, 27, 31, 0.9);
+            --nav-button: #cac4d0;
             --gradient-start: #1a1a2e;
-            --gradient-end: #16213e;
+            --gradient-mid: #16213e;
+            --gradient-end: #0f3460;
         }
 
-        /* AMOLED Theme */
         [data-theme="amoled"] {
             --surface: #000000;
-            --surface-variant: #121212;
-            --surface-elevated: #1a1a1a;
+            --surface-variant: #0a0a0a;
+            --surface-elevated: #121212;
+            --surface-container: #000000;
             --text-primary: #ffffff;
             --text-secondary: #b0b0b0;
-            --text-disabled: #6b6b6b;
             --status-bar-bg: rgba(0, 0, 0, 0.95);
             --status-bar-text: #ffffff;
             --nav-bar-bg: rgba(0, 0, 0, 0.95);
-            --nav-button: #b0b0b0;
             --gradient-start: #000000;
+            --gradient-mid: #0d0d1a;
             --gradient-end: #1a1a2e;
         }
 
-        /* Ocean Theme */
+        [data-theme="aurora"] {
+            --primary: #007dff;
+            --primary-dark: #005bb0;
+            --primary-light: #b3d9ff;
+            --secondary: #00bfa5;
+            --gradient-start: #667eea;
+            --gradient-mid: #764ba2;
+            --gradient-end: #f093fb;
+        }
+
         [data-theme="ocean"] {
             --primary: #00bcd4;
             --primary-dark: #0097a7;
-            --primary-light: #b2ebf2;
-            --secondary: #26c6da;
             --gradient-start: #0d47a1;
+            --gradient-mid: #1976d2;
             --gradient-end: #006064;
         }
 
-        /* Forest Theme */
         [data-theme="forest"] {
             --primary: #4caf50;
             --primary-dark: #388e3c;
-            --primary-light: #c8e6c9;
-            --secondary: #8bc34a;
             --gradient-start: #1b5e20;
+            --gradient-mid: #2e7d32;
             --gradient-end: #004d40;
         }
 
-        /* Sunset Theme */
         [data-theme="sunset"] {
             --primary: #ff7043;
             --primary-dark: #f4511e;
-            --primary-light: #ffccbc;
-            --secondary: #ff9800;
             --gradient-start: #ff5722;
+            --gradient-mid: #ff7043;
             --gradient-end: #ff9800;
-        }
-
-        /* Purple Theme */
-        [data-theme="purple"] {
-            --primary: #9c27b0;
-            --primary-dark: #7b1fa2;
-            --primary-light: #e1bee7;
-            --secondary: #673ab7;
-            --gradient-start: #9c27b0;
-            --gradient-end: #673ab7;
-        }
-
-        /* Rose Theme */
-        [data-theme="rose"] {
-            --primary: #e91e63;
-            --primary-dark: #c2185b;
-            --primary-light: #f8bbd0;
-            --secondary: #f06292;
-            --gradient-start: #e91e63;
-            --gradient-end: #880e4f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Google Sans', 'Roboto', sans-serif;
             background: var(--wallpaper);
+            background-size: 200% 200%;
+            animation: gradientShift 20s ease infinite;
             overflow: hidden;
             touch-action: none;
             user-select: none;
@@ -145,401 +132,297 @@
             width: 100vw;
         }
 
-        /* Theme Selector */
-        .theme-selector {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 2000;
-            background: var(--surface-elevated);
-            border-radius: 16px;
-            padding: 8px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            max-height: 80vh;
-            overflow-y: auto;
-            width: 220px;
-        }
-
-        .theme-selector::-webkit-scrollbar { width: 4px; }
-        .theme-selector::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
-
-        .theme-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 8px;
-        }
-
-        .theme-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            border: 2px solid transparent;
-        }
-
-        .theme-btn:hover { background: var(--surface-variant); }
-        .theme-btn.active { 
-            background: var(--primary-light); 
-            border-color: var(--primary);
-        }
-
-        .theme-color {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-
-        .theme-info { flex: 1; }
-        .theme-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
-        .theme-desc { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
-
-        .theme-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 2001;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--surface-elevated);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .theme-toggle:hover { transform: scale(1.1); }
-        .theme-toggle svg { width: 24px; height: 24px; fill: var(--text-primary); }
-
-        .phone-frame {
-            position: relative;
-            width: 100%;
-            max-width: 412px;
-            height: 100vh;
-            max-height: 915px;
-            margin: 0 auto;
-            background: var(--surface);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        @media (min-width: 600px) {
-            .phone-frame { border-radius: 40px; margin-top: 20px; margin-bottom: 20px; height: calc(100vh - 40px); }
-            .theme-selector { top: 30px; right: 30px; }
-            .theme-toggle { top: 30px; right: 30px; }
-        }
-
-        .notch {
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 120px; height: 24px; background: #000;
-            border-radius: 0 0 20px 20px; z-index: 1000;
-        }
-
-        .status-bar {
-            position: absolute; top: 0; left: 0; right: 0; height: var(--status-bar-height);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 16px; background: var(--status-bar-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            z-index: 100; font-size: 12px; font-weight: 500; color: var(--status-bar-text);
-        }
-
-        .status-bar.right { display: flex; align-items: center; gap: 6px; }
-
-        .battery { display: flex; align-items: center; gap: 2px; }
-        .battery-icon { width: 20px; height: 10px; border: 1.5px solid var(--status-bar-text); border-radius: 2px; position: relative; padding: 1px; }
-        .battery-icon::after { content: ''; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 2px; height: 5px; background: var(--status-bar-text); border-radius: 0 1px 1px 0; }
-        .battery-level { height: 100%; background: var(--secondary); border-radius: 1px; width: 80%; }
-
-        .nav-bar {
-            position: absolute; bottom: 0; left: 0; right: 0; height: var(--nav-bar-height);
-            display: flex; justify-content: space-around; align-items: center;
-            background: var(--nav-bar-bg); backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); z-index: 100;
-        }
-
-        .nav-button { width: 64px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast); position: relative; }
-        .nav-button:active { transform: scale(0.9); }
-        .nav-button svg { width: 28px; height: 28px; fill: var(--nav-button); }
-        .nav-button.active::after { content: ''; position: absolute; bottom: 4px; width: 20px; height: 3px; background: var(--primary); border-radius: 2px; }
-
-        .home-screen {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            padding-top: calc(var(--status-bar-height) + 20px);
-            padding-bottom: calc(var(--nav-bar-height) + 10px);
-            background: var(--wallpaper);
-            overflow-y: auto; overflow-x: hidden;
-            scroll-behavior: smooth; scroll-snap-type: y mandatory;
-        }
-        .home-screen::-webkit-scrollbar { display: none; }
-
-        .page { min-height: calc(100vh - var(--status-bar-height) - var(--nav-bar-height)); padding: 20px; scroll-snap-align: start; }
-
-        .datetime-widget { text-align: center; padding: 40px 0; margin-bottom: 20px; }
-        .time-display { font-family: 'Google Sans', sans-serif; font-size: 72px; font-weight: 300; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.2); letter-spacing: -2px; }
-        .date-display { font-size: 18px; color: rgba(255,255,255,0.9); margin-top: 8px; font-weight: 400; }
-
-        .weather-widget {
-            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); border-radius: 24px; padding: 20px; margin-bottom: 30px;
-            display: flex; align-items: center; justify-content: space-between;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .weather-info { display: flex; align-items: center; gap: 16px; }
-        .weather-icon { font-size: 48px; }
-        .weather-temp { font-size: 36px; font-weight: 300; color: white; }
-        .weather-details { text-align: right; color: rgba(255,255,255,0.9); font-size: 14px; }
-
-        .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--icon-grid-gap); padding: 10px; }
-
-        .app-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: var(--transition-fast); padding: 8px; border-radius: 16px; }
-        .app-icon:active { transform: scale(0.9); background: rgba(255,255,255,0.1); }
-        .app-icon .icon { width: var(--icon-size); height: var(--icon-size); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; box-shadow: var(--shadow-md); transition: var(--transition-normal); }
-        .app-icon:hover .icon { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .app-icon .label { font-size: 12px; color: white; text-align: center; max-width: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-
-        .dock {
-            position: absolute; bottom: calc(var(--nav-bar-height) + 20px); left: 50%; transform: translateX(-50%);
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px; padding: 12px 24px; display: flex; gap: 24px;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .dock .app-icon .icon { width: 48px; height: 48px; border-radius: 12px; font-size: 24px; }
-
-        .page-indicator { position: absolute; bottom: calc(var(--nav-bar-height) + 80px); left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 50; }
-        .page-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: var(--transition-fast); }
-        .page-dot.active { background: white; width: 24px; border-radius: 4px; }
-
-        .app-drawer {
-            position: absolute; top: 100%; left: 0; right: 0; bottom: 0;
-            background: var(--surface); transform: translateY(0);
-            transition: transform var(--transition-slow); z-index: 200; overflow: hidden;
-            border-radius: 24px 24px 0 0;
-        }
-        .app-drawer.open { transform: translateY(-60%); }
-        .drawer-handle { width: 40px; height: 4px; background: #dadce0; border-radius: 2px; margin: 12px auto; }
-        .drawer-header { padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e8eaed; }
-        .drawer-title { font-size: 20px; font-weight: 500; color: var(--text-primary); }
-        .drawer-search { background: var(--surface-variant); border-radius: 28px; padding: 12px 20px; margin: 0 24px 16px; display: flex; align-items: center; gap: 12px; }
-        .drawer-search input { border: none; background: none; flex: 1; font-size: 16px; outline: none; color: var(--text-primary); }
-        .drawer-content { padding: 0 16px 100px; overflow-y: auto; height: calc(100% - 140px); }
-        .drawer-section { margin-bottom: 24px; }
-        .drawer-section-title { font-size: 14px; font-weight: 500; color: var(--text-secondary); padding: 8px 8px; margin-bottom: 8px; }
-        .drawer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .drawer-app { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; padding: 8px; border-radius: 12px; transition: var(--transition-fast); }
-        .drawer-app:active { background: var(--surface-variant); }
-        .drawer-app .icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; }
-        .drawer-app .label { font-size: 12px; color: var(--text-primary); text-align: center; }
-
-        .notification-shade {
-            position: absolute; top: -100%; left: 0; right: 0; background: var(--surface);
-            transition: top var(--transition-slow); z-index: 300; border-radius: 0 0 24px 24px; box-shadow: var(--shadow-xl);
-        }
-        .notification-shade.open { top: var(--status-bar-height); }
-        .shade-handle { width: 40px; height: 4px; background: #dadce0; border-radius: 2px; margin: 12px auto; }
-        .shade-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 24px; }
-        .shade-title { font-size: 16px; font-weight: 500; color: var(--text-primary); }
-        .shade-action { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast); }
-        .shade-action:active { background: var(--surface-variant); }
-        .shade-action svg { width: 20px; height: 20px; fill: var(--text-secondary); }
-
-        .quick-settings { padding: 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; border-bottom: 1px solid #e8eaed; }
-        .qs-tile { aspect-ratio: 1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: var(--transition-fast); background: var(--surface-variant); }
-        .qs-tile:active { transform: scale(0.95); }
-        .qs-tile.on { background: var(--primary); color: white; }
-        .qs-tile svg { width: 24px; height: 24px; }
-        .qs-tile span { font-size: 11px; font-weight: 500; }
-        .qs-slider { grid-column: span 4; padding: 8px 16px; display: flex; align-items: center; gap: 16px; }
-        .qs-slider svg { width: 24px; height: 24px; fill: var(--text-secondary); }
-        .qs-slider input { flex: 1; height: 4px; -webkit-appearance: none; background: var(--surface-variant); border-radius: 2px; outline: none; }
-        .qs-slider input::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--primary); border-radius: 50%; cursor: pointer; }
-
-        .notification-card { margin: 8px 16px; padding: 16px; background: var(--surface-variant); border-radius: 16px; cursor: pointer; transition: var(--transition-fast); }
-        .notification-card:active { transform: scale(0.98); background: #e8eaed; }
-        .notification-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-        .notification-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: white; }
-        .notification-app { font-size: 14px; font-weight: 500; color: var(--text-primary); flex: 1; }
-        .notification-time { font-size: 12px; color: var(--text-secondary); }
-        .notification-content { font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
-
-        .lock-screen {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--wallpaper);
-            z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity var(--transition-slow), transform var(--transition-slow);
-        }
-        .lock-screen.hidden { opacity: 0; transform: translateY(-100%); pointer-events: none; }
-        .lock-time { font-family: 'Google Sans', sans-serif; font-size: 96px; font-weight: 300; color: white; letter-spacing: -4px; }
-        .lock-date { font-size: 20px; color: rgba(255,255,255,0.8); margin-top: 8px; }
-        .lock-swipe { position: absolute; bottom: 100px; display: flex; flex-direction: column; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); animation: bounce 2s infinite; }
-        .lock-swipe svg { width: 32px; height: 32px; fill: rgba(255,255,255,0.8); }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        .app-window {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--surface);
-            z-index: 400; transform: translateY(100%); transition: transform var(--transition-slow); overflow: hidden;
-        }
-        .app-window.open { transform: translateY(0); }
-        .app-header { height: calc(var(--status-bar-height) + 56px); padding: var(--status-bar-height) 16px 0; background: var(--primary); display: flex; align-items: center; gap: 16px; }
-        .app-back { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 50%; transition: var(--transition-fast); }
-        .app-back:active { background: rgba(255,255,255,0.2); }
-        .app-back svg { width: 24px; height: 24px; fill: white; }
-        .app-title { font-size: 20px; font-weight: 500; color: white; flex: 1; }
-        .app-menu { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .app-menu svg { width: 24px; height: 24px; fill: white; }
-        .app-content { padding-top: 16px; height: calc(100% - calc(var(--status-bar-height) + 56px)); overflow-y: auto; }
-
-        .settings-list { padding: 0 16px; }
-        .settings-section { margin-bottom: 24px; }
-        .settings-section-title { font-size: 13px; font-weight: 500; color: var(--primary); padding: 8px 16px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .settings-item { display: flex; align-items: center; padding: 16px; background: var(--surface-variant); border-radius: 16px; margin-bottom: 8px; cursor: pointer; transition: var(--transition-fast); }
-        .settings-item:active { background: #e8eaed; }
-        .settings-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 16px; font-size: 22px; color: white; }
-        .settings-info { flex: 1; }
-        .settings-label { font-size: 16px; font-weight: 400; color: var(--text-primary); }
-        .settings-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
-        .settings-arrow { width: 24px; height: 24px; fill: var(--text-disabled); }
-
-        .boot-screen {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #000;
-            z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity var(--transition-slow);
-        }
-        .boot-screen.hidden { opacity: 0; pointer-events: none; }
-        .boot-logo { width: 120px; height: 120px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 28px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; animation: pulse 2s ease-in-out infinite; }
-        .boot-logo svg { width: 80px; height: 80px; fill: white; }
-        .boot-text { font-family: 'Google Sans', sans-serif; font-size: 32px; font-weight: 500; color: white; margin-bottom: 8px; }
-        .boot-tagline { font-size: 14px; color: rgba(255,255,255,0.6); }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
-        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 24px; z-index: 999; }
-        .loading.hidden { opacity: 0; pointer-events: none; transition: opacity var(--transition-slow); }
-        .loading-spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
-        .loading-text { font-size: 16px; color: white; font-weight: 500; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.4); transform: scale(0); animation: ripple 0.6s linear; pointer-events: none; }
-        @keyframes ripple { to { transform: scale(4); opacity: 0; } }
-
-        .toast { position: absolute; bottom: calc(var(--nav-bar-height) + 20px); left: 50%; transform: translateX(-50%) translateY(100px); background: #323232; color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; z-index: 600; opacity: 0; transition: transform var(--transition-normal), opacity var(--transition-normal); }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            cursor: pointer;
-            z-index: 100;
-            transition: var(--transition-fast);
-        }
-        .fab:hover { transform: scale(1.1); }
-        .fab:active { transform: scale(0.95); }
-        .fab svg { width: 28px; height: 28px; fill: white; }
-
-        /* Animated gradient wallpaper */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        body {
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
+        .theme-toggle {
+            position: fixed; top: 10px; right: 10px; z-index: 2001;
+            width: 48px; height: 48px; border-radius: var(--radius-lg);
+            background: var(--surface); box-shadow: var(--shadow-3);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: var(--transition-fast); border: none;
         }
+        .theme-toggle:hover { transform: scale(1.08); }
+        .theme-toggle svg { width: 26px; height: 26px; fill: var(--text-primary); }
+
+        .theme-selector {
+            position: fixed; top: 10px; right: 10px; z-index: 2000;
+            background: var(--surface); border-radius: var(--radius-xl); padding: 12px;
+            box-shadow: var(--shadow-4); display: none; flex-direction: column;
+            gap: 8px; max-height: 85vh; overflow-y: auto; width: 300px;
+        }
+
+        .theme-header { padding: 12px 16px 16px; border-bottom: 1px solid var(--surface-container); }
+        .theme-title { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+        .theme-subtitle { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+        .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 8px; }
+
+        .theme-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            padding: 12px 8px; border-radius: var(--radius-md); cursor: pointer;
+            transition: var(--transition-fast); border: 2px solid transparent;
+            background: var(--surface-variant);
+        }
+        .theme-btn:hover { transform: translateY(-2px); background: var(--surface-container); }
+        .theme-btn.active { border-color: var(--primary); background: var(--primary-light); }
+
+        .theme-color { width: 56px; height: 56px; border-radius: var(--radius-sm); position: relative; }
+        .theme-color::after {
+            content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: white; font-size: 20px; opacity: 0; transition: var(--transition-fast);
+        }
+        .theme-btn.active .theme-color::after { opacity: 1; }
+        .theme-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+        .theme-desc { font-size: 11px; color: var(--text-tertiary); }
+
+        .phone-frame {
+            position: relative; width: 100%; max-width: 430px; height: 100vh;
+            max-height: 932px; margin: 0 auto; background: var(--surface);
+            overflow: hidden; box-shadow: var(--shadow-5); border-radius: var(--radius-xl);
+        }
+
+        @media (min-width: 600px) {
+            .phone-frame { border-radius: 44px; margin: 16px auto; height: calc(100vh - 32px); max-height: none; }
+            .theme-selector { top: 26px; right: 26px; }
+            .theme-toggle { top: 26px; right: 26px; }
+        }
+
+        .status-bar {
+            position: absolute; top: 0; left: 0; right: 0; height: var(--status-bar-height);
+            display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
+            background: var(--status-bar-bg); backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px); z-index: 100; font-size: 13px; font-weight: 600;
+            color: var(--status-bar-text);
+        }
+        .status-left, .status-right { display: flex; align-items: center; gap: 8px; }
+        .status-icon svg { width: 18px; height: 18px; fill: var(--status-bar-text); }
+        .battery-container { display: flex; align-items: center; gap: 4px; }
+        .battery-icon { width: 24px; height: 12px; border: 1.5px solid var(--status-bar-text); border-radius: 3px; position: relative; padding: 2px; }
+        .battery-icon::after { content: ''; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 2px; height: 6px; background: var(--status-bar-text); border-radius: 0 1px 1px 0; }
+        .battery-level { height: 100%; background: var(--secondary); border-radius: 1px; width: 80%; }
+
+        .pill-bar {
+            position: absolute; top: calc(var(--status-bar-height) + 12px); left: 50%;
+            transform: translateX(-50%); background: var(--surface); backdrop-filter: blur(30px);
+            border-radius: var(--radius-full); padding: 12px 16px; display: flex;
+            align-items: center; gap: 12px; box-shadow: var(--shadow-2); z-index: 90;
+            min-width: 220px; max-width: 90%;
+        }
+        .pill-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; background: linear-gradient(135deg, #4285f4, #1a73e8); }
+        .pill-content { flex: 1; min-width: 0; }
+        .pill-app { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+        .pill-text { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pill-time { font-size: 11px; color: var(--text-tertiary); }
+        .pill-close { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast); background: var(--surface-variant); }
+        .pill-close:hover { background: var(--surface-container); }
+        .pill-close svg { width: 14px; height: 14px; fill: var(--text-tertiary); }
+
+        .control-center {
+            position: absolute; top: -100%; left: 0; right: 0;
+            background: var(--surface); border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            padding: 24px 20px; z-index: 300; transition: top var(--transition-slow);
+            box-shadow: var(--shadow-4);
+        }
+        .control-center.open { top: 0; }
+        .cc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .cc-title { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+        .cc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+        .cc-tile { aspect-ratio: 1; border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: var(--transition-fast); background: var(--surface-variant); }
+        .cc-tile:active { transform: scale(0.95); }
+        .cc-tile.on { background: var(--primary); color: white; }
+        .cc-tile svg { width: 26px; height: 26px; }
+        .cc-tile span { font-size: 11px; font-weight: 500; }
+        .cc-slider { background: var(--surface-variant); border-radius: var(--radius-md); padding: 16px; display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+        .cc-slider svg { width: 24px; height: 24px; fill: var(--text-secondary); flex-shrink: 0; }
+        .cc-slider input { flex: 1; height: 6px; -webkit-appearance: none; background: var(--surface-container); border-radius: 3px; outline: none; }
+        .cc-slider input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: var(--primary); border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-2); }
+        .cc-value { font-size: 14px; font-weight: 600; color: var(--text-primary); min-width: 40px; text-align: right; }
+
+        .home-screen {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            padding-top: calc(var(--status-bar-height) + 70px); padding-bottom: var(--nav-bar-height);
+            background: transparent; overflow-y: auto; overflow-x: hidden;
+        }
+        .home-screen::-webkit-scrollbar { display: none; }
+        .page { min-height: calc(100vh - var(--status-bar-height) - var(--nav-bar-height) - 50px); padding: 16px 20px; }
+
+        .widget-card { background: var(--surface); border-radius: var(--radius-xl); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow-2); transition: var(--transition-fast); }
+        .datetime-widget { text-align: center; padding: 32px 20px; }
+        .time-display { font-size: 68px; font-weight: 300; color: var(--text-primary); letter-spacing: -3px; line-height: 1; }
+        .time-seconds { font-size: 28px; font-weight: 300; color: var(--text-secondary); vertical-align: super; }
+        .date-display { font-size: 16px; color: var(--text-secondary); margin-top: 8px; font-weight: 500; }
+
+        .weather-widget { display: flex; align-items: center; justify-content: space-between; }
+        .weather-main { display: flex; align-items: center; gap: 16px; }
+        .weather-icon { font-size: 52px; }
+        .weather-temp { font-size: 42px; font-weight: 300; color: var(--text-primary); line-height: 1; }
+        .weather-info { text-align: right; }
+        .weather-location { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+        .weather-desc { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+        .weather-details { display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--surface-container); }
+        .weather-detail { flex: 1; text-align: center; }
+        .weather-detail-value { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+        .weather-detail-label { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; text-transform: uppercase; }
+
+        .health-widget { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .health-item { text-align: center; padding: 16px 8px; background: var(--surface-variant); border-radius: var(--radius-md); }
+        .health-ring { width: 56px; height: 56px; margin: 0 auto 8px; border-radius: 50%; background: conic-gradient(var(--primary) 0% 75%, var(--surface-container) 75% 100%); display: flex; align-items: center; justify-content: center; }
+        .health-ring-inner { width: 44px; height: 44px; border-radius: 50%; background: var(--surface-variant); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .health-value { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+        .health-label { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
+
+        .quick-shortcuts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 16px; background: var(--surface-variant); border-radius: var(--radius-lg); margin: 0 20px 16px; }
+        .shortcut-item { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; padding: 8px 4px; border-radius: var(--radius-sm); transition: var(--transition-fast); }
+        .shortcut-item:active { background: var(--surface-container); }
+        .shortcut-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .shortcut-label { font-size: 10px; color: var(--text-secondary); text-align: center; }
+
+        .app-section-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px; padding: 0 4px; }
+        .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--icon-grid-gap); padding: 8px; }
+        .app-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: var(--transition-spring); padding: 8px; border-radius: var(--radius-md); }
+        .app-icon:hover { background: rgba(0,0,0,0.03); }
+        .app-icon:active { transform: scale(0.9); }
+        .app-icon .icon { width: var(--icon-size); height: var(--icon-size); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; box-shadow: var(--shadow-2); transition: var(--transition-fast); position: relative; }
+        .app-icon:hover .icon { transform: translateY(-6px) scale(1.05); box-shadow: var(--shadow-3); }
+        .app-icon .icon span { position: relative; z-index: 1; }
+        .app-icon .label { font-size: 12px; color: var(--text-primary); text-align: center; max-width: 72px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+
+        .dock { position: absolute; bottom: calc(var(--nav-bar-height) + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); backdrop-filter: blur(30px); border-radius: var(--radius-xl); padding: 12px 20px; display: flex; gap: 12px; box-shadow: var(--shadow-3); border: 1px solid rgba(255,255,255,0.1); }
+        .dock .app-icon .icon { width: 52px; height: 52px; border-radius: var(--radius-md); font-size: 24px; }
+
+        .nav-bar { position: absolute; bottom: 0; left: 0; right: 0; height: var(--nav-bar-height); background: var(--nav-bar-bg); backdrop-filter: blur(30px); display: flex; justify-content: space-around; align-items: flex-start; padding-top: 12px; z-index: 100; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: var(--transition-fast); padding: 4px 16px; }
+        .nav-item svg { width: 26px; height: 26px; fill: var(--nav-button); transition: var(--transition-fast); }
+        .nav-item span { font-size: 11px; color: var(--nav-button); font-weight: 500; transition: var(--transition-fast); }
+        .nav-item.active svg { fill: var(--primary); }
+        .nav-item.active span { color: var(--primary); }
+        .nav-item:hover svg, .nav-item:hover span { transform: scale(1.1); }
+
+        .app-drawer { position: absolute; top: 100%; left: 0; right: 0; bottom: 0; background: var(--surface); transition: top var(--transition-slow); z-index: 200; overflow: hidden; border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+        .app-drawer.open { top: 60px; }
+        .drawer-handle { width: 36px; height: 5px; background: var(--surface-container); border-radius: var(--radius-full); margin: 12px auto 8px; }
+        .drawer-search { margin: 8px 20px 16px; display: flex; align-items: center; gap: 12px; background: var(--surface-variant); border-radius: var(--radius-full); padding: 14px 20px; }
+        .drawer-search svg { width: 20px; height: 20px; fill: var(--text-tertiary); }
+        .drawer-search input { border: none; background: none; flex: 1; font-size: 15px; outline: none; color: var(--text-primary); }
+        .drawer-categories { display: flex; gap: 8px; padding: 0 20px 16px; overflow-x: auto; }
+        .drawer-category { padding: 8px 16px; background: var(--surface-variant); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--text-secondary); white-space: nowrap; cursor: pointer; transition: var(--transition-fast); }
+        .drawer-category.active { background: var(--primary); color: white; }
+        .drawer-content { padding: 0 12px 120px; overflow-y: auto; height: calc(100% - 160px); }
+        .drawer-section { margin-bottom: 24px; }
+        .drawer-section-title { font-size: 14px; font-weight: 600; color: var(--text-primary); padding: 8px 8px 12px; }
+        .drawer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .drawer-app { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; padding: 12px 8px; border-radius: var(--radius-md); transition: var(--transition-fast); }
+        .drawer-app:active { background: var(--surface-variant); }
+        .drawer-app .icon { width: 52px; height: 52px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; }
+        .drawer-app .label { font-size: 12px; color: var(--text-primary); text-align: center; max-width: 65px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        .lock-screen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--wallpaper); background-size: 200% 200%; animation: gradientShift 20s ease infinite; z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity var(--transition-slow), transform var(--transition-slow); }
+        .lock-screen.hidden { opacity: 0; transform: scale(1.1); pointer-events: none; }
+        .lock-content { text-align: center; }
+        .lock-time { font-size: 88px; font-weight: 300; color: white; letter-spacing: -4px; line-height: 1; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .lock-seconds { font-size: 36px; font-weight: 300; vertical-align: super; }
+        .lock-date { font-size: 18px; color: rgba(255,255,255,0.9); margin-top: 8px; }
+        .lock-swipe { position: absolute; bottom: 140px; display: flex; flex-direction: column; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); }
+        .lock-swipe svg { width: 32px; height: 32px; fill: rgba(255,255,255,0.8); animation: bounceUp 2s ease-in-out infinite; }
+        @keyframes bounceUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .lock-swipe-text { font-size: 14px; font-weight: 500; }
+
+        .app-window { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--surface); z-index: 400; transform: translateY(100%); transition: transform var(--transition-slow); overflow: hidden; }
+        .app-window.open { transform: translateY(0); }
+        .app-header { height: calc(var(--status-bar-height) + 56px); padding-top: var(--status-bar-height); background: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .app-back { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: var(--radius-full); transition: var(--transition-fast); margin-left: 4px; }
+        .app-back:active { background: rgba(255,255,255,0.2); }
+        .app-back svg { width: 26px; height: 26px; fill: white; }
+        .app-title { font-size: 20px; font-weight: 500; color: white; flex: 1; }
+        .app-menu { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .app-menu svg { width: 24px; height: 24px; fill: white; }
+        .app-content { height: calc(100% - calc(var(--status-bar-height) + 56px)); overflow-y: auto; background: var(--surface); }
+
+        .settings-list { padding: 16px; }
+        .settings-section { margin-bottom: 24px; }
+        .settings-section-title { font-size: 13px; font-weight: 600; color: var(--primary); padding: 8px 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .settings-card { background: var(--surface-variant); border-radius: var(--radius-md); overflow: hidden; }
+        .settings-item { display: flex; align-items: center; padding: 16px; cursor: pointer; transition: var(--transition-fast); }
+        .settings-item:active { background: var(--surface-container); }
+        .settings-item + .settings-item { border-top: 1px solid var(--surface-container); }
+        .settings-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-right: 16px; font-size: 22px; }
+        .settings-info { flex: 1; min-width: 0; }
+        .settings-label { font-size: 16px; font-weight: 500; color: var(--text-primary); }
+        .settings-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+        .settings-arrow { width: 24px; height: 24px; fill: var(--text-tertiary); margin-left: 12px; }
+        .settings-toggle { width: 52px; height: 32px; background: var(--surface-container); border-radius: var(--radius-full); position: relative; cursor: pointer; transition: var(--transition-fast); }
+        .settings-toggle.on { background: var(--primary); }
+        .settings-toggle::after { content: ''; position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; background: white; border-radius: 50%; box-shadow: var(--shadow-1); transition: var(--transition-fast); }
+        .settings-toggle.on::after { left: 24px; }
+
+        .boot-screen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%); z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity var(--transition-slow); }
+        .boot-screen.hidden { opacity: 0; pointer-events: none; }
+        .boot-logo { width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 26px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(66, 133, 244, 0.4); animation: bootPulse 2s ease-in-out infinite; }
+        @keyframes bootPulse { 0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(66, 133, 244, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 25px 80px rgba(66, 133, 244, 0.5); } }
+        .boot-logo svg { width: 60px; height: 60px; fill: white; }
+        .boot-text { font-size: 28px; font-weight: 500; color: white; margin-bottom: 8px; }
+        .boot-tagline { font-size: 14px; color: rgba(255,255,255,0.6); }
+        .boot-loader { margin-top: 40px; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.2); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .toast { position: absolute; bottom: calc(var(--nav-bar-height) + 20px); left: 50%; transform: translateX(-50%) translateY(100px); background: var(--surface-elevated); color: var(--text-primary); padding: 14px 24px; border-radius: var(--radius-full); font-size: 14px; font-weight: 500; z-index: 600; opacity: 0; transition: transform var(--transition-normal), opacity var(--transition-normal); box-shadow: var(--shadow-3); }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-    <div class="theme-toggle" onclick="toggleThemeSelector()">
+    <button class="theme-toggle" onclick="toggleThemeSelector()">
         <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-    </div>
+    </button>
 
-    <!-- Theme Selector Panel -->
-    <div class="theme-selector" id="themeSelector" style="display: none;">
-        <div class="theme-title">Pilih Tema</div>
-        
-        <div class="theme-btn active" data-theme="default" onclick="setTheme('default')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Default Purple</div>
-                <div class="theme-desc">Gradien ungu klasik</div>
-            </div>
+    <div class="theme-selector" id="themeSelector">
+        <div class="theme-header">
+            <div class="theme-title">Pilih Tema</div>
+            <div class="theme-subtitle">Android 16 + HarmonyOS Style</div>
         </div>
-        
-        <div class="theme-btn" data-theme="dark" onclick="setTheme('dark')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Dark Mode</div>
-                <div class="theme-desc">Tema gelap modern</div>
+        <div class="theme-grid">
+            <div class="theme-btn active" data-theme="default" onclick="setTheme('default')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #667eea 0%, #764ba2 50%, #f64f59 100%);"></div>
+                <div class="theme-name">Aurora</div>
+                <div class="theme-desc">Default</div>
             </div>
-        </div>
-        
-        <div class="theme-btn" data-theme="amoled" onclick="setTheme('amoled')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">AMOLED Black</div>
-                <div class="theme-desc">Hitam murni untuk OLED</div>
+            <div class="theme-btn" data-theme="dark" onclick="setTheme('dark')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
+                <div class="theme-name">Dark</div>
+                <div class="theme-desc">Dark Mode</div>
             </div>
-        </div>
-        
-        <div class="theme-btn" data-theme="ocean" onclick="setTheme('ocean')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #0d47a1 0%, #006064 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Ocean Blue</div>
-                <div class="theme-desc">Biru lautan dalam</div>
+            <div class="theme-btn" data-theme="amoled" onclick="setTheme('amoled')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #000000 0%, #0d0d1a 50%, #1a1a2e 100%);"></div>
+                <div class="theme-name">AMOLED</div>
+                <div class="theme-desc">Pure Black</div>
             </div>
-        </div>
-        
-        <div class="theme-btn" data-theme="forest" onclick="setTheme('forest')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #1b5e20 0%, #004d40 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Forest Green</div>
-                <div class="theme-desc">Hijau hutan tropis</div>
+            <div class="theme-btn" data-theme="aurora" onclick="setTheme('aurora')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #667eea 0%, #764ba2 50%, #f093fb 100%);"></div>
+                <div class="theme-name">Harmony</div>
+                <div class="theme-desc">Elegant</div>
             </div>
-        </div>
-        
-        <div class="theme-btn" data-theme="sunset" onclick="setTheme('sunset')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Sunset Orange</div>
-                <div class="theme-desc">Jingga senja matahari</div>
+            <div class="theme-btn" data-theme="ocean" onclick="setTheme('ocean')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #0d47a1 0%, #1976d2 50%, #006064 100%);"></div>
+                <div class="theme-name">Ocean</div>
+                <div class="theme-desc">Deep Blue</div>
             </div>
-        </div>
-        
-        <div class="theme-btn" data-theme="purple" onclick="setTheme('purple')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #9c27b0 0%, #673ab7 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Royal Purple</div>
-                <div class="theme-desc">Ungu kerajaan elegan</div>
+            <div class="theme-btn" data-theme="forest" onclick="setTheme('forest')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 50%, #004d40 100%);"></div>
+                <div class="theme-name">Forest</div>
+                <div class="theme-desc">Nature</div>
             </div>
-        </div>
-        
-        <div class="theme-btn" data-theme="rose" onclick="setTheme('rose')">
-            <div class="theme-color" style="background: linear-gradient(135deg, #e91e63 0%, #880e4f 100%);"></div>
-            <div class="theme-info">
-                <div class="theme-name">Rose Pink</div>
-                <div class="theme-desc">Pink merah muda glamor</div>
+            <div class="theme-btn" data-theme="sunset" onclick="setTheme('sunset')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #ff5722 0%, #ff7043 50%, #ff9800 100%);"></div>
+                <div class="theme-name">Sunset</div>
+                <div class="theme-desc">Warm</div>
+            </div>
+            <div class="theme-btn" data-theme="purple" onclick="setTheme('purple')">
+                <div class="theme-color" style="background: linear-gradient(160deg, #9c27b0 0%, #7b1fa2 50%, #673ab7 100%);"></div>
+                <div class="theme-name">Royal</div>
+                <div class="theme-desc">Purple</div>
             </div>
         </div>
     </div>
@@ -550,150 +433,181 @@
         </div>
         <div class="boot-text">ContainerOS</div>
         <div class="boot-tagline">Powered by Docker</div>
+        <div class="boot-loader"></div>
     </div>
 
     <div class="phone-frame">
-        <div class="notch"></div>
         <div class="lock-screen" id="lockScreen">
-            <div class="lock-time" id="lockTime">12:00</div>
-            <div class="lock-date" id="lockDate">Sunday, January 1</div>
+            <div class="lock-content">
+                <div class="lock-time" id="lockTime">12<span class="lock-seconds">:00</span></div>
+                <div class="lock-date" id="lockDate">Sunday, January 1</div>
+            </div>
             <div class="lock-swipe">
                 <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                <span>Swipe up to unlock</span>
+                <span class="lock-swipe-text">Swipe up to unlock</span>
             </div>
         </div>
 
         <div class="status-bar">
-            <div class="status-bar left"><span id="statusTime">12:00</span></div>
-            <div class="status-bar right">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l11 11c.18.18.43.29.71.29.28 0 .53-.11.71-.29l11-11c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3zm0 18c-4.41 0-8.12-2.39-9.96-6l9.96-9.96 9.96 9.96C20.12 18.61 16.41 21 12 21z"/></svg>
-                <div class="battery"><span>80%</span><div class="battery-icon"><div class="battery-level"></div></div></div>
+            <div class="status-left"><span id="statusTime">12:00</span></div>
+            <div class="status-right">
+                <div class="status-icon"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
+                <div class="status-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l11 11c.18.18.43.29.71.29.28 0 .53-.11.71-.29l11-11c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/></svg></div>
+                <div class="battery-container"><span style="font-size:12px;">80%</span><div class="battery-icon"><div class="battery-level"></div></div></div>
             </div>
         </div>
 
-        <div class="notification-shade" id="notificationShade">
-            <div class="shade-handle"></div>
-            <div class="shade-header">
-                <span class="shade-title">Notifications</span>
-                <div class="shade-action" onclick="closeShade()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+        <div class="pill-bar" onclick="openControlCenter()">
+            <div class="pill-icon">💬</div>
+            <div class="pill-content">
+                <div class="pill-app">Messages</div>
+                <div class="pill-text">You have 3 new messages</div>
             </div>
-            <div class="quick-settings">
-                <div class="qs-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>WiFi</span></div>
-                <div class="qs-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg><span>Data</span></div>
-                <div class="qs-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg><span>Airplane</span></div>
-                <div class="qs-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg><span>Flashlight</span></div>
-                <div class="qs-slider"><svg viewBox="0 0 24 24"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg><input type="range" min="10" max="100" value="70"></div>
+            <span class="pill-time">now</span>
+            <div class="pill-close" onclick="event.stopPropagation(); dismissPill()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+        </div>
+
+        <div class="control-center" id="controlCenter">
+            <div class="cc-header"><span class="cc-title">Control Center</span></div>
+            <div class="cc-grid">
+                <div class="cc-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>WiFi</span></div>
+                <div class="cc-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29z"/></svg><span>Data</span></div>
+                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg><span>Flight</span></div>
+                <div class="cc-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg><span>Flash</span></div>
+                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29z"/></svg><span>Blue</span></div>
+                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg><span>Sound</span></div>
+                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg><span>Cloud</span></div>
+                <div class="cc-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg><span>Share</span></div>
             </div>
-            <div class="notification-card">
-                <div class="notification-header">
-                    <div class="notification-icon" style="background: var(--icon-bg-store)"><span>📦</span></div>
-                    <span class="notification-app">App Store</span><span class="notification-time">2 min ago</span>
-                </div>
-                <div class="notification-content">WhatsApp update available - Version 2.24.1 with bug fixes and performance improvements</div>
-            </div>
-            <div class="notification-card">
-                <div class="notification-header">
-                    <div class="notification-icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div>
-                    <span class="notification-app">Chrome</span><span class="notification-time">1 hour ago</span>
-                </div>
-                <div class="notification-content">3 tabs restored</div>
+            <div class="cc-slider">
+                <svg viewBox="0 0 24 24"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                <input type="range" min="0" max="100" value="70" id="brightnessSlider">
+                <span class="cc-value" id="brightnessValue">70%</span>
             </div>
         </div>
 
         <div class="app-drawer" id="appDrawer">
             <div class="drawer-handle" onclick="closeDrawer()"></div>
-            <div class="drawer-header">
-                <span class="drawer-title">All Apps</span>
-                <div class="shade-action" onclick="closeDrawer()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+            <div class="drawer-search"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" placeholder="Search apps..."></div>
+            <div class="drawer-categories">
+                <div class="drawer-category active">All</div>
+                <div class="drawer-category">Social</div>
+                <div class="drawer-category">Work</div>
+                <div class="drawer-category">Media</div>
+                <div class="drawer-category">Tools</div>
             </div>
-            <div class="drawer-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" placeholder="Search apps..."></div>
             <div class="drawer-content">
-                <div class="drawer-section"><div class="drawer-section-title">Productivity</div>
+                <div class="drawer-section">
+                    <div class="drawer-section-title">Frequently Used</div>
                     <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('chrome')"><div class="icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div><span class="label">Chrome</span></div>
-                        <div class="drawer-app" onclick="openApp('gmail')"><div class="icon" style="background: #ea4335"><span>📧</span></div><span class="label">Gmail</span></div>
-                        <div class="drawer-app" onclick="openApp('drive')"><div class="icon" style="background: #fbbc04"><span>📁</span></div><span class="label">Drive</span></div>
-                        <div class="drawer-app" onclick="openApp('docs')"><div class="icon" style="background: #4285f4"><span>📄</span></div><span class="label">Docs</span></div>
+                        <div class="drawer-app" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div><span class="label">Chrome</span></div>
+                        <div class="drawer-app" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div><span class="label">Messages</span></div>
+                        <div class="drawer-app" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div><span class="label">Camera</span></div>
+                        <div class="drawer-app" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div><span class="label">Gallery</span></div>
                     </div>
                 </div>
-                <div class="drawer-section"><div class="drawer-section-title">Communication</div>
+                <div class="drawer-section">
+                    <div class="drawer-section-title">Social</div>
                     <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('messages')"><div class="icon" style="background: var(--icon-bg-messages)"><span>💬</span></div><span class="label">Messages</span></div>
-                        <div class="drawer-app" onclick="openApp('whatsapp')"><div class="icon" style="background: #25D366"><span>📱</span></div><span class="label">WhatsApp</span></div>
-                        <div class="drawer-app" onclick="openApp('telegram')"><div class="icon" style="background: #0088cc"><span>✈️</span></div><span class="label">Telegram</span></div>
-                        <div class="drawer-app" onclick="openApp('discord')"><div class="icon" style="background: #5865F2"><span>🎮</span></div><span class="label">Discord</span></div>
+                        <div class="drawer-app" onclick="openApp('whatsapp')"><div class="icon" style="background: linear-gradient(135deg, #25D366, #128C7E);"><span>📱</span></div><span class="label">WhatsApp</span></div>
+                        <div class="drawer-app" onclick="openApp('telegram')"><div class="icon" style="background: linear-gradient(135deg, #0088cc, #006699);"><span>✈️</span></div><span class="label">Telegram</span></div>
+                        <div class="drawer-app" onclick="openApp('discord')"><div class="icon" style="background: linear-gradient(135deg, #5865F2, #4752c4);"><span>🎮</span></div><span class="label">Discord</span></div>
+                        <div class="drawer-app" onclick="openApp('gmail')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📧</span></div><span class="label">Gmail</span></div>
                     </div>
                 </div>
-                <div class="drawer-section"><div class="drawer-section-title">Media</div>
+                <div class="drawer-section">
+                    <div class="drawer-section-title">Productivity</div>
                     <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('camera')"><div class="icon" style="background: var(--icon-bg-camera)"><span>📷</span></div><span class="label">Camera</span></div>
-                        <div class="drawer-app" onclick="openApp('gallery')"><div class="icon" style="background: var(--icon-bg-gallery)"><span>🖼️</span></div><span class="label">Gallery</span></div>
-                        <div class="drawer-app" onclick="openApp('youtube')"><div class="icon" style="background: #ff0000"><span>▶️</span></div><span class="label">YouTube</span></div>
-                        <div class="drawer-app" onclick="openApp('spotify')"><div class="icon" style="background: #1db954"><span>🎵</span></div><span class="label">Spotify</span></div>
+                        <div class="drawer-app" onclick="openApp('drive')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📁</span></div><span class="label">Drive</span></div>
+                        <div class="drawer-app" onclick="openApp('docs')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>📄</span></div><span class="label">Docs</span></div>
+                        <div class="drawer-app" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #34a853, #1e8e3e);"><span>🛒</span></div><span class="label">Store</span></div>
+                        <div class="drawer-app" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📂</span></div><span class="label">Files</span></div>
                     </div>
                 </div>
-                <div class="drawer-section"><div class="drawer-section-title">System</div>
+                <div class="drawer-section">
+                    <div class="drawer-section-title">System</div>
                     <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('settings')"><div class="icon" style="background: var(--icon-bg-settings)"><span>⚙️</span></div><span class="label">Settings</span></div>
-                        <div class="drawer-app" onclick="openApp('files')"><div class="icon" style="background: var(--icon-bg-files)"><span>📂</span></div><span class="label">Files</span></div>
-                        <div class="drawer-app" onclick="openApp('terminal')"><div class="icon" style="background: var(--icon-bg-terminal)"><span>⌨️</span></div><span class="label">Terminal</span></div>
-                        <div class="drawer-app" onclick="openApp('store')"><div class="icon" style="background: var(--icon-bg-store)"><span>🛒</span></div><span class="label">Store</span></div>
+                        <div class="drawer-app" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #5f6368, #3c4043);"><span>⚙️</span></div><span class="label">Settings</span></div>
+                        <div class="drawer-app" onclick="openApp('terminal')"><div class="icon" style="background: linear-gradient(135deg, #202124, #3c4043);"><span>⌨️</span></div><span class="label">Terminal</span></div>
+                        <div class="drawer-app" onclick="openApp('calculator')"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #0097a7);"><span>🔢</span></div><span class="label">Calculator</span></div>
+                        <div class="drawer-app" onclick="openApp('clock')"><div class="icon" style="background: linear-gradient(135deg, #673ab7, #512da8);"><span>⏰</span></div><span class="label">Clock</span></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="home-screen" id="homeScreen">
-            <div class="page" id="page1">
-                <div class="datetime-widget">
-                    <div class="time-display" id="homeTime">12:00</div>
+            <div class="page">
+                <div class="widget-card datetime-widget">
+                    <div class="time-display" id="homeTime">12<span class="time-seconds">:00</span></div>
                     <div class="date-display" id="homeDate">Sunday, January 1</div>
                 </div>
-                <div class="weather-widget">
-                    <div class="weather-info"><span class="weather-icon">☀️</span><span class="weather-temp">28°</span></div>
-                    <div class="weather-details"><div>Jakarta, Indonesia</div><div>Sunny</div></div>
+
+                <div class="widget-card weather-widget">
+                    <div class="weather-main"><span class="weather-icon">☀️</span><span class="weather-temp">28°</span></div>
+                    <div class="weather-info"><div class="weather-location">Jakarta</div><div class="weather-desc">Sunny • Air Quality: Good</div></div>
                 </div>
+
+                <div class="widget-card">
+                    <div class="app-section-title" style="margin-bottom: 16px;">Health Connect</div>
+                    <div class="health-widget">
+                        <div class="health-item">
+                            <div class="health-ring"><div class="health-ring-inner">👟</div></div>
+                            <div class="health-value">5,432</div>
+                            <div class="health-label">Steps</div>
+                        </div>
+                        <div class="health-item">
+                            <div class="health-ring"><div class="health-ring-inner">🔥</div></div>
+                            <div class="health-value">182</div>
+                            <div class="health-label">Calories</div>
+                        </div>
+                        <div class="health-item">
+                            <div class="health-ring"><div class="health-ring-inner">💤</div></div>
+                            <div class="health-value">7h 23m</div>
+                            <div class="health-label">Sleep</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-shortcuts">
+                    <div class="shortcut-item" onclick="openApp('phone')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);">📞</div><span class="shortcut-label">Phone</span></div>
+                    <div class="shortcut-item" onclick="openApp('messages')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">💬</div><span class="shortcut-label">Chat</span></div>
+                    <div class="shortcut-item" onclick="openApp('camera')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);">📷</div><span class="shortcut-label">Camera</span></div>
+                    <div class="shortcut-item" onclick="openApp('chrome')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">🌐</div><span class="shortcut-label">Browser</span></div>
+                    <div class="shortcut-item" onclick="openApp('files')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);">📂</div><span class="shortcut-label">Files</span></div>
+                </div>
+
+                <div class="app-section-title">Apps</div>
                 <div class="app-grid">
-                    <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div><span class="label">Chrome</span></div>
-                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: var(--icon-bg-settings)"><span>⚙️</span></div><span class="label">Settings</span></div>
-                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: var(--icon-bg-files)"><span>📂</span></div><span class="label">Files</span></div>
-                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: var(--icon-bg-store)"><span>🛒</span></div><span class="label">Store</span></div>
-                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: var(--icon-bg-camera)"><span>📷</span></div><span class="label">Camera</span></div>
-                    <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: var(--icon-bg-terminal)"><span>⌨️</span></div><span class="label">Terminal</span></div>
-                    <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: var(--icon-bg-gallery)"><span>🖼️</span></div><span class="label">Gallery</span></div>
-                    <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: var(--icon-bg-phone)"><span>📞</span></div><span class="label">Phone</span></div>
+                    <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div><span class="label">Chrome</span></div>
+                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #5f6368, #3c4043);"><span>⚙️</span></div><span class="label">Settings</span></div>
+                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📂</span></div><span class="label">Files</span></div>
+                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #34a853, #1e8e3e);"><span>🛒</span></div><span class="label">Store</span></div>
+                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div><span class="label"> Camera</span></div>
+                    <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: linear-gradient(135deg, #202124, #3c4043);"><span>⌨️</span></div><span class="label">Terminal</span></div>
+                    <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div><span class="label">Gallery</span></div>
+                    <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);"><span>📞</span></div><span class="label">Phone</span></div>
+                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div><span class="label">Messages</span></div>
+                    <div class="app-icon" onclick="openApp('youtube')"><div class="icon" style="background: linear-gradient(135deg, #ff0000, #cc0000);"><span>▶️</span></div><span class="label">YouTube</span></div>
+                    <div class="app-icon" onclick="openApp('spotify')"><div class="icon" style="background: linear-gradient(135deg, #1db954, #169c46);"><span>🎵</span></div><span class="label">Spotify</span></div>
+                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: linear-gradient(135deg, #f44336, #d32f2f);"><span>📅</span></div><span class="label">Calendar</span></div>
                 </div>
-            </div>
-            <div class="page" id="page2">
-                <div class="app-grid">
-                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: var(--icon-bg-messages)"><span>💬</span></div><span class="label">Messages</span></div>
-                    <div class="app-icon" onclick="openApp('gmail')"><div class="icon" style="background: #ea4335"><span>📧</span></div><span class="label">Gmail</span></div>
-                    <div class="app-icon" onclick="openApp('drive')"><div class="icon" style="background: #fbbc04"><span>📁</span></div><span class="label">Drive</span></div>
-                    <div class="app-icon" onclick="openApp('youtube')"><div class="icon" style="background: #ff0000"><span>▶️</span></div><span class="label">YouTube</span></div>
-                    <div class="app-icon" onclick="openApp('spotify')"><div class="icon" style="background: #1db954"><span>🎵</span></div><span class="label">Spotify</span></div>
-                    <div class="app-icon" onclick="openApp('calculator')"><div class="icon" style="background: #00bcd4"><span>🔢</span></div><span class="label">Calculator</span></div>
-                    <div class="app-icon" onclick="openApp('clock')"><div class="icon" style="background: #673ab7"><span>⏰</span></div><span class="label">Clock</span></div>
-                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: #f44336"><span>📅</span></div><span class="label">Calendar</span></div>
-                </div>
-            </div>
-            <div class="page-indicator">
-                <div class="page-dot active" data-page="1"></div>
-                <div class="page-dot" data-page="2"></div>
             </div>
         </div>
 
         <div class="dock">
-            <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: var(--icon-bg-phone)"><span>📞</span></div></div>
-            <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: var(--icon-bg-messages)"><span>💬</span></div></div>
-            <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div></div>
-            <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: var(--icon-bg-camera)"><span>📷</span></div></div>
+            <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);"><span>📞</span></div></div>
+            <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div></div>
+            <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div></div>
+            <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div></div>
+            <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div></div>
         </div>
 
         <div class="nav-bar">
-            <div class="nav-button" id="navBack" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
-            <div class="nav-button active" id="navHome"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
-            <div class="nav-button" id="navRecents"><svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-3.5h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-3.5h1c.55 0 1-.45 1-1v-5c0-5.55-4.45-10-10-10S2 7.45 2 13h2c0-4.42 3.58-8 8-8s8 3.58 8 8v5H6v-5H4v5z"/></svg></div>
+            <div class="nav-item active" onclick="handleNav('home')"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></div>
+            <div class="nav-item" onclick="openDrawer()"><svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg><span>Apps</span></div>
+            <div class="nav-item" onclick="openControlCenter()"><svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2h-4v2h4zm0-6v-2h-4v2h4z"/></svg><span>Control</span></div>
+            <div class="nav-item" onclick="openApp('settings')"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg><span>Settings</span></div>
         </div>
 
         <div class="app-window" id="appWindow">
@@ -709,45 +623,62 @@
     </div>
 
     <script>
-        let isLocked = true, isDrawerOpen = false, isShadeOpen = false;
-        let startY = 0, startX = 0, currentY = 0, currentX = 0;
-        let currentTheme = 'default';
+        let isLocked = true, isDrawerOpen = false, isControlOpen = false;
+        let startY = 0, currentY = 0;
+        
         const bootScreen = document.getElementById('bootScreen');
         const lockScreen = document.getElementById('lockScreen');
         const appDrawer = document.getElementById('appDrawer');
-        const notificationShade = document.getElementById('notificationShade');
+        const controlCenter = document.getElementById('controlCenter');
         const appWindow = document.getElementById('appWindow');
         const toast = document.getElementById('toast');
         const phoneFrame = document.querySelector('.phone-frame');
 
         function init() {
-            updateTime(); setInterval(updateTime, 1000);
+            updateTime();
+            setInterval(updateTime, 1000);
+            
             setTimeout(() => {
                 bootScreen.classList.add('hidden');
                 setTimeout(() => { lockScreen.classList.add('hidden'); isLocked = false; }, 1000);
             }, 3000);
-            setupGestures();
             
-            // Load saved theme
+            setupGestures();
             const savedTheme = localStorage.getItem('containeros-theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            }
+            if (savedTheme) setTheme(savedTheme);
+            
+            document.getElementById('brightnessSlider').addEventListener('input', function() {
+                document.getElementById('brightnessValue').textContent = this.value + '%';
+            });
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const h = now.getHours();
+            const m = now.getMinutes().toString().padStart(2, '0');
+            const s = now.getSeconds().toString().padStart(2, '0');
+            const time = `${h}:${m}`;
+            const seconds = `:${s}`;
+            
+            const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            const date = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+            
+            document.getElementById('statusTime').textContent = time;
+            document.getElementById('homeTime').innerHTML = time + `<span class="time-seconds">${seconds}</span>`;
+            document.getElementById('homeDate').textContent = date;
+            document.getElementById('lockTime').innerHTML = time + `<span class="lock-seconds">${seconds}</span>`;
+            document.getElementById('lockDate').textContent = date;
         }
 
         function setTheme(theme) {
-            currentTheme = theme;
             document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
             localStorage.setItem('containeros-theme', theme);
-            
-            // Update active button
             document.querySelectorAll('.theme-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.theme === theme);
             });
-            
-            // Hide selector after selection
             document.getElementById('themeSelector').style.display = 'none';
-            showToast(`Theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`);
+            showToast(`Theme applied`);
         }
 
         function toggleThemeSelector() {
@@ -755,68 +686,79 @@
             selector.style.display = selector.style.display === 'none' ? 'flex' : 'none';
         }
 
-        function updateTime() {
-            const now = new Date(), h = now.getHours(), m = now.getMinutes().toString().padStart(2, '0');
-            const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            const t = `${h}:${m}`, d = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
-            document.getElementById('statusTime').textContent = t;
-            document.getElementById('homeTime').textContent = t;
-            document.getElementById('homeDate').textContent = d;
-            document.getElementById('lockTime').textContent = t;
-            document.getElementById('lockDate').textContent = d;
-        }
-
         function setupGestures() {
-            phoneFrame.addEventListener('touchstart', e => { startY = e.touches[0].clientY; startX = e.touches[0].clientX; }, { passive: false });
-            phoneFrame.addEventListener('touchmove', e => { currentY = e.touches[0].clientY; currentX = e.touches[0].clientX; }, { passive: false });
+            phoneFrame.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: false });
+            phoneFrame.addEventListener('touchmove', e => { currentY = e.touches[0].clientY; }, { passive: false });
             phoneFrame.addEventListener('touchend', handleGesture);
-            phoneFrame.addEventListener('mousedown', e => { startY = e.clientY; startX = e.clientX; });
+            phoneFrame.addEventListener('mousedown', e => { startY = e.clientY; });
             phoneFrame.addEventListener('mouseup', handleMouse);
         }
 
         function handleGesture(e) {
-            const dY = currentY - startY, dX = currentX - startX;
-            if (startX < 50 && Math.abs(dY) > 50) { dY < 0 && !isShadeOpen ? openShade() : dY > 0 && isShadeOpen && closeShade(); }
-            else if (startY > window.innerHeight - 100 && dY < -50 && !isDrawerOpen && !isShadeOpen && !appWindow.classList.contains('open')) openDrawer();
-            else if (dY > 50 && isDrawerOpen) closeDrawer();
-            else if (dY < -50 && isShadeOpen) closeShade();
-            else if (Math.abs(dY) > 100 && dY < 0 && !isLocked) lockScreen.classList.add('hidden'), isLocked = true;
+            const dY = currentY - startY;
+            if (startY > window.innerHeight - 150 && dY < -80) {
+                if (!isDrawerOpen && !isControlOpen && !appWindow.classList.contains('open')) openDrawer();
+            } else if (dY > 80 && isDrawerOpen) {
+                closeDrawer();
+            } else if (dY < -80 && !isControlOpen && !appWindow.classList.contains('open') && startY < 200) {
+                openControlCenter();
+            } else if (dY > 80 && isControlOpen) {
+                closeControlCenter();
+            } else if (dY < -100 && !isLocked) {
+                lockScreen.classList.add('hidden');
+            }
         }
 
         function handleMouse(e) {
             const dY = e.clientY - startY;
-            if (startY > window.innerHeight - 100 && dY > 30 && !isDrawerOpen && !isShadeOpen && !appWindow.classList.contains('open')) openDrawer();
-            if (startY < 50 && !isShadeOpen) openShade();
-            if (dY < -100 && !isLocked) { lockScreen.classList.add('hidden'); isLocked = true; }
+            if (startY > window.innerHeight - 150 && dY > 40 && !isDrawerOpen && !isControlOpen && !appWindow.classList.contains('open')) openDrawer();
+            if (startY < 50 && dY < -40 && !isControlOpen) openControlCenter();
+            if (dY < -100 && !isLocked) lockScreen.classList.add('hidden');
         }
 
-        function goBack() { if (appWindow.classList.contains('open')) closeApp(); }
-        function openDrawer() { isDrawerOpen = true; appDrawer.classList.add('open'); }
+        function openDrawer() { isDrawerOpen = true; appDrawer.classList.add('open'); closeControlCenter(); }
         function closeDrawer() { isDrawerOpen = false; appDrawer.classList.remove('open'); }
-        function openShade() { isShadeOpen = true; notificationShade.classList.add('open'); }
-        function closeShade() { isShadeOpen = false; notificationShade.classList.remove('open'); }
-        function toggleTile(el) { el.classList.toggle('on'); showToast(`${el.querySelector('span').textContent} ${el.classList.contains('on') ? 'enabled' : 'disabled'}`); }
+        function openControlCenter() { isControlOpen = true; controlCenter.classList.add('open'); closeDrawer(); }
+        function closeControlCenter() { isControlOpen = false; controlCenter.classList.remove('open'); }
+        function dismissPill() { document.querySelector('.pill-bar').style.display = 'none'; }
+
+        function handleNav(page) {
+            if (page === 'home') { closeApp(); closeDrawer(); closeControlCenter(); }
+        }
+
+        function toggleTile(el) { el.classList.toggle('on'); }
 
         function openApp(name) {
-            closeDrawer(); closeShade();
+            closeDrawer(); closeControlCenter();
             document.getElementById('appTitle').textContent = getAppTitle(name);
             document.getElementById('appContent').innerHTML = getAppContent(name);
-            appWindow.classList.add('open'); showToast(`${getAppTitle(name)} opened`);
+            appWindow.classList.add('open');
+            showToast(`${getAppTitle(name)} opened`);
         }
 
         function closeApp() { appWindow.classList.remove('open'); }
 
-        function getAppTitle(n) { const t = {settings:'Settings',files:'Files',store:'App Store',chrome:'Chrome',terminal:'Terminal',camera:'Camera',gmail:'Gmail',phone:'Phone',messages:'Messages',gallery:'Gallery',youtube:'YouTube',spotify:'Spotify',calculator:'Calculator',clock:'Clock',calendar:'Calendar',notes:'Notes',drive:'Drive',docs:'Docs',whatsapp:'WhatsApp',telegram:'Telegram',discord:'Discord'}; return t[n] || 'App'; }
-
-        function getAppContent(name) {
-            if (name === 'settings') return `<div class="settings-list"><div class="settings-section"><div class="settings-section-title">Network & Internet</div><div class="settings-item" onclick="showToast('WiFi Settings')"><div class="settings-icon" style="background: var(--primary)"><span>📶</span></div><div class="settings-info"><div class="settings-label">WiFi</div><div class="settings-desc">Connected to HomeWiFi</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Mobile Network Settings')"><div class="settings-icon" style="background: var(--secondary)"><span>📱</span></div><div class="settings-info"><div class="settings-label">Mobile Network</div><div class="settings-desc">4G - Signal strength: Excellent</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div><div class="settings-section"><div class="settings-section-title">Device</div><div class="settings-item" onclick="showToast('Display Settings')"><div class="settings-icon" style="background: #00bcd4"><span>🖥️</span></div><div class="settings-info"><div class="settings-label">Display</div><div class="settings-desc">Brightness, Dark theme, Screen timeout</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Sound Settings')"><div class="settings-icon" style="background: #ff9800"><span>🔊</span></div><div class="settings-info"><div class="settings-label">Sound</div><div class="settings-desc">Volume, Do Not Disturb</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Battery Settings')"><div class="settings-icon" style="background: var(--secondary)"><span>🔋</span></div><div class="settings-info"><div class="settings-label">Battery</div><div class="settings-desc">80% - Approximately 1 day remaining</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-item" onclick="showToast('About Phone')"><div class="settings-icon" style="background: var(--icon-bg-terminal)"><span>ℹ️</span></div><div class="settings-info"><div class="settings-label">About Phone</div><div class="settings-desc">ContainerOS 1.0.0</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Docker Info')"><div class="settings-icon" style="background: var(--primary)"><span>🐳</span></div><div class="settings-info"><div class="settings-label">Docker Info</div><div class="settings-desc">Version 24.0.7 - Running 12 containers</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div>`;
-            if (name === 'terminal') return `<div style="padding: 16px; font-family: monospace; background: #1e1e1e; color: #0f0; height: 100%;"><div style="margin-bottom: 8px;">containeros@localhost:~$ docker ps</div><div style="margin-bottom: 16px; color: #888;">CONTAINER ID   IMAGE          STATUS<br>abc123   gui:latest    Up 2 hours<br>def456   network:latest Up 2 hours<br>ghi789   audio:latest  Up 2 hours</div><div style="margin-bottom: 8px;">containeros@localhost:~$ <span style="animation: blink 1s infinite;">█</span></div></div><style>@keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }</style>`;
-            if (name === 'store') return `<div style="padding: 16px;"><h2 style="margin-bottom: 16px;">Featured Apps</h2><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;"><div style="background: var(--surface-variant); border-radius: 16px; padding: 16px; text-align: center;"><div style="width: 64px; height: 64px; background: #4285f4; border-radius: 16px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px;">📺</div><div style="font-weight: 500; margin-bottom: 4px;">Netflix</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Entertainment</div><button style="background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer;">Install</button></div><div style="background: var(--surface-variant); border-radius: 16px; padding: 16px; text-align: center;"><div style="width: 64px; height: 64px; background: #25D366; border-radius: 16px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px;">📱</div><div style="font-weight: 500; margin-bottom: 4px;">WhatsApp</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Communication</div><button style="background: var(--secondary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer;">Update</button></div></div></div>`;
-            return `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary);"><div style="font-size: 64px; margin-bottom: 16px;">📱</div><div style="font-size: 18px;">${getAppTitle(name)}</div><div style="font-size: 14px; margin-top: 8px;">App content coming soon</div></div>`;
+        function getAppTitle(n) {
+            const t = {settings:'Settings',files:'Files',store:'App Store',chrome:'Chrome',terminal:'Terminal',camera:'Camera',gmail:'Gmail',phone:'Phone',messages:'Messages',gallery:'Gallery',youtube:'YouTube',spotify:'Spotify',calculator:'Calculator',clock:'Clock',calendar:'Calendar',notes:'Notes',drive:'Drive',docs:'Docs',whatsapp:'WhatsApp',telegram:'Telegram',discord:'Discord'};
+            return t[n] || 'App';
         }
 
-        function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); }
+        function getAppContent(name) {
+            if (name === 'settings') return `<div class="settings-list"><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-card"><div class="settings-item" onclick="showToast('WiFi Settings')"><div class="settings-icon" style="background: var(--primary);"><span>📶</span></div><div class="settings-info"><div class="settings-label">WiFi</div><div class="settings-desc">Connected</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="this.querySelector('.settings-toggle').classList.toggle('on'); event.stopPropagation();"><div class="settings-icon" style="background: var(--primary);"><span>📱</span></div><div class="settings-info"><div class="settings-label">Bluetooth</div><div class="settings-desc">On</div></div><div class="settings-toggle on"></div></div></div></div><div class="settings-section"><div class="settings-section-title">Display</div><div class="settings-card"><div class="settings-item"><div class="settings-icon" style="background: var(--warning);"><span>☀️</span></div><div class="settings-info"><div class="settings-label">Brightness</div><div class="settings-desc">70%</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-card"><div class="settings-item"><div class="settings-icon" style="background: linear-gradient(135deg, #2496ed, #1a73e8);"><span>🐳</span></div><div class="settings-info"><div class="settings-label">Docker</div><div class="settings-desc">v24.0.7 • 12 containers</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div></div>`;
+            
+            if (name === 'terminal') return `<div style="padding: 16px; font-family: monospace; background: #1e1e1e; color: #0f0; height: 100%; font-size: 13px; line-height: 1.6;"><div style="color: #6a9955;"># ContainerOS Terminal</div><br><div>containeros@localhost:~$ docker ps</div><div style="color: #888;">CONTAINER ID   IMAGE          STATUS<br>abc123   gui:latest     Up 2 hours<br>def456   network:latest Up 2 hours<br>ghi789   audio:latest   Up 2 hours</div><br><div>containeros@localhost:~$ <span style="animation: blink 1s infinite;">█</span></div></div><style>@keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }</style>`;
+            
+            if (name === 'store') return `<div style="padding: 16px;"><div class="app-section-title" style="margin-bottom: 16px;">Featured Apps</div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;"><div style="background: var(--surface-variant); border-radius: var(--radius-lg); padding: 16px; text-align: center;"><div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff0000, #cc0000); border-radius: var(--radius-md); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📺</div><div style="font-weight: 600; margin-bottom: 4px;">Netflix</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Entertainment</div><button style="background: var(--primary); color: white; border: none; padding: 8px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer;">Install</button></div><div style="background: var(--surface-variant); border-radius: var(--radius-lg); padding: 16px; text-align: center;"><div style="width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: var(--radius-md); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📱</div><div style="font-weight: 600; margin-bottom: 4px;">WhatsApp</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Communication</div><button style="background: var(--secondary); color: white; border: none; padding: 8px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer;">Update</button></div></div></div>`;
+            
+            return `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary);"><div style="font-size: 64px; margin-bottom: 16px;">📱</div><div style="font-size: 18px; font-weight: 500;">${getAppTitle(name)}</div><div style="font-size: 14px; margin-top: 8px;">Coming soon</div></div>`;
+        }
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
