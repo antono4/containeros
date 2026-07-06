@@ -689,6 +689,60 @@
             color: var(--text-secondary);
         }
 
+        /* App Window */
+        .app-window {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface);
+            z-index: 300;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .app-window.open { transform: translateY(0); }
+
+        .app-header {
+            height: 120px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 16px 24px 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+        .app-header .back-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .app-header .back-btn:active { background: rgba(255,255,255,0.3); }
+        .app-header .back-btn svg { width: 20px; height: 20px; fill: white; }
+        .app-header > div:not(.back-btn) {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .app-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .app-content {
+            height: calc(100% - 120px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .app-content::-webkit-scrollbar { display: none; }
+
         /* Toast */
         .toast {
             position: fixed;
@@ -1029,6 +1083,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- App Windows -->
+        <div class="app-window" id="appWindow">
+            <div class="app-header">
+                <div class="back-btn" onclick="closeApp()">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <div>
+                    <h2 id="appTitle">App</h2>
+                </div>
+            </div>
+            <div class="app-content" id="appContent">
+                <!-- App content will be inserted here -->
+            </div>
+        </div>
     </div>
 
     <!-- Theme Selector -->
@@ -1153,11 +1222,68 @@
             el.classList.toggle('active');
         }
 
+        // App content templates
+        const appContents = {
+            phone: {
+                title: 'Phone',
+                content: '<div style="text-align:center;padding:40px 20px;"><div style="font-size:80px;margin-bottom:20px;">📞</div><h3 style="color:var(--text-primary);margin-bottom:10px;">Make a Call</h3><p style="color:var(--text-secondary);">Tap on contacts to make a call</p><div style="margin-top:30px;display:flex;justify-content:center;gap:20px;"><div style="width:60px;height:60px;border-radius:50%;background:var(--surface-variant);display:flex;align-items:center;justify-content:center;font-size:24px;">1</div><div style="width:60px;height:60px;border-radius:50%;background:var(--surface-variant);display:flex;align-items:center;justify-content:center;font-size:24px;">2</div><div style="width:60px;height:60px;border-radius:50%;background:var(--surface-variant);display:flex;align-items:center;justify-content:center;font-size:24px;">3</div></div></div>'
+            },
+            messages: {
+                title: 'Messages',
+                content: '<div style="padding:20px;"><div class="chat-list"><div class="chat-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:12px;"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00C853,#009624);display:flex;align-items:center;justify-content:center;font-size:20px;">A</div><div style="flex:1;"><div style="font-weight:600;color:var(--text-primary);">Alice</div><div style="font-size:13px;color:var(--text-secondary);">Hey, are you coming to the meeting?</div></div><div style="font-size:11px;color:var(--text-tertiary);">10:30</div></div><div class="chat-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:12px;"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#007AFF,#0056CC);display:flex;align-items:center;justify-content:center;font-size:20px;">B</div><div style="flex:1;"><div style="font-weight:600;color:var(--text-primary);">Bob</div><div style="font-size:13px;color:var(--text-secondary);">The project is ready!</div></div><div style="font-size:11px;color:var(--text-tertiary);">09:15</div></div><div class="chat-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FF9500,#CC7700);display:flex;align-items:center;justify-content:center;font-size:20px;">C</div><div style="flex:1;"><div style="font-weight:600;color:var(--text-primary);">Charlie</div><div style="font-size:13px;color:var(--text-secondary);">See you tomorrow!</div></div><div style="font-size:11px;color:var(--text-tertiary);">Yesterday</div></div></div></div>'
+            },
+            browser: {
+                title: 'Browser',
+                content: '<div style="padding:20px;"><div style="display:flex;align-items:center;gap:12px;background:var(--surface-variant);border-radius:12px;padding:12px 16px;margin-bottom:20px;"><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" placeholder="Search or enter URL" style="flex:1;border:none;background:none;font-size:14px;color:var(--text-primary);outline:none;"></div><div style="text-align:center;padding:40px;"><div style="font-size:60px;margin-bottom:16px;">🌐</div><h3 style="color:var(--text-primary);">Quick Links</h3><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;"><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:24px;margin-bottom:8px;">📺</div><div style="font-size:12px;color:var(--text-secondary);">YouTube</div></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:24px;margin-bottom:8px;">📰</div><div style="font-size:12px;color:var(--text-secondary);">News</div></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:24px;margin-bottom:8px;">📧</div><div style="font-size:12px;color:var(--text-secondary);">Gmail</div></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;cursor:pointer;"><div style="font-size:24px;margin-bottom:8px;">💼</div><div style="font-size:12px;color:var(--text-secondary);">LinkedIn</div></div></div></div></div>'
+            },
+            camera: {
+                title: 'Camera',
+                content: '<div style="padding:20px;text-align:center;"><div style="width:100%;aspect-ratio:4/3;background:#000;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;"><div style="font-size:80px;">📷</div><div style="position:absolute;bottom:12px;right:12px;font-size:12px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:4px;">0:00</div></div><div style="display:flex;justify-content:center;gap:20px;"><div style="width:48px;height:48px;border-radius:50%;background:var(--surface-variant);display:flex;align-items:center;justify-content:center;">🔄</div><div style="width:64px;height:64px;border-radius:50%;background:white;border:4px solid #333;display:flex;align-items:center;justify-content:center;cursor:pointer;"></div><div style="width:48px;height:48px;border-radius:50%;background:var(--surface-variant);display:flex;align-items:center;justify-content:center;font-size:20px;">📸</div></div></div>'
+            },
+            gallery: {
+                title: 'Gallery',
+                content: '<div style="padding:20px;"><h3 style="color:var(--text-primary);margin-bottom:16px;">Recent Photos</h3><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"><div style="aspect-ratio:1;background:linear-gradient(135deg,#FF6B35,#FF8F66);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">🏖️</div><div style="aspect-ratio:1;background:linear-gradient(135deg,#5856D6,#AF52DE);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">🎭</div><div style="aspect-ratio:1;background:linear-gradient(135deg,#00C853,#4CAF50);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">🌳</div><div style="aspect-ratio:1;background:linear-gradient(135deg,#007AFF,#5856D6);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">🎬</div><div style="aspect-ratio:1;background:linear-gradient(135deg,#FF9500,#FFD60A);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">🌅</div><div style="aspect-ratio:1;background:linear-gradient(135deg,#FF3B30,#FF6B6B);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">❤️</div></div></div>'
+            },
+            terminal: {
+                title: 'Terminal',
+                content: '<div style="padding:16px;font-family:monospace;background:#1a1a1a;color:#00ff00;height:100%;border-radius:12px;font-size:13px;line-height:1.6;"><div style="color:#00ff00;">containeros@localhost:~$</div><div style="color:#888;margin-top:8px;">docker ps</div><div style="color:#00ff00;margin-top:4px;">CONTAINER ID   IMAGE          STATUS<br>abc1234       gui:latest     Up 2 hours<br>def5678       api:latest     Up 1 hour<br>ghi9012       db:latest      Up 3 hours</div><div style="color:#00ff00;margin-top:16px;">containeros@localhost:~$ <span style="animation:blink 1s infinite;">█</span></div></div><style>@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}</style>'
+            },
+            settings: {
+                title: 'Settings',
+                content: '<div style="padding:20px;"><div class="settings-group" style="margin-bottom:24px;"><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin-bottom:12px;">Network</h4><div class="settings-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#007AFF;display:flex;align-items:center;justify-content:center;font-size:18px;">📶</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">WiFi</div><div style="font-size:12px;color:var(--text-secondary);">Connected to HomeNetwork</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#5856D6;display:flex;align-items:center;justify-content:center;font-size:18px;">🔵</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Bluetooth</div><div style="font-size:12px;color:var(--text-secondary);">On</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div><div class="settings-group" style="margin-bottom:24px;"><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin-bottom:12px;">System</h4><div class="settings-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#2496ed;display:flex;align-items:center;justify-content:center;font-size:18px;">🐳</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Docker</div><div style="font-size:12px;color:var(--text-secondary);">v24.0.7 - 12 containers</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#FF9500;display:flex;align-items:center;justify-content:center;font-size:18px;">☀️</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Display</div><div style="font-size:12px;color:var(--text-secondary);">Brightness 70%</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div>'
+            },
+            files: {
+                title: 'Files',
+                content: '<div style="padding:20px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:13px;color:var(--text-secondary);"><span>Home</span></div><div class="file-item" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:8px;background:#007AFF;display:flex;align-items:center;justify-content:center;font-size:18px;">📁</div><div><div style="font-weight:500;color:var(--text-primary);">Documents</div><div style="font-size:12px;color:var(--text-secondary);">5 items</div></div></div><div class="file-item" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:8px;background:#5856D6;display:flex;align-items:center;justify-content:center;font-size:18px;">📁</div><div><div style="font-weight:500;color:var(--text-primary);">Downloads</div><div style="font-size:12px;color:var(--text-secondary);">12 items</div></div></div><div class="file-item" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:8px;background:#FF9500;display:flex;align-items:center;justify-content:center;font-size:18px;">📁</div><div><div style="font-weight:500;color:var(--text-primary);">Pictures</div><div style="font-size:12px;color:var(--text-secondary);">24 items</div></div></div><div class="file-item" style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:8px;background:#00C853;display:flex;align-items:center;justify-content:center;font-size:18px;">📁</div><div><div style="font-weight:500;color:var(--text-primary);">Projects</div><div style="font-size:12px;color:var(--text-secondary);">8 items</div></div></div></div>'
+            },
+            store: {
+                title: 'App Store',
+                content: '<div style="padding:20px;"><h3 style="color:var(--text-primary);margin-bottom:16px;">Featured Apps</h3><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;"><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;"><div style="width:56px;height:56px;background:linear-gradient(135deg,#ff0000,#cc0000);border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;">📺</div><div style="font-weight:600;color:var(--text-primary);margin-bottom:4px;">Netflix</div><div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Entertainment</div><button style="background:var(--primary);color:white;border:none;padding:8px 20px;border-radius:20px;font-weight:500;cursor:pointer;">Install</button></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;text-align:center;"><div style="width:56px;height:56px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;">💬</div><div style="font-weight:600;color:var(--text-primary);margin-bottom:4px;">WhatsApp</div><div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Communication</div><button style="background:var(--secondary);color:white;border:none;padding:8px 20px;border-radius:20px;font-weight:500;cursor:pointer;">Update</button></div></div></div>'
+            },
+            calculator: {
+                title: 'Calculator',
+                content: '<div style="padding:20px;"><div style="background:var(--surface-variant);border-radius:12px;padding:20px;text-align:right;margin-bottom:16px;"><div style="font-size:24px;color:var(--text-secondary);">1234</div><div style="font-size:48px;font-weight:300;color:var(--text-primary);">0</div></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">AC</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">+/-</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">%</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">/</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">7</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">8</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">9</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">x</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">4</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">5</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">6</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">-</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">1</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">2</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">3</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">+</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);grid-column:span 2;cursor:pointer;">0</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:var(--surface-variant);color:var(--text-primary);cursor:pointer;">.</button><button style="padding:20px;border-radius:12px;border:none;font-size:20px;background:#FF9500;color:white;cursor:pointer;">=</button></div></div>'
+            },
+            calendar: {
+                title: 'Calendar',
+                content: '<div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;"><div style="font-size:20px;font-weight:600;color:var(--text-primary);">July 2026</div><div style="display:flex;gap:8px;"><button style="width:32px;height:32px;border-radius:50%;border:none;background:var(--surface-variant);cursor:pointer;">◀</button><button style="width:32px;height:32px;border-radius:50%;border:none;background:var(--surface-variant);cursor:pointer;">▶</button></div></div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-bottom:8px;"><div style="font-size:11px;color:var(--text-tertiary);">Sun</div><div style="font-size:11px;color:var(--text-tertiary);">Mon</div><div style="font-size:11px;color:var(--text-tertiary);">Tue</div><div style="font-size:11px;color:var(--text-tertiary);">Wed</div><div style="font-size:11px;color:var(--text-tertiary);">Thu</div><div style="font-size:11px;color:var(--text-tertiary);">Fri</div><div style="font-size:11px;color:var(--text-tertiary);">Sat</div></div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;"><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">28</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">29</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">30</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">1</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">2</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">3</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">4</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-primary);">5</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-primary);background:var(--primary);color:white;border-radius:50%;">6</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">7</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">8</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">9</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">10</div><div class="day" style="padding:8px;font-size:13px;color:var(--text-tertiary);">11</div></div></div>'
+            }
+        };
+
         // Open app
         function openApp(name) {
-            document.getElementById('controlCenter').classList.remove('open');
-            document.getElementById('appDrawer').classList.remove('open');
-            showToast(name.charAt(0).toUpperCase() + name.slice(1) + ' opened');
+            closeAllModals();
+            
+            const app = appContents[name] || { title: name.charAt(0).toUpperCase() + name.slice(1), content: '<div style="text-align:center;padding:40px;"><div style="font-size:60px;margin-bottom:16px;">📱</div><h3 style="color:var(--text-primary);">' + name + '</h3><p style="color:var(--text-secondary);margin-top:8px;">Coming soon</p></div>' };
+            
+            document.getElementById('appTitle').textContent = app.title;
+            document.getElementById('appContent').innerHTML = app.content;
+            document.getElementById('appWindow').classList.add('open');
+        }
+
+        // Close app
+        function closeApp() {
+            document.getElementById('appWindow').classList.remove('open');
         }
 
         // Theme
