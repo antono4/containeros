@@ -705,18 +705,18 @@
         <div class="content">
             <!-- Greeting -->
             <div class="greeting">
-                <h1 id="greeting">Good Morning</h1>
-                <p>Monday, January 1</p>
+                <h1 id="greetingText">Good Morning</h1>
+                <p id="greetingDate">Loading...</p>
             </div>
 
             <div class="widgets">
                 <!-- Time & Weather Card -->
                 <div class="card time-card">
                     <div class="time">
-                        <span id="homeTime">9</span>:<span id="homeMin">41</span>
+                        <span id="homeTime">9</span>:<span id="homeMin">00</span>
                     </div>
                     <div class="date">
-                        <div class="day">Monday, January 1</div>
+                        <div class="day" id="cardDate">Loading...</div>
                         <div class="weather">☀️ 28°C, Jakarta</div>
                     </div>
                 </div>
@@ -1022,22 +1022,37 @@
     <div class="toast" id="toast">App opened</div>
 
     <script>
-        // Update time and greeting
+        // Update time and greeting - realtime
         function updateTime() {
             const now = new Date();
             const h = now.getHours();
             const m = now.getMinutes();
+            const s = now.getSeconds();
             
+            // Update status bar time
             document.getElementById('statusTime').textContent = h + ':' + String(m).padStart(2, '0');
+            
+            // Update home time card
             document.getElementById('homeTime').textContent = h;
             document.getElementById('homeMin').textContent = String(m).padStart(2, '0');
             
-            // Greeting
+            // Format date
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const dayName = days[now.getDay()];
+            const monthName = months[now.getMonth()];
+            const dateNum = now.getDate();
+            const dateStr = dayName + ', ' + monthName + ' ' + dateNum;
+            
+            // Update greeting and date
             let greeting = 'Good Morning';
             if (h >= 12 && h < 17) greeting = 'Good Afternoon';
             else if (h >= 17 && h < 21) greeting = 'Good Evening';
             else if (h >= 21 || h < 5) greeting = 'Good Night';
-            document.getElementById('greeting').textContent = greeting;
+            
+            document.getElementById('greetingText').textContent = greeting;
+            document.getElementById('greetingDate').textContent = dateStr;
+            document.getElementById('cardDate').textContent = dateStr;
         }
         
         updateTime();
