@@ -3,80 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ContainerOS - HarmonyOS Style</title>
-    <link href="https://fonts.googleapis.com/css2?family=HarmonyOS+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ContainerOS - iOS Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #007DFF;
-            --primary-light: #66B5FF;
-            --primary-dark: #005BB5;
-            --secondary: #00D5A7;
-            --accent: #FF6B35;
+            --primary: #007AFF;
+            --primary-light: #5AC8FA;
+            --secondary: #5856D6;
+            --accent: #FF9500;
+            --success: #34C759;
+            --danger: #FF3B30;
             --surface: #FFFFFF;
-            --surface-glass: rgba(255, 255, 255, 0.85);
-            --surface-variant: #F5F7FA;
+            --surface-dark: #1C1C1E;
+            --surface-variant: #F2F2F7;
+            --surface-card: #FFFFFF;
             --text-primary: #000000;
-            --text-secondary: #666666;
-            --text-tertiary: #999999;
-            --border: rgba(0, 0, 0, 0.06);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
-            --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 28px;
-            --radius-xl: 36px;
+            --text-secondary: #3C3C43;
+            --text-tertiary: #8E8E93;
+            --separator: rgba(60, 60, 67, 0.12);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
         }
 
         [data-theme="dark"] {
-            --surface: #0D0D0D;
-            --surface-glass: rgba(30, 30, 30, 0.9);
-            --surface-variant: #1A1A1A;
+            --surface: #000000;
+            --surface-dark: #1C1C1E;
+            --surface-variant: #2C2C2E;
+            --surface-card: #1C1C1E;
             --text-primary: #FFFFFF;
-            --text-secondary: #A0A0A0;
-            --text-tertiary: #666666;
-            --border: rgba(255, 255, 255, 0.1);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        [data-theme="aurora"] {
-            --primary: #007DFF;
-            --primary-light: #66B5FF;
-            --primary-dark: #005BB5;
-            --secondary: #00D5A7;
-            --accent: #FF6B35;
-        }
-
-        [data-theme="forest"] {
-            --primary: #07C160;
-            --primary-light: #4CAF50;
-            --primary-dark: #059669;
-            --secondary: #8B5CF6;
-            --accent: #F59E0B;
-        }
-
-        [data-theme="sunset"] {
-            --primary: #FF6B35;
-            --primary-light: #FF8F66;
-            --primary-dark: #E55A2B;
-            --secondary: #FFB800;
-            --accent: #FF4D6D;
-        }
-
-        [data-theme="purple"] {
-            --primary: #8B5CF6;
-            --primary-light: #A78BFA;
-            --primary-dark: #7C3AED;
-            --secondary: #EC4899;
-            --accent: #06B6D4;
+            --text-secondary: #EBEBF5;
+            --text-tertiary: #8E8E93;
+            --separator: rgba(84, 84, 88, 0.65);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'HarmonyOS Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(180deg, #007DFF 0%, #66B5FF 50%, #B8E0FF 100%);
+            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, #2997FF 0%, #5AC8FA 50%, #87CEEB 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -168,20 +137,21 @@
         }
         .content::-webkit-scrollbar { display: none; }
 
-        /* Greeting */
+        /* Greeting - iOS Style */
         .greeting {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         .greeting h1 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 600;
             color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 4px;
+            letter-spacing: -0.5px;
         }
         .greeting p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.8);
+            font-size: 15px;
+            color: rgba(255,255,255,0.75);
+            font-weight: 400;
         }
 
         /* Widgets Container */
@@ -191,35 +161,37 @@
             gap: 16px;
         }
 
-        /* Card Base */
+        /* Card Base - iOS Style */
         .card {
-            background: white;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             border-radius: var(--radius-lg);
-            padding: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            padding: 16px;
+            box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease;
         }
         .card:active { transform: scale(0.98); }
 
-        /* Time Card */
+        /* Time Card - iOS Style */
         .time-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: transparent;
+            box-shadow: none;
         }
         .time-card .time {
-            font-size: 52px;
-            font-weight: 300;
-            color: var(--text-primary);
+            font-size: 64px;
+            font-weight: 200;
+            color: white;
             line-height: 1;
+            letter-spacing: -2px;
         }
         .time-card .time span {
-            font-size: 24px;
-            color: var(--text-secondary);
-            font-weight: 400;
+            font-size: 28px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
         }
         .time-card .date {
             text-align: right;
@@ -227,12 +199,12 @@
         .time-card .date .day {
             font-size: 16px;
             font-weight: 500;
-            color: var(--text-primary);
+            color: white;
         }
         .time-card .date .weather {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 4px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 6px;
         }
 
         /* Quick Actions */
@@ -284,56 +256,68 @@
         .service-item .icon {
             width: 44px;
             height: 44px;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
         }
+        .service-item .icon svg {
+            width: 22px;
+            height: 22px;
+        }
         .service-item .label {
             font-size: 10px;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.9);
             text-align: center;
+            font-weight: 500;
         }
 
         /* Apps Section */
         .apps-section h3 {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: rgba(255,255,255,0.8);
             margin-bottom: 16px;
             padding: 0 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px 16px;
+            gap: 24px 16px;
         }
         .app-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
         }
         .app-item .icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease;
+            font-size: 26px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+        }
+        .app-item .icon svg {
+            width: 28px;
+            height: 28px;
         }
         .app-item:active .icon {
             transform: scale(0.9);
         }
         .app-item .label {
             font-size: 11px;
-            color: var(--text-primary);
+            color: white;
             text-align: center;
+            font-weight: 500;
         }
 
         /* Bottom Navigation */
