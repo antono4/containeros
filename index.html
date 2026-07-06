@@ -137,21 +137,23 @@
         }
         .content::-webkit-scrollbar { display: none; }
 
-        /* Greeting - iOS Style */
+        /* Greeting - iOS Boot Screen Style */
         .greeting {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            text-align: center;
+            margin-top: 40px;
         }
         .greeting h1 {
-            font-size: 36px;
-            font-weight: 700;
+            font-size: 48px;
+            font-weight: 300;
             color: #000000;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
         }
         .greeting p {
-            font-size: 16px;
-            color: #333333;
-            font-weight: 500;
+            font-size: 14px;
+            color: #666666;
+            font-weight: 400;
         }
 
         /* Widgets Container */
@@ -915,10 +917,10 @@
 
         <!-- Main Content -->
         <div class="content">
-            <!-- Greeting -->
+            <!-- Greeting - Boot Screen Style -->
             <div class="greeting">
-                <h1 id="greetingText">ContainerOS</h1>
-                <p id="greetingDate">Monday, July 6</p>
+                <h1 id="greetingText" style="font-size: 42px; font-weight: 300; letter-spacing: 2px;">ContainerOS</h1>
+                <p id="greetingDate" style="font-size: 14px; margin-top: 8px; opacity: 0.6;">Monday, July 6</p>
             </div>
 
             <div class="widgets">
