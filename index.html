@@ -137,23 +137,102 @@
         }
         .content::-webkit-scrollbar { display: none; }
 
-        /* Greeting - iOS Boot Screen Style */
-        .greeting {
-            margin-bottom: 24px;
+        /* Lock Screen Style */
+        .lock-screen {
             text-align: center;
-            margin-top: 40px;
+            margin-bottom: 20px;
+            padding: 20px 0;
         }
-        .greeting h1 {
-            font-size: 48px;
-            font-weight: 300;
-            color: #000000;
-            margin-bottom: 8px;
-            letter-spacing: 3px;
-        }
-        .greeting p {
-            font-size: 14px;
+        .lock-screen .powered {
+            font-size: 12px;
             color: #666666;
-            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .lock-screen h1 {
+            font-size: 72px;
+            font-weight: 200;
+            color: #000000;
+            letter-spacing: -2px;
+            margin: 0;
+        }
+        .lock-screen p {
+            font-size: 16px;
+            color: #333333;
+            margin: 4px 0;
+        }
+        .lock-screen .unlock-hint {
+            font-size: 14px;
+            color: #888888;
+            margin-top: 12px;
+        }
+
+        /* Quick Toggles */
+        .quick-toggles {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+        .toggle-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .toggle-btn:active { transform: scale(0.95); }
+        .toggle-btn svg { color: #000; }
+        .toggle-btn span { font-size: 10px; color: #000; font-weight: 500; }
+
+        /* Notification Card */
+        .notification-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .notification-card .notif-icon {
+            font-size: 28px;
+        }
+        .notification-card .notif-content {
+            flex: 1;
+        }
+        .notification-card .notif-title {
+            font-weight: 600;
+            color: #000;
+            margin: 0;
+        }
+        .notification-card .notif-desc {
+            font-size: 13px;
+            color: #666;
+            margin: 2px 0 0;
+        }
+
+        /* Weather Widget */
+        .weather-widget {
+            margin-bottom: 8px;
+        }
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .weather-icon { font-size: 36px; }
+        .weather-temp {
+            font-size: 32px;
+            font-weight: 300;
+            color: #000;
+        }
+        .weather-location {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
         }
 
         /* Widgets Container */
@@ -917,91 +996,64 @@
 
         <!-- Main Content -->
         <div class="content">
-            <!-- Greeting - Boot Screen Style -->
-            <div class="greeting">
-                <h1 id="greetingText" style="font-size: 42px; font-weight: 300; letter-spacing: 2px;">ContainerOS</h1>
-                <p id="greetingDate" style="font-size: 14px; margin-top: 8px; opacity: 0.6;">Monday, July 6</p>
+            <!-- Prototype Style - Android/iOS Lock Screen -->
+            <div class="lock-screen">
+                <p class="powered">Powered by Docker</p>
+                <h1 id="homeTime">9:00</h1>
+                <p id="homeDate">Monday, July 6</p>
+                <p class="unlock-hint">Swipe up to unlock</p>
             </div>
 
+            <!-- Control Center Quick Toggles -->
+            <div class="quick-toggles">
+                <div class="toggle-btn" onclick="openControlCenter()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                    <span>WiFi</span>
+                </div>
+                <div class="toggle-btn" onclick="showToast('Mobile Data')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17 4h-3V2h-4v2H7v18h10V4zm-4 16h-2v-2h2v2zm0-4h-2V9h2v7z"/></svg>
+                    <span>Data</span>
+                </div>
+                <div class="toggle-btn" onclick="showToast('Airplane Mode')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                    <span>Airplane</span>
+                </div>
+                <div class="toggle-btn" onclick="showToast('Flashlight')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 14l3 3v5h6v-5l3-3V9H6v5zm5-12h2v3h-2V2zM3.5 5.875L4.914 4.46l2.12 2.122L5.622 8 3.5 5.875zm13.46.71l2.123-2.12 1.414 1.414L18.375 8l-1.414-1.414z"/></svg>
+                    <span>Flashlight</span>
+                </div>
+            </div>
+
+            <!-- Widgets -->
             <div class="widgets">
-                <!-- Time & Weather Card -->
-                <div class="card time-card">
-                    <div class="time">
-                        <span id="homeTime">9</span>:<span id="homeMin">00</span>
-                    </div>
-                    <div class="date">
-                        <div class="day" id="cardDate">Monday, July 6</div>
-                        <div class="weather">☀️ 28°C, Jakarta</div>
+                <!-- App Store Notification -->
+                <div class="card notification-card" onclick="openApp('store')">
+                    <div class="notif-icon">📦</div>
+                    <div class="notif-content">
+                        <p class="notif-title">App Store</p>
+                        <p class="notif-desc">2 min ago</p>
                     </div>
                 </div>
 
-                <!-- Quick Actions -->
-                <div class="card">
-                    <div class="quick-actions">
-                        <div class="quick-action" onclick="openControlCenter()">
-                            <div class="icon" style="background: #007DFF;">
-                                <span>⚡</span>
-                            </div>
-                            <span class="label">Control</span>
-                        </div>
-                        <div class="quick-action" onclick="openAppDrawer()">
-                            <div class="icon" style="background: #5856D6;">
-                                <span>📱</span>
-                            </div>
-                            <span class="label">Apps</span>
-                        </div>
-                        <div class="quick-action" onclick="openApp('files')">
-                            <div class="icon" style="background: #FF9500;">
-                                <span>📁</span>
-                            </div>
-                            <span class="label">Files</span>
-                        </div>
-                        <div class="quick-action" onclick="openApp('camera')">
-                            <div class="icon" style="background: #FF3B30;">
-                                <span>📷</span>
-                            </div>
-                            <span class="label">Camera</span>
-                        </div>
+                <!-- Chrome Notification -->
+                <div class="card notification-card" onclick="openApp('browser')">
+                    <div class="notif-icon">🌐</div>
+                    <div class="notif-content">
+                        <p class="notif-title">Chrome</p>
+                        <p class="notif-desc">1 hour ago - 3 tabs restored</p>
                     </div>
                 </div>
 
-                <!-- Services -->
-                <div class="card services-card">
-                    <div class="services-grid">
-                        <div class="service-item" onclick="openApp('wifi')">
-                            <div class="icon" style="background: linear-gradient(135deg, #007DFF, #0055CC);">
-                                <svg viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                            </div>
-                            <span class="label">WiFi</span>
-                        </div>
-                        <div class="service-item" onclick="openApp('bluetooth')">
-                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">
-                                <svg viewBox="0 0 24 24" fill="white"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
-                            </div>
-                            <span class="label">Bluetooth</span>
-                        </div>
-                        <div class="service-item" onclick="openApp('airplane')">
-                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">
-                                <svg viewBox="0 0 24 24" fill="white"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-                            </div>
-                            <span class="label">Flight</span>
-                        </div>
-                        <div class="service-item" onclick="openApp('location')">
-                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">
-                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            </div>
-                            <span class="label">Location</span>
-                        </div>
-                        <div class="service-item" onclick="openApp('flashlight')">
-                            <div class="icon" style="background: linear-gradient(135deg, #FFD60A, #E6BE00);">
-                                <svg viewBox="0 0 24 24" fill="white"><path d="M6 14l3 3v5h6v-5l3-3V9H6v5zm5-12h2v3h-2V2zM3.5 5.875L4.914 4.46l2.12 2.122L5.622 8 3.5 5.875zm13.46.71l2.123-2.12 1.414 1.414L18.375 8l-1.414-1.414z"/></svg>
-                            </div>
-                            <span class="label">Light</span>
-                        </div>
+                <!-- Weather Widget -->
+                <div class="card weather-widget">
+                    <div class="weather-info">
+                        <span class="weather-icon">☀️</span>
+                        <span class="weather-temp">28°</span>
+                        <span class="weather-location">Jakarta, Indonesia<br><small>Sunny</small></span>
                     </div>
                 </div>
 
-                <!-- Apps Section -->
+                <!-- All Apps Section -->
                 <div class="apps-section">
                     <h3>Frequently Used</h3>
                     <div class="apps-grid">
