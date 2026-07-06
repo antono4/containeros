@@ -142,16 +142,18 @@
             margin-bottom: 20px;
         }
         .greeting h1 {
-            font-size: 32px;
-            font-weight: 600;
+            font-size: 36px;
+            font-weight: 700;
             color: white;
             margin-bottom: 4px;
             letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .greeting p {
-            font-size: 15px;
-            color: rgba(255,255,255,0.75);
-            font-weight: 400;
+            font-size: 16px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
 
         /* Widgets Container */
@@ -920,8 +922,8 @@
         <div class="content">
             <!-- Greeting -->
             <div class="greeting">
-                <h1 id="greetingText">Good Morning</h1>
-                <p id="greetingDate">Loading...</p>
+                <h1 id="greetingText">ContainerOS</h1>
+                <p id="greetingDate">Monday, July 6</p>
             </div>
 
             <div class="widgets">
@@ -931,7 +933,7 @@
                         <span id="homeTime">9</span>:<span id="homeMin">00</span>
                     </div>
                     <div class="date">
-                        <div class="day" id="cardDate">Loading...</div>
+                        <div class="day" id="cardDate">Monday, July 6</div>
                         <div class="weather">☀️ 28°C, Jakarta</div>
                     </div>
                 </div>
@@ -1311,11 +1313,7 @@
             const dateStr = dayName + ', ' + monthName + ' ' + dateNum;
             
             // Update greeting and date
-            let greeting = 'Good Morning';
-            if (h >= 12 && h < 17) greeting = 'Good Afternoon';
-            else if (h >= 17 && h < 21) greeting = 'Good Evening';
-            else if (h >= 21 || h < 5) greeting = 'Good Night';
-            
+            let greeting = 'ContainerOS';
             document.getElementById('greetingText').textContent = greeting;
             document.getElementById('greetingDate').textContent = dateStr;
             document.getElementById('cardDate').textContent = dateStr;
