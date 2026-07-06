@@ -3,524 +3,926 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ContainerOS - Android Style Interface</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+    <title>ContainerOS - iOS Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #4285f4;
-            --primary-dark: #1a73e8;
-            --primary-light: #e8f0fe;
-            --secondary: #34a853;
-            --error: #ea4335;
-            --warning: #fbbc04;
-            --surface: #ffffff;
-            --surface-variant: #f8f9fa;
-            --surface-overlay: rgba(0, 0, 0, 0.5);
-            --text-primary: #202124;
-            --text-secondary: #5f6368;
-            --text-disabled: #9aa0a6;
-            --text-on-primary: #ffffff;
-            --status-bar-bg: rgba(255, 255, 255, 0.95);
-            --status-bar-text: #202124;
-            --nav-bar-bg: rgba(255, 255, 255, 0.95);
-            --nav-button: #5f6368;
-            --icon-bg-chrome: #4285f4;
-            --icon-bg-settings: #5f6368;
-            --icon-bg-files: #fbbc04;
-            --icon-bg-store: #34a853;
-            --icon-bg-terminal: #202124;
-            --icon-bg-camera: #ea4335;
-            --icon-bg-gallery: #ff6d00;
-            --icon-bg-phone: #0f9d58;
-            --icon-bg-messages: #4285f4;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
-            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
-            --shadow-xl: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            --status-bar-height: 24px;
-            --nav-bar-height: 48px;
-            --icon-size: 56px;
-            --icon-grid-gap: 16px;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
+        
+        :root {
+            --primary: #007AFF;
+            --green: #34C759;
+            --red: #FF3B30;
+            --orange: #FF9500;
+            --yellow: #FFCC00;
+            --purple: #AF52DE;
+            --pink: #FF2D55;
+            --teal: #5AC8FA;
+            --surface: #F2F2F7;
+            --surface-white: #FFFFFF;
+            --text: #000000;
+            --text-secondary: #8E8E93;
+            --separator: rgba(60,60,67,0.12);
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow: hidden;
-            touch-action: none;
-            user-select: none;
-            height: 100vh;
-            width: 100vw;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-
+        
         .phone-frame {
-            position: relative;
             width: 100%;
-            max-width: 412px;
-            height: 100vh;
-            max-height: 915px;
-            margin: 0 auto;
+            max-width: 430px;
+            height: 932px;
             background: var(--surface);
+            border-radius: 50px;
             overflow: hidden;
-            box-shadow: var(--shadow-xl);
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
-
-        @media (min-width: 600px) {
-            .phone-frame { border-radius: 40px; margin-top: 20px; margin-bottom: 20px; height: calc(100vh - 40px); }
-        }
-
-        .notch {
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 120px; height: 24px; background: #000;
-            border-radius: 0 0 20px 20px; z-index: 1000;
-        }
-
+        
         .status-bar {
-            position: absolute; top: 0; left: 0; right: 0; height: var(--status-bar-height);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 16px; background: var(--status-bar-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            z-index: 100; font-size: 12px; font-weight: 500; color: var(--status-bar-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 54px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 14px 24px 8px;
+            z-index: 1000;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
         }
-
-        .status-bar.right { display: flex; align-items: center; gap: 6px; }
-
-        .battery { display: flex; align-items: center; gap: 2px; }
-        .battery-icon { width: 20px; height: 10px; border: 1.5px solid var(--status-bar-text); border-radius: 2px; position: relative; padding: 1px; }
-        .battery-icon::after { content: ''; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 2px; height: 5px; background: var(--status-bar-text); border-radius: 0 1px 1px 0; }
-        .battery-level { height: 100%; background: var(--secondary); border-radius: 1px; width: 80%; }
-
-        .nav-bar {
-            position: absolute; bottom: 0; left: 0; right: 0; height: var(--nav-bar-height);
-            display: flex; justify-content: space-around; align-items: center;
-            background: var(--nav-bar-bg); backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); z-index: 100;
-        }
-
-        .nav-button { width: 64px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast); position: relative; }
-        .nav-button:active { transform: scale(0.9); }
-        .nav-button svg { width: 28px; height: 28px; fill: var(--nav-button); }
-        .nav-button.active::after { content: ''; position: absolute; bottom: 4px; width: 20px; height: 3px; background: var(--primary); border-radius: 2px; }
-
+        
+        .status-bar .time { font-weight: 600; }
+        .status-bar .icons { display: flex; gap: 6px; align-items: center; }
+        .status-bar .icons svg { width: 16px; height: 16px; fill: white; }
+        
         .home-screen {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            padding-top: calc(var(--status-bar-height) + 20px);
-            padding-bottom: calc(var(--nav-bar-height) + 10px);
-            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%);
-            overflow-y: auto; overflow-x: hidden;
-            scroll-behavior: smooth; scroll-snap-type: y mandatory;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, #5E5CE6 0%, #3D3A8B 100%);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-top: 54px;
+            padding-bottom: 90px;
         }
-        .home-screen::-webkit-scrollbar { display: none; }
-
-        .page { min-height: calc(100vh - var(--status-bar-height) - var(--nav-bar-height)); padding: 20px; scroll-snap-align: start; }
-
-        .datetime-widget { text-align: center; padding: 40px 0; margin-bottom: 20px; }
-        .time-display { font-family: 'Google Sans', sans-serif; font-size: 72px; font-weight: 300; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.2); letter-spacing: -2px; }
-        .date-display { font-size: 18px; color: rgba(255,255,255,0.9); margin-top: 8px; font-weight: 400; }
-
+        
+        .home-content {
+            padding: 20px 24px;
+            color: white;
+        }
+        
+        .datetime { margin-bottom: 30px; }
+        
+        .time-display {
+            font-size: 82px;
+            font-weight: 200;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+        
+        .date-display {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        
         .weather-widget {
-            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); border-radius: 24px; padding: 20px; margin-bottom: 30px;
-            display: flex; align-items: center; justify-content: space-between;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
         }
-        .weather-info { display: flex; align-items: center; gap: 16px; }
+        
+        .weather-main { display: flex; align-items: center; gap: 12px; }
         .weather-icon { font-size: 48px; }
-        .weather-temp { font-size: 36px; font-weight: 300; color: white; }
-        .weather-details { text-align: right; color: rgba(255,255,255,0.9); font-size: 14px; }
-
-        .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--icon-grid-gap); padding: 10px; }
-
-        .app-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: var(--transition-fast); padding: 8px; border-radius: 16px; }
-        .app-icon:active { transform: scale(0.9); background: rgba(255,255,255,0.1); }
-        .app-icon .icon { width: var(--icon-size); height: var(--icon-size); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; box-shadow: var(--shadow-md); transition: var(--transition-normal); }
-        .app-icon:hover .icon { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .app-icon .label { font-size: 12px; color: white; text-align: center; max-width: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-
+        .weather-temp { font-size: 42px; font-weight: 300; }
+        .weather-info { text-align: right; font-size: 14px; opacity: 0.9; }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px 20px;
+            margin-bottom: 30px;
+        }
+        
+        .app-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        
+        .app-icon .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        .app-icon:active .icon { transform: scale(0.9); }
+        
+        .app-icon .label {
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
         .dock {
-            position: absolute; bottom: calc(var(--nav-bar-height) + 20px); left: 50%; transform: translateX(-50%);
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px; padding: 12px 24px; display: flex; gap: 24px;
-            border: 1px solid rgba(255,255,255,0.3);
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 28px;
+            padding: 8px 20px;
+            display: flex;
+            gap: 28px;
         }
-        .dock .app-icon .icon { width: 48px; height: 48px; border-radius: 12px; font-size: 24px; }
-
-        .page-indicator { position: absolute; bottom: calc(var(--nav-bar-height) + 80px); left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 50; }
-        .page-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: var(--transition-fast); }
-        .page-dot.active { background: white; width: 24px; border-radius: 4px; }
-
-        .app-drawer {
-            position: absolute; top: 100%; left: 0; right: 0; bottom: 0;
-            background: var(--surface); transform: translateY(0);
-            transition: transform var(--transition-slow); z-index: 200; overflow: hidden;
-            border-radius: 24px 24px 0 0;
+        
+        .dock .app-icon .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            font-size: 24px;
         }
-        .app-drawer.open { transform: translateY(-60%); }
-        .drawer-handle { width: 40px; height: 4px; background: #dadce0; border-radius: 2px; margin: 12px auto; }
-        .drawer-header { padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e8eaed; }
-        .drawer-title { font-size: 20px; font-weight: 500; color: var(--text-primary); }
-        .drawer-search { background: var(--surface-variant); border-radius: 28px; padding: 12px 20px; margin: 0 24px 16px; display: flex; align-items: center; gap: 12px; }
-        .drawer-search input { border: none; background: none; flex: 1; font-size: 16px; outline: none; color: var(--text-primary); }
-        .drawer-content { padding: 0 16px 100px; overflow-y: auto; height: calc(100% - 140px); }
-        .drawer-section { margin-bottom: 24px; }
-        .drawer-section-title { font-size: 14px; font-weight: 500; color: var(--text-secondary); padding: 8px 8px; margin-bottom: 8px; }
-        .drawer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .drawer-app { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; padding: 8px; border-radius: 12px; transition: var(--transition-fast); }
-        .drawer-app:active { background: var(--surface-variant); }
-        .drawer-app .icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; }
-        .drawer-app .label { font-size: 12px; color: var(--text-primary); text-align: center; }
-
-        .notification-shade {
-            position: absolute; top: -100%; left: 0; right: 0; background: var(--surface);
-            transition: top var(--transition-slow); z-index: 300; border-radius: 0 0 24px 24px; box-shadow: var(--shadow-xl);
-        }
-        .notification-shade.open { top: var(--status-bar-height); }
-        .shade-handle { width: 40px; height: 4px; background: #dadce0; border-radius: 2px; margin: 12px auto; }
-        .shade-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 24px; }
-        .shade-title { font-size: 16px; font-weight: 500; color: var(--text-primary); }
-        .shade-action { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast); }
-        .shade-action:active { background: var(--surface-variant); }
-        .shade-action svg { width: 20px; height: 20px; fill: var(--text-secondary); }
-
-        .quick-settings { padding: 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; border-bottom: 1px solid #e8eaed; }
-        .qs-tile { aspect-ratio: 1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: var(--transition-fast); background: var(--surface-variant); }
-        .qs-tile:active { transform: scale(0.95); }
-        .qs-tile.on { background: var(--primary); color: white; }
-        .qs-tile svg { width: 24px; height: 24px; }
-        .qs-tile span { font-size: 11px; font-weight: 500; }
-        .qs-slider { grid-column: span 4; padding: 8px 16px; display: flex; align-items: center; gap: 16px; }
-        .qs-slider svg { width: 24px; height: 24px; fill: var(--text-secondary); }
-        .qs-slider input { flex: 1; height: 4px; -webkit-appearance: none; background: var(--surface-variant); border-radius: 2px; outline: none; }
-        .qs-slider input::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--primary); border-radius: 50%; cursor: pointer; }
-
-        .notification-card { margin: 8px 16px; padding: 16px; background: var(--surface-variant); border-radius: 16px; cursor: pointer; transition: var(--transition-fast); }
-        .notification-card:active { transform: scale(0.98); background: #e8eaed; }
-        .notification-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-        .notification-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: white; }
-        .notification-app { font-size: 14px; font-weight: 500; color: var(--text-primary); flex: 1; }
-        .notification-time { font-size: 12px; color: var(--text-secondary); }
-        .notification-content { font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
-
-        .lock-screen {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            z-index: 500; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity var(--transition-slow), transform var(--transition-slow);
-        }
-        .lock-screen.hidden { opacity: 0; transform: translateY(-100%); pointer-events: none; }
-        .lock-time { font-family: 'Google Sans', sans-serif; font-size: 96px; font-weight: 300; color: white; letter-spacing: -4px; }
-        .lock-date { font-size: 20px; color: rgba(255,255,255,0.8); margin-top: 8px; }
-        .lock-swipe { position: absolute; bottom: 100px; display: flex; flex-direction: column; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); animation: bounce 2s infinite; }
-        .lock-swipe svg { width: 32px; height: 32px; fill: rgba(255,255,255,0.8); }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
+        
+        /* App Window */
         .app-window {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--surface);
-            z-index: 400; transform: translateY(100%); transition: transform var(--transition-slow); overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface);
+            z-index: 500;
+            display: none;
+            flex-direction: column;
         }
-        .app-window.open { transform: translateY(0); }
-        .app-header { height: calc(var(--status-bar-height) + 56px); padding: var(--status-bar-height) 16px 0; background: var(--primary); display: flex; align-items: center; gap: 16px; }
-        .app-back { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 50%; transition: var(--transition-fast); }
-        .app-back:active { background: rgba(255,255,255,0.2); }
-        .app-back svg { width: 24px; height: 24px; fill: white; }
-        .app-title { font-size: 20px; font-weight: 500; color: white; flex: 1; }
-        .app-menu { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .app-menu svg { width: 24px; height: 24px; fill: white; }
-        .app-content { padding-top: 16px; height: calc(100% - calc(var(--status-bar-height) + 56px)); overflow-y: auto; }
-
-        .settings-list { padding: 0 16px; }
-        .settings-section { margin-bottom: 24px; }
-        .settings-section-title { font-size: 13px; font-weight: 500; color: var(--primary); padding: 8px 16px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .settings-item { display: flex; align-items: center; padding: 16px; background: var(--surface-variant); border-radius: 16px; margin-bottom: 8px; cursor: pointer; transition: var(--transition-fast); }
-        .settings-item:active { background: #e8eaed; }
-        .settings-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 16px; font-size: 22px; color: white; }
+        
+        .app-window.open { display: flex; }
+        
+        .app-header {
+            background: var(--surface);
+            padding: 20px 24px 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid var(--separator);
+        }
+        
+        .app-back {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .app-back svg { width: 24px; height: 24px; fill: var(--primary); }
+        
+        .app-title { font-size: 20px; font-weight: 600; flex: 1; }
+        
+        .app-content { flex: 1; overflow-y: auto; padding-bottom: 34px; }
+        
+        /* Calculator */
+        .calc-display {
+            background: var(--surface);
+            padding: 20px 24px;
+            text-align: right;
+        }
+        
+        .calc-display .expression {
+            font-size: 20px;
+            color: var(--text-secondary);
+            min-height: 28px;
+        }
+        
+        .calc-display .result {
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--text);
+        }
+        
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            padding: 2px;
+            background: #000;
+        }
+        
+        .calc-btn {
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 50%;
+            font-size: 28px;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.1s;
+        }
+        
+        .calc-btn:active { opacity: 0.7; }
+        
+        .calc-btn.num { background: #333333; color: white; }
+        .calc-btn.op { background: #FF9500; color: white; }
+        .calc-btn.func { background: #A5A5A5; color: #000; }
+        .calc-btn.zero { grid-column: span 2; border-radius: 36px; aspect-ratio: auto; padding-left: 32px; justify-content: flex-start; }
+        
+        /* Phone */
+        .phone-app { height: 100%; display: flex; flex-direction: column; }
+        .phone-display {
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            background: #000;
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            min-height: 100px;
+        }
+        .phone-keypad {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 20px;
+            background: #000;
+        }
+        .phone-btn {
+            aspect-ratio: 1.5;
+            border: none;
+            border-radius: 50%;
+            background: #333;
+            color: white;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .phone-btn .sub { font-size: 10px; letter-spacing: 2px; opacity: 0.6; }
+        .phone-call { background: var(--green); border-radius: 50%; width: 72px; height: 72px; margin: 0 auto; }
+        
+        /* Calendar */
+        .calendar-header {
+            background: var(--surface);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .calendar-nav { font-size: 32px; color: var(--primary); cursor: pointer; font-weight: 300; }
+        .calendar-month { font-size: 18px; font-weight: 600; }
+        .calendar-grid { padding: 16px; }
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .calendar-day.today { background: var(--primary); color: white; }
+        .calendar-day.other { color: var(--text-secondary); }
+        
+        /* Terminal */
+        .terminal {
+            background: #000;
+            color: #0f0;
+            font-family: 'SF Mono', 'Menlo', monospace;
+            font-size: 14px;
+            padding: 16px;
+            height: 100%;
+        }
+        .terminal-line { margin-bottom: 8px; }
+        .terminal-input { display: flex; align-items: center; }
+        .terminal-prompt { color: var(--green); margin-right: 8px; }
+        .terminal-input input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #0f0;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        /* Camera */
+        .camera-app {
+            background: #000;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .camera-viewfinder {
+            flex: 1;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 60px;
+        }
+        .camera-controls {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            background: #000;
+        }
+        .camera-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #333;
+            cursor: pointer;
+        }
+        
+        /* Settings */
+        .settings-list { padding: 16px 0; }
+        .settings-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+        .settings-item:hover { background: rgba(0,0,0,0.05); }
+        .settings-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
         .settings-info { flex: 1; }
-        .settings-label { font-size: 16px; font-weight: 400; color: var(--text-primary); }
-        .settings-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
-        .settings-arrow { width: 24px; height: 24px; fill: var(--text-disabled); }
-
-        .boot-screen {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #000;
-            z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity var(--transition-slow);
+        .settings-label { font-size: 16px; }
+        .settings-desc { font-size: 13px; color: var(--text-secondary); }
+        
+        /* Gallery/Photos */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            padding: 2px;
         }
-        .boot-screen.hidden { opacity: 0; pointer-events: none; }
-        .boot-logo { width: 120px; height: 120px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 28px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; animation: pulse 2s ease-in-out infinite; }
-        .boot-logo svg { width: 80px; height: 80px; fill: white; }
-        .boot-text { font-family: 'Google Sans', sans-serif; font-size: 32px; font-weight: 500; color: white; margin-bottom: 8px; }
-        .boot-tagline { font-size: 14px; color: rgba(255,255,255,0.6); }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
-        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 24px; z-index: 999; }
-        .loading.hidden { opacity: 0; pointer-events: none; transition: opacity var(--transition-slow); }
-        .loading-spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
-        .loading-text { font-size: 16px; color: white; font-weight: 500; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.4); transform: scale(0); animation: ripple 0.6s linear; pointer-events: none; }
-        @keyframes ripple { to { transform: scale(4); opacity: 0; } }
-
-        .toast { position: absolute; bottom: calc(var(--nav-bar-height) + 20px); left: 50%; transform: translateX(-50%) translateY(100px); background: #323232; color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; z-index: 600; opacity: 0; transition: transform var(--transition-normal), opacity var(--transition-normal); }
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        
+        /* Messages */
+        .messages-list { padding: 16px; }
+        .message-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 16px;
+            background: white;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .message-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .message-info { flex: 1; }
+        .message-name { font-weight: 600; margin-bottom: 4px; }
+        .message-preview { font-size: 14px; color: var(--text-secondary); }
+        
+        /* Notes */
+        .notes-list { padding: 16px; }
+        .note-item {
+            padding: 16px;
+            background: #FFF9C4;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        .note-title { font-weight: 600; margin-bottom: 4px; }
+        .note-preview { font-size: 14px; color: #666; }
+        
+        /* Clock */
+        .clock-display {
+            text-align: center;
+            padding: 60px 24px;
+            background: #000;
+            color: white;
+        }
+        .clock-time { font-size: 72px; font-weight: 200; letter-spacing: -2px; }
+        .clock-date { font-size: 18px; opacity: 0.7; margin-top: 8px; }
+        
+        /* Toast */
+        .toast {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.3s;
+        }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        
+        /* App Store */
+        .store-header {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: white;
+            padding: 20px 24px;
+        }
+        .store-title { font-size: 28px; font-weight: 700; }
+        .store-subtitle { font-size: 14px; opacity: 0.9; }
+        .store-apps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .store-app {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+        }
+        .store-app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        .store-app-name { font-weight: 600; margin-bottom: 4px; }
+        .store-app-desc { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+        .store-app-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 18px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        
+        /* Files */
+        .files-list { padding: 16px; }
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            cursor: pointer;
+        }
+        .file-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .file-info { flex: 1; }
+        .file-name { font-weight: 500; }
+        .file-meta { font-size: 12px; color: var(--text-secondary); }
+        
+        /* Music */
+        .music-display {
+            padding: 40px 24px;
+            text-align: center;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            min-height: 100%;
+        }
+        .music-album {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #FC3C44, #FF2D55);
+            border-radius: 16px;
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .music-title { font-size: 22px; font-weight: 600; }
+        .music-artist { font-size: 16px; opacity: 0.7; margin-top: 4px; }
+        .music-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            margin: 32px 0 24px;
+        }
+        .music-progress-bar { width: 35%; height: 100%; background: white; border-radius: 2px; }
+        .music-controls { display: flex; justify-content: center; gap: 40px; font-size: 28px; }
+        .music-play {
+            width: 64px;
+            height: 64px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        /* Weather */
+        .weather-display {
+            padding: 40px 24px;
+            text-align: center;
+            background: linear-gradient(180deg, #5E5CE6 0%, #3D3A8B 100%);
+            color: white;
+            min-height: 100%;
+        }
+        .weather-main-icon { font-size: 120px; margin-bottom: 16px; }
+        .weather-temp { font-size: 80px; font-weight: 200; }
+        .weather-condition { font-size: 24px; margin: 16px 0; }
+        .weather-location { font-size: 16px; opacity: 0.8; }
+        .weather-forecast {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .forecast-item { text-align: center; }
+        .forecast-day { font-size: 14px; opacity: 0.8; }
+        .forecast-icon { font-size: 28px; margin: 8px 0; }
+        .forecast-temp { font-size: 16px; font-weight: 500; }
+        
+        /* Browser/Safari */
+        .browser-toolbar {
+            background: var(--surface);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--separator);
+        }
+        .browser-url {
+            flex: 1;
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .browser-url input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 15px;
+            outline: none;
+        }
+        .browser-content { padding: 20px; }
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .quick-link {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .quick-link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .quick-link-name { font-weight: 500; }
+        
+        /* Maps */
+        .maps-display {
+            padding: 40px 24px;
+            text-align: center;
+            background: #E8F5E9;
+            min-height: 100%;
+        }
+        .maps-icon { font-size: 100px; margin-bottom: 24px; }
+        .maps-title { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+        .maps-location { color: var(--text-secondary); margin-bottom: 24px; }
+        .maps-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+        }
+        .maps-card-title { font-weight: 600; margin-bottom: 8px; }
+        .maps-card-coords { color: var(--text-secondary); font-size: 14px; font-family: monospace; }
     </style>
 </head>
 <body>
-    <div class="boot-screen" id="bootScreen">
-        <div class="boot-logo">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-        </div>
-        <div class="boot-text">ContainerOS</div>
-        <div class="boot-tagline">Powered by Docker</div>
-    </div>
-
     <div class="phone-frame">
-        <div class="notch"></div>
-        <div class="lock-screen" id="lockScreen">
-            <div class="lock-time" id="lockTime">12:00</div>
-            <div class="lock-date" id="lockDate">Sunday, January 1</div>
-            <div class="lock-swipe">
-                <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                <span>Swipe up to unlock</span>
-            </div>
-        </div>
-
         <div class="status-bar">
-            <div class="status-bar left"><span id="statusTime">12:00</span></div>
-            <div class="status-bar right">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l11 11c.18.18.43.29.71.29.28 0 .53-.11.71-.29l11-11c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3zm0 18c-4.41 0-8.12-2.39-9.96-6l9.96-9.96 9.96 9.96C20.12 18.61 16.41 21 12 21z"/></svg>
-                <div class="battery"><span>80%</span><div class="battery-icon"><div class="battery-level"></div></div></div>
+            <span class="time" id="statusTime">9:41</span>
+            <div class="icons">
+                <svg viewBox="0 0 24 24"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73s3.15.25 4.6.72v3.1c0 .39.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M2 22h20V2zM20 20l-8-8V4h8v16z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7v18h10V4zm-4 16h-2v-2h2v2zm0-4h-2V8h2v8z"/></svg>
             </div>
         </div>
-
-        <div class="notification-shade" id="notificationShade">
-            <div class="shade-handle"></div>
-            <div class="shade-header">
-                <span class="shade-title">Notifications</span>
-                <div class="shade-action" onclick="closeShade()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
-            </div>
-            <div class="quick-settings">
-                <div class="qs-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>WiFi</span></div>
-                <div class="qs-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg><span>Data</span></div>
-                <div class="qs-tile" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg><span>Airplane</span></div>
-                <div class="qs-tile on" onclick="toggleTile(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg><span>Flashlight</span></div>
-                <div class="qs-slider"><svg viewBox="0 0 24 24"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg><input type="range" min="10" max="100" value="70"></div>
-            </div>
-            <div class="notification-card">
-                <div class="notification-header">
-                    <div class="notification-icon" style="background: var(--icon-bg-store)"><span>📦</span></div>
-                    <span class="notification-app">App Store</span><span class="notification-time">2 min ago</span>
+        
+        <div class="home-screen">
+            <div class="home-content">
+                <div class="datetime">
+                    <div class="time-display" id="homeTime">9:41</div>
+                    <div class="date-display" id="homeDate">Monday, July 6</div>
                 </div>
-                <div class="notification-content">WhatsApp update available - Version 2.24.1 with bug fixes and performance improvements</div>
-            </div>
-            <div class="notification-card">
-                <div class="notification-header">
-                    <div class="notification-icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div>
-                    <span class="notification-app">Chrome</span><span class="notification-time">1 hour ago</span>
-                </div>
-                <div class="notification-content">3 tabs restored</div>
-            </div>
-        </div>
-
-        <div class="app-drawer" id="appDrawer">
-            <div class="drawer-handle" onclick="closeDrawer()"></div>
-            <div class="drawer-header">
-                <span class="drawer-title">All Apps</span>
-                <div class="shade-action" onclick="closeDrawer()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
-            </div>
-            <div class="drawer-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" placeholder="Search apps..."></div>
-            <div class="drawer-content">
-                <div class="drawer-section"><div class="drawer-section-title">Productivity</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('chrome')"><div class="icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div><span class="label">Chrome</span></div>
-                        <div class="drawer-app" onclick="openApp('gmail')"><div class="icon" style="background: #ea4335"><span>📧</span></div><span class="label">Gmail</span></div>
-                        <div class="drawer-app" onclick="openApp('drive')"><div class="icon" style="background: #fbbc04"><span>📁</span></div><span class="label">Drive</span></div>
-                        <div class="drawer-app" onclick="openApp('docs')"><div class="icon" style="background: #4285f4"><span>📄</span></div><span class="label">Docs</span></div>
+                
+                <div class="weather-widget" onclick="openApp('weather')">
+                    <div class="weather-main">
+                        <span class="weather-icon">☀️</span>
+                        <span class="weather-temp">28°</span>
+                    </div>
+                    <div class="weather-info">
+                        <div>Jakarta</div>
+                        <div>Sunny</div>
                     </div>
                 </div>
-                <div class="drawer-section"><div class="drawer-section-title">Communication</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('messages')"><div class="icon" style="background: var(--icon-bg-messages)"><span>💬</span></div><span class="label">Messages</span></div>
-                        <div class="drawer-app" onclick="openApp('whatsapp')"><div class="icon" style="background: #25D366"><span>📱</span></div><span class="label">WhatsApp</span></div>
-                        <div class="drawer-app" onclick="openApp('telegram')"><div class="icon" style="background: #0088cc"><span>✈️</span></div><span class="label">Telegram</span></div>
-                        <div class="drawer-app" onclick="openApp('discord')"><div class="icon" style="background: #5865F2"><span>🎮</span></div><span class="label">Discord</span></div>
-                    </div>
-                </div>
-                <div class="drawer-section"><div class="drawer-section-title">Media</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('camera')"><div class="icon" style="background: var(--icon-bg-camera)"><span>📷</span></div><span class="label">Camera</span></div>
-                        <div class="drawer-app" onclick="openApp('gallery')"><div class="icon" style="background: var(--icon-bg-gallery)"><span>🖼️</span></div><span class="label">Gallery</span></div>
-                        <div class="drawer-app" onclick="openApp('youtube')"><div class="icon" style="background: #ff0000"><span>▶️</span></div><span class="label">YouTube</span></div>
-                        <div class="drawer-app" onclick="openApp('spotify')"><div class="icon" style="background: #1db954"><span>🎵</span></div><span class="label">Spotify</span></div>
-                    </div>
-                </div>
-                <div class="drawer-section"><div class="drawer-section-title">System</div>
-                    <div class="drawer-grid">
-                        <div class="drawer-app" onclick="openApp('settings')"><div class="icon" style="background: var(--icon-bg-settings)"><span>⚙️</span></div><span class="label">Settings</span></div>
-                        <div class="drawer-app" onclick="openApp('files')"><div class="icon" style="background: var(--icon-bg-files)"><span>📂</span></div><span class="label">Files</span></div>
-                        <div class="drawer-app" onclick="openApp('terminal')"><div class="icon" style="background: var(--icon-bg-terminal)"><span>⌨️</span></div><span class="label">Terminal</span></div>
-                        <div class="drawer-app" onclick="openApp('store')"><div class="icon" style="background: var(--icon-bg-store)"><span>🛒</span></div><span class="label">Store</span></div>
-                    </div>
+                
+                <div class="apps-grid">
+                    <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: #34C759;">📞</div><span class="label">Phone</span></div>
+                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: #34C759;">💬</div><span class="label">Messages</span></div>
+                    <div class="app-icon" onclick="openApp('browser')"><div class="icon" style="background: #007AFF;">🌐</div><span class="label">Safari</span></div>
+                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: #000;">📷</div><span class="label">Camera</span></div>
+                    <div class="app-icon" onclick="openApp('photos')"><div class="icon" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);">🖼️</div><span class="label">Photos</span></div>
+                    <div class="app-icon" onclick="openApp('music')"><div class="icon" style="background: #FC3C44;">🎵</div><span class="label">Music</span></div>
+                    <div class="app-icon" onclick="openApp('notes')"><div class="icon" style="background: #FFCC00;">📝</div><span class="label">Notes</span></div>
+                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: #FF3B30;">📅</div><span class="label">Calendar</span></div>
+                    <div class="app-icon" onclick="openApp('clock')"><div class="icon" style="background: #000;">⏰</div><span class="label">Clock</span></div>
+                    <div class="app-icon" onclick="openApp('weather')"><div class="icon" style="background: #5AC8FA;">🌤️</div><span class="label">Weather</span></div>
+                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: #007AFF;">🛒</div><span class="label">App Store</span></div>
+                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: #8E8E93;">⚙️</div><span class="label">Settings</span></div>
+                    <div class="app-icon" onclick="openApp('calculator')"><div class="icon" style="background: #000;">🧮</div><span class="label">Calculator</span></div>
+                    <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: #000;">⌨️</div><span class="label">Terminal</span></div>
+                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: #5AC8FA;">📁</div><span class="label">Files</span></div>
+                    <div class="app-icon" onclick="openApp('maps')"><div class="icon" style="background: #34C759;">🗺️</div><span class="label">Maps</span></div>
                 </div>
             </div>
-        </div>
-
-        <div class="home-screen" id="homeScreen">
-            <div class="page" id="page1">
-                <div class="datetime-widget">
-                    <div class="time-display" id="homeTime">12:00</div>
-                    <div class="date-display" id="homeDate">Sunday, January 1</div>
-                </div>
-                <div class="weather-widget">
-                    <div class="weather-info"><span class="weather-icon">☀️</span><span class="weather-temp">28°</span></div>
-                    <div class="weather-details"><div>Jakarta, Indonesia</div><div>Sunny</div></div>
-                </div>
-                <div class="app-grid">
-                    <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div><span class="label">Chrome</span></div>
-                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: var(--icon-bg-settings)"><span>⚙️</span></div><span class="label">Settings</span></div>
-                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: var(--icon-bg-files)"><span>📂</span></div><span class="label">Files</span></div>
-                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: var(--icon-bg-store)"><span>🛒</span></div><span class="label">Store</span></div>
-                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: var(--icon-bg-camera)"><span>📷</span></div><span class="label">Camera</span></div>
-                    <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: var(--icon-bg-terminal)"><span>⌨️</span></div><span class="label">Terminal</span></div>
-                    <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: var(--icon-bg-gallery)"><span>🖼️</span></div><span class="label">Gallery</span></div>
-                    <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: var(--icon-bg-phone)"><span>📞</span></div><span class="label">Phone</span></div>
-                </div>
-            </div>
-            <div class="page" id="page2">
-                <div class="app-grid">
-                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: var(--icon-bg-messages)"><span>💬</span></div><span class="label">Messages</span></div>
-                    <div class="app-icon" onclick="openApp('gmail')"><div class="icon" style="background: #ea4335"><span>📧</span></div><span class="label">Gmail</span></div>
-                    <div class="app-icon" onclick="openApp('drive')"><div class="icon" style="background: #fbbc04"><span>📁</span></div><span class="label">Drive</span></div>
-                    <div class="app-icon" onclick="openApp('youtube')"><div class="icon" style="background: #ff0000"><span>▶️</span></div><span class="label">YouTube</span></div>
-                    <div class="app-icon" onclick="openApp('spotify')"><div class="icon" style="background: #1db954"><span>🎵</span></div><span class="label">Spotify</span></div>
-                    <div class="app-icon" onclick="openApp('calculator')"><div class="icon" style="background: #00bcd4"><span>🔢</span></div><span class="label">Calculator</span></div>
-                    <div class="app-icon" onclick="openApp('clock')"><div class="icon" style="background: #673ab7"><span>⏰</span></div><span class="label">Clock</span></div>
-                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: #f44336"><span>📅</span></div><span class="label">Calendar</span></div>
-                </div>
-            </div>
-            <div class="page-indicator">
-                <div class="page-dot active" data-page="1"></div>
-                <div class="page-dot" data-page="2"></div>
+            
+            <div class="dock">
+                <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: #34C759;">📞</div></div>
+                <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: #34C759;">💬</div></div>
+                <div class="app-icon" onclick="openApp('browser')"><div class="icon" style="background: #007AFF;">🌐</div></div>
+                <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: #000;">📷</div></div>
             </div>
         </div>
-
-        <div class="dock">
-            <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: var(--icon-bg-phone)"><span>📞</span></div></div>
-            <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: var(--icon-bg-messages)"><span>💬</span></div></div>
-            <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: var(--icon-bg-chrome)"><span>🌐</span></div></div>
-            <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: var(--icon-bg-camera)"><span>📷</span></div></div>
-        </div>
-
-        <div class="nav-bar">
-            <div class="nav-button" id="navBack" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
-            <div class="nav-button active" id="navHome"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
-            <div class="nav-button" id="navRecents"><svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-3.5h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-3.5h1c.55 0 1-.45 1-1v-5c0-5.55-4.45-10-10-10S2 7.45 2 13h2c0-4.42 3.58-8 8-8s8 3.58 8 8v5H6v-5H4v5z"/></svg></div>
-        </div>
-
+        
         <div class="app-window" id="appWindow">
             <div class="app-header">
-                <div class="app-back" onclick="closeApp()"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
-                <span class="app-title" id="appTitle">Settings</span>
-                <div class="app-menu"><svg viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="app-back" onclick="closeApp()">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <span class="app-title" id="appTitle">App</span>
             </div>
             <div class="app-content" id="appContent"></div>
         </div>
-
+        
         <div class="toast" id="toast">App opened</div>
     </div>
-
+    
     <script>
-        let isLocked = true, isDrawerOpen = false, isShadeOpen = false;
-        let startY = 0, startX = 0, currentY = 0, currentX = 0;
-        const bootScreen = document.getElementById('bootScreen');
-        const lockScreen = document.getElementById('lockScreen');
-        const appDrawer = document.getElementById('appDrawer');
-        const notificationShade = document.getElementById('notificationShade');
-        const appWindow = document.getElementById('appWindow');
-        const toast = document.getElementById('toast');
-        const phoneFrame = document.querySelector('.phone-frame');
-
-        function init() {
-            updateTime(); setInterval(updateTime, 1000);
-            setTimeout(() => {
-                bootScreen.classList.add('hidden');
-                setTimeout(() => { lockScreen.classList.add('hidden'); isLocked = false; }, 1000);
-            }, 3000);
-            setupGestures();
-        }
-
+        // Time update
         function updateTime() {
-            const now = new Date(), h = now.getHours(), m = now.getMinutes().toString().padStart(2, '0');
-            const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            const t = `${h}:${m}`, d = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
-            document.getElementById('statusTime').textContent = t;
-            document.getElementById('homeTime').textContent = t;
-            document.getElementById('homeDate').textContent = d;
-            document.getElementById('lockTime').textContent = t;
-            document.getElementById('lockDate').textContent = d;
+            const now = new Date();
+            const h = now.getHours();
+            const m = now.getMinutes().toString().padStart(2, '0');
+            const time = h + ':' + m;
+            document.getElementById('statusTime').textContent = time;
+            document.getElementById('homeTime').textContent = time;
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            document.getElementById('homeDate').textContent = days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate();
         }
-
-        function setupGestures() {
-            phoneFrame.addEventListener('touchstart', e => { startY = e.touches[0].clientY; startX = e.touches[0].clientX; }, { passive: false });
-            phoneFrame.addEventListener('touchmove', e => { currentY = e.touches[0].clientY; currentX = e.touches[0].clientX; }, { passive: false });
-            phoneFrame.addEventListener('touchend', handleGesture);
-            phoneFrame.addEventListener('mousedown', e => { startY = e.clientY; startX = e.clientX; });
-            phoneFrame.addEventListener('mouseup', handleMouse);
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(function() { toast.classList.remove('show'); }, 2000);
         }
-
-        function handleGesture(e) {
-            const dY = currentY - startY, dX = currentX - startX;
-            if (startX < 50 && Math.abs(dY) > 50) { dY < 0 && !isShadeOpen ? openShade() : dY > 0 && isShadeOpen && closeShade(); }
-            else if (startY > window.innerHeight - 100 && dY < -50 && !isDrawerOpen && !isShadeOpen && !appWindow.classList.contains('open')) openDrawer();
-            else if (dY > 50 && isDrawerOpen) closeDrawer();
-            else if (dY < -50 && isShadeOpen) closeShade();
-            else if (Math.abs(dY) > 100 && dY < 0 && !isLocked) lockScreen.classList.add('hidden'), isLocked = true;
+        
+        // Calculator
+        let calcVal = 0, calcOp = null, calcNew = true;
+        
+        function calcNum(n) {
+            const r = document.getElementById('calcResult');
+            if (calcNew) { r.textContent = n; calcNew = false; }
+            else { r.textContent = r.textContent === '0' ? n : r.textContent + n; }
         }
-
-        function handleMouse(e) {
-            const dY = e.clientY - startY;
-            if (startY > window.innerHeight - 100 && dY > 30 && !isDrawerOpen && !isShadeOpen && !appWindow.classList.contains('open')) openDrawer();
-            if (startY < 50 && !isShadeOpen) openShade();
-            if (dY < -100 && !isLocked) { lockScreen.classList.add('hidden'); isLocked = true; }
+        
+        function calcClear() {
+            document.getElementById('calcResult').textContent = '0';
+            calcVal = 0; calcOp = null; calcNew = true;
         }
-
-        function goBack() { if (appWindow.classList.contains('open')) closeApp(); }
-        function openDrawer() { isDrawerOpen = true; appDrawer.classList.add('open'); }
-        function closeDrawer() { isDrawerOpen = false; appDrawer.classList.remove('open'); }
-        function openShade() { isShadeOpen = true; notificationShade.classList.add('open'); }
-        function closeShade() { isShadeOpen = false; notificationShade.classList.remove('open'); }
-        function toggleTile(el) { el.classList.toggle('on'); showToast(`${el.querySelector('span').textContent} ${el.classList.contains('on') ? 'enabled' : 'disabled'}`); }
-
+        
+        function calcSetOp(o) {
+            calcVal = parseFloat(document.getElementById('calcResult').textContent);
+            calcOp = o; calcNew = true;
+        }
+        
+        function calcEquals() {
+            let r = parseFloat(document.getElementById('calcResult').textContent);
+            if (calcOp === '+') r = calcVal + r;
+            else if (calcOp === '-') r = calcVal - r;
+            else if (calcOp === '*') r = calcVal * r;
+            else if (calcOp === '/') r = calcVal / r;
+            document.getElementById('calcResult').textContent = r;
+            calcVal = r; calcOp = null; calcNew = true;
+        }
+        
+        function calcPlusMinus() { document.getElementById('calcResult').textContent *= -1; }
+        function calcPercent() { document.getElementById('calcResult').textContent /= 100; }
+        
+        // Phone
+        let phoneNumStr = '';
+        function phoneNum(n) {
+            phoneNumStr += n;
+            document.getElementById('phoneNumber').textContent = phoneNumStr;
+        }
+        
+        // Calendar
+        let calMonth = new Date().getMonth(), calYear = new Date().getFullYear();
+        function renderCal() {
+            const days = document.getElementById('calDays');
+            const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            document.getElementById('calMonth').textContent = monthNames[calMonth] + ' ' + calYear;
+            const firstDay = new Date(calYear, calMonth, 1).getDay();
+            const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+            const today = new Date();
+            let html = '';
+            for (let i = 0; i < firstDay; i++) html += '<div class="calendar-day other"></div>';
+            for (let d = 1; d <= daysInMonth; d++) {
+                const isToday = d === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear();
+                html += '<div class="calendar-day' + (isToday ? ' today' : '') + '">' + d + '</div>';
+            }
+            days.innerHTML = html;
+        }
+        function calPrev() { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCal(); }
+        function calNext() { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCal(); }
+        
+        // Terminal
+        function runTerm(e) {
+            if (e.key === 'Enter') {
+                const cmd = document.getElementById('termInput').value;
+                let out = '';
+                if (cmd === 'clear') { document.getElementById('termOutput').innerHTML = ''; }
+                else if (cmd === 'date') { out = new Date().toString(); }
+                else if (cmd === 'whoami') { out = 'guest@containeros'; }
+                else if (cmd === 'pwd') { out = '/home/guest'; }
+                else if (cmd === 'ls') { out = 'Documents  Downloads  Pictures  Projects'; }
+                else if (cmd === 'help') { out = 'Commands: clear, date, whoami, pwd, ls, docker ps, uname -a'; }
+                else if (cmd === 'docker ps') { out = 'CONTAINER ID  IMAGE  STATUS\nabc123  gui:latest  Up 2 hours'; }
+                else if (cmd === 'uname -a') { out = 'ContainerOS 1.0.0 Docker Linux x86_64'; }
+                else if (cmd) { out = 'Command not found: ' + cmd; }
+                if (out) document.getElementById('termOutput').innerHTML += '<div class="terminal-line">$ ' + cmd + '<br>' + out + '</div>';
+                document.getElementById('termInput').value = '';
+            }
+        }
+        
+        // App titles
+        var appTitles = {
+            phone: 'Phone', messages: 'Messages', browser: 'Safari', camera: 'Camera',
+            photos: 'Photos', music: 'Music', notes: 'Notes', calendar: 'Calendar',
+            clock: 'Clock', weather: 'Weather', store: 'App Store', settings: 'Settings',
+            calculator: 'Calculator', terminal: 'Terminal', files: 'Files', maps: 'Maps'
+        };
+        
+        // App contents
+        var appContents = {
+            calculator: '<div class="calc-display"><div class="expression" id="calcExpr"></div><div class="result" id="calcResult">0</div></div><div class="calc-buttons"><button class="calc-btn func" onclick="calcClear()">AC</button><button class="calc-btn func" onclick="calcPlusMinus()">+/-</button><button class="calc-btn func" onclick="calcPercent()">%</button><button class="calc-btn op" onclick="calcSetOp(\'/\')">÷</button><button class="calc-btn num" onclick="calcNum(\'7\')">7</button><button class="calc-btn num" onclick="calcNum(\'8\')">8</button><button class="calc-btn num" onclick="calcNum(\'9\')">9</button><button class="calc-btn op" onclick="calcSetOp(\'*\')">×</button><button class="calc-btn num" onclick="calcNum(\'4\')">4</button><button class="calc-btn num" onclick="calcNum(\'5\')">5</button><button class="calc-btn num" onclick="calcNum(\'6\')">6</button><button class="calc-btn op" onclick="calcSetOp(\'-\')">−</button><button class="calc-btn num" onclick="calcNum(\'1\')">1</button><button class="calc-btn num" onclick="calcNum(\'2\')">2</button><button class="calc-btn num" onclick="calcNum(\'3\')">3</button><button class="calc-btn op" onclick="calcSetOp(\'+\')">+</button><button class="calc-btn num zero" onclick="calcNum(\'0\')">0</button><button class="calc-btn num" onclick="calcNum(\'.\')">.</button><button class="calc-btn op" onclick="calcEquals()">=</button></div>',
+            
+            phone: '<div class="phone-app"><div class="phone-display" id="phoneNumber">+62 812 3456 7890</div><div class="phone-keypad"><button class="phone-btn" onclick="phoneNum(\'1\')"><span>1</span></button><button class="phone-btn" onclick="phoneNum(\'2\')"><span>2</span><span class="sub">ABC</span></button><button class="phone-btn" onclick="phoneNum(\'3\')"><span>3</span><span class="sub">DEF</span></button><button class="phone-btn" onclick="phoneNum(\'4\')"><span>4</span><span class="sub">GHI</span></button><button class="phone-btn" onclick="phoneNum(\'5\')"><span>5</span><span class="sub">JKL</span></button><button class="phone-btn" onclick="phoneNum(\'6\')"><span>6</span><span class="sub">MNO</span></button><button class="phone-btn" onclick="phoneNum(\'7\')"><span>7</span><span class="sub">PQRS</span></button><button class="phone-btn" onclick="phoneNum(\'8\')"><span>8</span><span class="sub">TUV</span></button><button class="phone-btn" onclick="phoneNum(\'9\')"><span>9</span><span class="sub">WXYZ</span></button><button class="phone-btn" onclick="phoneNum(\'*\')"><span>*</span></button><button class="phone-btn" onclick="phoneNum(\'0\')"><span>0</span><span class="sub">+</span></button><button class="phone-btn" onclick="phoneNum(\'#\')"><span>#</span></button></div><div style="padding: 20px; display: flex; justify-content: center; gap: 50px; background: #000;"><div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">📋</div><button class="phone-call" onclick="showToast(\'Calling...\')"></button><div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer;" onclick="phoneNumStr=\'\';document.getElementById(\'phoneNumber\').textContent=\'+62 \';">⌫</div></div></div>',
+            
+            calendar: '<div class="calendar-header"><div class="calendar-nav" onclick="calPrev()">‹</div><div class="calendar-month" id="calMonth">July 2025</div><div class="calendar-nav" onclick="calNext()">›</div></div><div class="calendar-grid"><div class="calendar-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-days" id="calDays"></div></div><script>calMonth=new Date().getMonth();calYear=new Date().getFullYear();renderCal();<\/script>',
+            
+            clock: '<div class="clock-display"><div class="clock-time" id="clockTime">9:41</div><div class="clock-date" id="clockDate">Monday, July 6</div></div><script>function updateClock(){var now=new Date();document.getElementById(\'clockTime\').textContent=now.getHours().toString().padStart(2,\'0\')+\':\'+now.getMinutes().toString().padStart(2,\'0\');var days=[\'Sunday\',\'Monday\',\'Tuesday\',\'Wednesday\',\'Thursday\',\'Friday\',\'Saturday\'];var months=[\'January\',\'February\',\'March\',\'April\',\'May\',\'June\',\'July\',\'August\',\'September\',\'October\',\'November\',\'December\'];document.getElementById(\'clockDate\').textContent=days[now.getDay()]+\', \'+months[now.getMonth()]+\' \'+now.getDate();}updateClock();setInterval(updateClock,1000);<\/script>',
+            
+            terminal: '<div class="terminal"><div class="terminal-line">ContainerOS Terminal v1.0</div><div class="terminal-line">Type \'help\' for commands</div><div id="termOutput"></div><div class="terminal-input"><span class="terminal-prompt">$</span><input type="text" id="termInput" onkeypress="runTerm(event)"></div></div>',
+            
+            camera: '<div class="camera-app"><div class="camera-viewfinder">📷</div><div class="camera-controls"><div style="width:50px;height:50px;border-radius:50%;background:#333;"></div><button class="camera-btn" onclick="showToast(\'Photo taken!\')"></button><div style="width:50px;height:50px;border-radius:50%;background:#007AFF;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;cursor:pointer;">↻</div></div></div>',
+            
+            settings: '<div class="settings-list"><div class="settings-item" onclick="showToast(\'WiFi Settings\')"><div class="settings-icon" style="background:#007AFF;">📶</div><div class="settings-info"><div class="settings-label">WiFi</div><div class="settings-desc">Connected to HomeNetwork</div></div></div><div class="settings-item" onclick="showToast(\'Bluetooth Settings\')"><div class="settings-icon" style="background:#5856D6;">🔵</div><div class="settings-info"><div class="settings-label">Bluetooth</div><div class="settings-desc">On</div></div></div><div class="settings-item" onclick="showToast(\'Display Settings\')"><div class="settings-icon" style="background:#FF9500;">☀️</div><div class="settings-info"><div class="settings-label">Display & Brightness</div><div class="settings-desc">Brightness: 70%</div></div></div><div class="settings-item" onclick="showToast(\'Sound Settings\')"><div class="settings-icon" style="background:#FF3B30;">🔊</div><div class="settings-info"><div class="settings-label">Sounds & Haptics</div><div class="settings-desc">Ringtone: Default</div></div></div><div class="settings-item" onclick="showToast(\'Battery Settings\')"><div class="settings-icon" style="background:#34C759;">🔋</div><div class="settings-info"><div class="settings-label">Battery</div><div class="settings-desc">85% - 5h remaining</div></div></div><div class="settings-item" onclick="showToast(\'Privacy Settings\')"><div class="settings-icon" style="background:#5AC8FA;">🔒</div><div class="settings-info"><div class="settings-label">Privacy & Security</div><div class="settings-desc">Location Services: On</div></div></div><div class="settings-item" onclick="showToast(\'About ContainerOS\')"><div class="settings-icon" style="background:#8E8E93;">ℹ️</div><div class="settings-info"><div class="settings-label">About</div><div class="settings-desc">ContainerOS v4.0</div></div></div></div>',
+            
+            messages: '<div class="messages-list"><div class="message-item"><div class="message-avatar" style="background:#34C759;">👤</div><div class="message-info"><div class="message-name">John Doe</div><div class="message-preview">Hey, are you available for meeting?</div></div></div><div class="message-item"><div class="message-avatar" style="background:#007AFF;">📧</div><div class="message-info"><div class="message-name">Work Team</div><div class="message-preview">Project deadline updated</div></div></div><div class="message-item"><div class="message-avatar" style="background:#FF9500;">📱</div><div class="message-info"><div class="message-name">Mom</div><div class="message-preview">Don\'t forget to call back!</div></div></div><div class="message-item"><div class="message-avatar" style="background:#AF52DE;">🎉</div><div class="message-info"><div class="message-name">Birthday Club</div><div class="message-preview">Happy birthday!</div></div></div></div>',
+            
+            notes: '<div class="notes-list"><div class="note-item"><div class="note-title">Shopping List</div><div class="note-preview">Milk, Bread, Eggs, Coffee</div></div><div class="note-item" style="background:#E8F5E9;"><div class="note-title">Ideas</div><div class="note-preview">New app feature concepts</div></div><div class="note-item" style="background:#E3F2FD;"><div class="note-title">Meeting Notes</div><div class="note-preview">Discuss Q3 targets</div></div><div class="note-item" style="background:#FCE4EC;"><div class="note-title">Recipe</div><div class="note-preview">Chocolate cake ingredients</div></div></div>',
+            
+            photos: '<div class="gallery-grid"><div class="gallery-item">🖼️</div><div class="gallery-item" style="background:linear-gradient(135deg, #667eea, #764ba2);">🌅</div><div class="gallery-item" style="background:linear-gradient(135deg, #f093fb, #f5576c);">🌸</div><div class="gallery-item" style="background:linear-gradient(135deg, #4facfe, #00f2fe);">🌊</div><div class="gallery-item" style="background:linear-gradient(135deg, #43e97b, #38f9d7);">🌿</div><div class="gallery-item" style="background:linear-gradient(135deg, #fa709a, #fee140);">🌻</div><div class="gallery-item" style="background:linear-gradient(135deg, #a8edea, #fed6e3);">🏔️</div><div class="gallery-item" style="background:linear-gradient(135deg, #ff9a9e, #fecfef);">🌺</div><div class="gallery-item" style="background:linear-gradient(135deg, #ffecd2, #fcb69f);">🍂</div></div>',
+            
+            store: '<div class="store-header"><div class="store-title">App Store</div><div class="store-subtitle">Discover amazing apps</div></div><div class="store-apps"><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#ff0000,#cc0000);">📺</div><div class="store-app-name">Netflix</div><div class="store-app-desc">Entertainment</div><button class="store-app-btn" onclick="showToast(\'Installing Netflix...\')">Get</button></div><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬</div><div class="store-app-name">WhatsApp</div><div class="store-app-desc">Communication</div><button class="store-app-btn" style="background:#34C759;">Open</button></div><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#5856D6,#AF52DE);">🎮</div><div class="store-app-name">Gaming Pro</div><div class="store-app-desc">Games</div><button class="store-app-btn" onclick="showToast(\'Installing...\')">Get</button></div><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#007AFF,#5856D6);">📱</div><div class="store-app-name">Productivity</div><div class="store-app-desc">Work Tools</div><button class="store-app-btn" onclick="showToast(\'Installing...\')">Get</button></div></div>',
+            
+            files: '<div class="files-list"><div class="file-item"><div class="file-icon" style="background:#5AC8FA;">📁</div><div class="file-info"><div class="file-name">Documents</div><div class="file-meta">12 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#34C759;">📁</div><div class="file-info"><div class="file-name">Downloads</div><div class="file-meta">5 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#FF9500;">📁</div><div class="file-info"><div class="file-name">Pictures</div><div class="file-meta">24 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#AF52DE;">📁</div><div class="file-info"><div class="file-name">Music</div><div class="file-meta">8 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#FF3B30;">📁</div><div class="file-info"><div class="file-name">Videos</div><div class="file-meta">3 items</div></div></div></div>',
+            
+            music: '<div class="music-display"><div class="music-album">🎵</div><div class="music-title">Now Playing</div><div class="music-artist">Song Title - Artist</div><div class="music-progress"><div class="music-progress-bar"></div></div><div class="music-controls"><span>⏮️</span><div class="music-play">▶️</div><span>⏭️</span></div></div>',
+            
+            weather: '<div class="weather-display"><div class="weather-main-icon">☀️</div><div class="weather-temp">28°</div><div class="weather-condition">Sunny</div><div class="weather-location">Jakarta, Indonesia</div><div class="weather-forecast"><div class="forecast-item"><div class="forecast-day">Tue</div><div class="forecast-icon">🌤️</div><div class="forecast-temp">26°</div></div><div class="forecast-item"><div class="forecast-day">Wed</div><div class="forecast-icon">🌧️</div><div class="forecast-temp">24°</div></div><div class="forecast-item"><div class="forecast-day">Thu</div><div class="forecast-icon">⛈️</div><div class="forecast-temp">23°</div></div><div class="forecast-item"><div class="forecast-day">Fri</div><div class="forecast-icon">🌤️</div><div class="forecast-temp">27°</div></div></div></div>',
+            
+            browser: '<div class="browser-toolbar"><div class="browser-url"><span>🔍</span><input type="text" value="google.com" readonly></div></div><div class="browser-content"><div class="quick-links"><div class="quick-link" onclick="showToast(\'Opening YouTube\')"><div class="quick-link-icon" style="background:#FF0000;">📺</div><div class="quick-link-name">YouTube</div></div><div class="quick-link" onclick="showToast(\'Opening Google\')"><div class="quick-link-icon" style="background:#4285F4;">🔍</div><div class="quick-link-name">Google</div></div><div class="quick-link" onclick="showToast(\'Opening Twitter\')"><div class="quick-link-icon" style="background:#1DA1F2;">🐦</div><div class="quick-link-name">Twitter</div></div><div class="quick-link" onclick="showToast(\'Opening GitHub\')"><div class="quick-link-icon" style="background:#333;">💻</div><div class="quick-link-name">GitHub</div></div></div></div>',
+            
+            maps: '<div class="maps-display"><div class="maps-icon">🗺️</div><div class="maps-title">Maps</div><div class="maps-location">Jakarta, Indonesia</div><div class="maps-card"><div class="maps-card-title">Current Location</div><div class="maps-card-coords">-6.2088° S, 106.8456° E</div></div></div>'
+        };
+        
         function openApp(name) {
-            closeDrawer(); closeShade();
-            document.getElementById('appTitle').textContent = getAppTitle(name);
-            document.getElementById('appContent').innerHTML = getAppContent(name);
-            appWindow.classList.add('open'); showToast(`${getAppTitle(name)} opened`);
+            var title = appTitles[name] || 'App';
+            var content = appContents[name] || '<div style="padding: 40px; text-align: center; color: var(--text-secondary);"><div style="font-size: 60px; margin-bottom: 16px;">📱</div><div>App content coming soon</div></div>';
+            document.getElementById('appTitle').textContent = title;
+            document.getElementById('appContent').innerHTML = content;
+            document.getElementById('appWindow').classList.add('open');
+            showToast(title + ' opened');
         }
-
-        function closeApp() { appWindow.classList.remove('open'); }
-
-        function getAppTitle(n) { const t = {settings:'Settings',files:'Files',store:'App Store',chrome:'Chrome',terminal:'Terminal',camera:'Camera',gmail:'Gmail',phone:'Phone',messages:'Messages',gallery:'Gallery',youtube:'YouTube',spotify:'Spotify',calculator:'Calculator',clock:'Clock',calendar:'Calendar',notes:'Notes',drive:'Drive',docs:'Docs',whatsapp:'WhatsApp',telegram:'Telegram',discord:'Discord'}; return t[n] || 'App'; }
-
-        function getAppContent(name) {
-            if (name === 'settings') return `<div class="settings-list"><div class="settings-section"><div class="settings-section-title">Network & Internet</div><div class="settings-item" onclick="showToast('WiFi Settings')"><div class="settings-icon" style="background: var(--primary)"><span>📶</span></div><div class="settings-info"><div class="settings-label">WiFi</div><div class="settings-desc">Connected to HomeWiFi</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Mobile Network Settings')"><div class="settings-icon" style="background: var(--secondary)"><span>📱</span></div><div class="settings-info"><div class="settings-label">Mobile Network</div><div class="settings-desc">4G - Signal strength: Excellent</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div><div class="settings-section"><div class="settings-section-title">Device</div><div class="settings-item" onclick="showToast('Display Settings')"><div class="settings-icon" style="background: #00bcd4"><span>🖥️</span></div><div class="settings-info"><div class="settings-label">Display</div><div class="settings-desc">Brightness, Dark theme, Screen timeout</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Sound Settings')"><div class="settings-icon" style="background: #ff9800"><span>🔊</span></div><div class="settings-info"><div class="settings-label">Sound</div><div class="settings-desc">Volume, Do Not Disturb</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Battery Settings')"><div class="settings-icon" style="background: var(--secondary)"><span>🔋</span></div><div class="settings-info"><div class="settings-label">Battery</div><div class="settings-desc">80% - Approximately 1 day remaining</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-item" onclick="showToast('About Phone')"><div class="settings-icon" style="background: var(--icon-bg-terminal)"><span>ℹ️</span></div><div class="settings-info"><div class="settings-label">About Phone</div><div class="settings-desc">ContainerOS 1.0.0</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div class="settings-item" onclick="showToast('Docker Info')"><div class="settings-icon" style="background: var(--primary)"><span>🐳</span></div><div class="settings-info"><div class="settings-label">Docker Info</div><div class="settings-desc">Version 24.0.7 - Running 12 containers</div></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div></div>`;
-            if (name === 'terminal') return `<div style="padding: 16px; font-family: monospace; background: #1e1e1e; color: #0f0; height: 100%;"><div style="margin-bottom: 8px;">containeros@localhost:~$ docker ps</div><div style="margin-bottom: 16px; color: #888;">CONTAINER ID   IMAGE          STATUS<br>abc123   gui:latest    Up 2 hours<br>def456   network:latest Up 2 hours<br>ghi789   audio:latest  Up 2 hours</div><div style="margin-bottom: 8px;">containeros@localhost:~$ <span style="animation: blink 1s infinite;">█</span></div></div><style>@keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }</style>`;
-            if (name === 'store') return `<div style="padding: 16px;"><h2 style="margin-bottom: 16px;">Featured Apps</h2><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;"><div style="background: var(--surface-variant); border-radius: 16px; padding: 16px; text-align: center;"><div style="width: 64px; height: 64px; background: #4285f4; border-radius: 16px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px;">📺</div><div style="font-weight: 500; margin-bottom: 4px;">Netflix</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Entertainment</div><button style="background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer;">Install</button></div><div style="background: var(--surface-variant); border-radius: 16px; padding: 16px; text-align: center;"><div style="width: 64px; height: 64px; background: #25D366; border-radius: 16px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px;">📱</div><div style="font-weight: 500; margin-bottom: 4px;">WhatsApp</div><div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Communication</div><button style="background: var(--secondary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer;">Update</button></div></div></div>`;
-            return `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary);"><div style="font-size: 64px; margin-bottom: 16px;">📱</div><div style="font-size: 18px;">${getAppTitle(name)}</div><div style="font-size: 14px; margin-top: 8px;">App content coming soon</div></div>`;
+        
+        function closeApp() {
+            document.getElementById('appWindow').classList.remove('open');
         }
-
-        function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); }
-        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
