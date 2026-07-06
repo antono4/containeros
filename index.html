@@ -215,22 +215,6 @@
         .battery-icon::after { content: ''; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 2px; height: 6px; background: var(--status-bar-text); border-radius: 0 1px 1px 0; }
         .battery-level { height: 100%; background: var(--secondary); border-radius: 1px; width: 80%; }
 
-        .pill-bar {
-            position: absolute; top: calc(var(--status-bar-height) + 12px); left: 50%;
-            transform: translateX(-50%); background: var(--surface); backdrop-filter: blur(30px);
-            border-radius: var(--radius-full); padding: 12px 16px; display: flex;
-            align-items: center; gap: 12px; box-shadow: var(--shadow-2); z-index: 90;
-            min-width: 220px; max-width: 90%;
-        }
-        .pill-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; background: linear-gradient(135deg, #4285f4, #1a73e8); }
-        .pill-content { flex: 1; min-width: 0; }
-        .pill-app { font-size: 13px; font-weight: 600; color: var(--text-primary); }
-        .pill-text { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .pill-time { font-size: 11px; color: var(--text-tertiary); }
-        .pill-close { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast); background: var(--surface-variant); }
-        .pill-close:hover { background: var(--surface-container); }
-        .pill-close svg { width: 14px; height: 14px; fill: var(--text-tertiary); }
-
         .control-center {
             position: absolute; top: -100%; left: 0; right: 0;
             background: var(--surface); border-radius: 0 0 var(--radius-xl) var(--radius-xl);
@@ -279,19 +263,6 @@
         .weather-detail-value { font-size: 18px; font-weight: 600; color: var(--text-primary); }
         .weather-detail-label { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; text-transform: uppercase; }
 
-        .health-widget { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .health-item { text-align: center; padding: 16px 8px; background: var(--surface-variant); border-radius: var(--radius-md); }
-        .health-ring { width: 56px; height: 56px; margin: 0 auto 8px; border-radius: 50%; background: conic-gradient(var(--primary) 0% 75%, var(--surface-container) 75% 100%); display: flex; align-items: center; justify-content: center; }
-        .health-ring-inner { width: 44px; height: 44px; border-radius: 50%; background: var(--surface-variant); display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .health-value { font-size: 20px; font-weight: 600; color: var(--text-primary); }
-        .health-label { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
-
-        .quick-shortcuts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 16px; background: var(--surface-variant); border-radius: var(--radius-lg); margin: 0 20px 16px; }
-        .shortcut-item { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; padding: 8px 4px; border-radius: var(--radius-sm); transition: var(--transition-fast); }
-        .shortcut-item:active { background: var(--surface-container); }
-        .shortcut-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .shortcut-label { font-size: 10px; color: var(--text-secondary); text-align: center; }
-
         .app-section-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px; padding: 0 4px; }
         .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--icon-grid-gap); padding: 8px; }
         .app-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: var(--transition-spring); padding: 8px; border-radius: var(--radius-md); }
@@ -301,9 +272,6 @@
         .app-icon:hover .icon { transform: translateY(-6px) scale(1.05); box-shadow: var(--shadow-3); }
         .app-icon .icon span { position: relative; z-index: 1; }
         .app-icon .label { font-size: 12px; color: var(--text-primary); text-align: center; max-width: 72px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
-
-        .dock { position: absolute; bottom: calc(var(--nav-bar-height) + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); backdrop-filter: blur(30px); border-radius: var(--radius-xl); padding: 12px 20px; display: flex; gap: 12px; box-shadow: var(--shadow-3); border: 1px solid rgba(255,255,255,0.1); }
-        .dock .app-icon .icon { width: 52px; height: 52px; border-radius: var(--radius-md); font-size: 24px; }
 
         .nav-bar { position: absolute; bottom: 0; left: 0; right: 0; height: var(--nav-bar-height); background: var(--nav-bar-bg); backdrop-filter: blur(30px); display: flex; justify-content: space-around; align-items: flex-start; padding-top: 12px; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: var(--transition-fast); padding: 4px 16px; }
@@ -468,16 +436,6 @@
             </div>
         </div>
 
-        <div class="pill-bar" onclick="openControlCenter()">
-            <div class="pill-icon">💬</div>
-            <div class="pill-content">
-                <div class="pill-app">Messages</div>
-                <div class="pill-text">You have 3 new messages</div>
-            </div>
-            <span class="pill-time">now</span>
-            <div class="pill-close" onclick="event.stopPropagation(); dismissPill()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
-        </div>
-
         <div class="control-center" id="controlCenter">
             <div class="cc-header"><span class="cc-title">Control Center</span></div>
             <div class="cc-grid">
@@ -556,69 +514,26 @@
 
                 <div class="widget-card weather-widget">
                     <div class="weather-main"><span class="weather-icon">☀️</span><span class="weather-temp">28°</span></div>
-                    <div class="weather-info"><div class="weather-location">Jakarta</div><div class="weather-desc">Sunny • Air Quality: Good</div></div>
+                    <div class="weather-info"><div class="weather-location">Jakarta</div><div class="weather-desc">Sunny</div></div>
                 </div>
 
-                <div class="widget-card">
-                    <div class="app-section-title" style="margin-bottom: 16px;">Health Connect</div>
-                    <div class="health-widget">
-                        <div class="health-item">
-                            <div class="health-ring"><div class="health-ring-inner">👟</div></div>
-                            <div class="health-value">5,432</div>
-                            <div class="health-label">Steps</div>
-                        </div>
-                        <div class="health-item">
-                            <div class="health-ring"><div class="health-ring-inner">🔥</div></div>
-                            <div class="health-value">182</div>
-                            <div class="health-label">Calories</div>
-                        </div>
-                        <div class="health-item">
-                            <div class="health-ring"><div class="health-ring-inner">💤</div></div>
-                            <div class="health-value">7h 23m</div>
-                            <div class="health-label">Sleep</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quick-shortcuts">
-                    <div class="shortcut-item" onclick="openApp('phone')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);">📞</div><span class="shortcut-label">Phone</span></div>
-                    <div class="shortcut-item" onclick="openApp('messages')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">💬</div><span class="shortcut-label">Chat</span></div>
-                    <div class="shortcut-item" onclick="openApp('camera')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);">📷</div><span class="shortcut-label">Camera</span></div>
-                    <div class="shortcut-item" onclick="openApp('chrome')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">🌐</div><span class="shortcut-label">Browser</span></div>
-                    <div class="shortcut-item" onclick="openApp('files')"><div class="shortcut-icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);">📂</div><span class="shortcut-label">Files</span></div>
-                </div>
-
-                <div class="app-section-title">Apps</div>
                 <div class="app-grid">
                     <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div><span class="label">Chrome</span></div>
                     <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #5f6368, #3c4043);"><span>⚙️</span></div><span class="label">Settings</span></div>
                     <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #fbbc04, #f9ab00);"><span>📂</span></div><span class="label">Files</span></div>
-                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #34a853, #1e8e3e);"><span>🛒</span></div><span class="label">Store</span></div>
-                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div><span class="label"> Camera</span></div>
+                    <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div><span class="label">Camera</span></div>
                     <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: linear-gradient(135deg, #202124, #3c4043);"><span>⌨️</span></div><span class="label">Terminal</span></div>
                     <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div><span class="label">Gallery</span></div>
                     <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);"><span>📞</span></div><span class="label">Phone</span></div>
                     <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div><span class="label">Messages</span></div>
-                    <div class="app-icon" onclick="openApp('youtube')"><div class="icon" style="background: linear-gradient(135deg, #ff0000, #cc0000);"><span>▶️</span></div><span class="label">YouTube</span></div>
-                    <div class="app-icon" onclick="openApp('spotify')"><div class="icon" style="background: linear-gradient(135deg, #1db954, #169c46);"><span>🎵</span></div><span class="label">Spotify</span></div>
-                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: linear-gradient(135deg, #f44336, #d32f2f);"><span>📅</span></div><span class="label">Calendar</span></div>
                 </div>
             </div>
-        </div>
-
-        <div class="dock">
-            <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: linear-gradient(135deg, #0f9d58, #0b8043);"><span>📞</span></div></div>
-            <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>💬</span></div></div>
-            <div class="app-icon" onclick="openApp('chrome')"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);"><span>🌐</span></div></div>
-            <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);"><span>📷</span></div></div>
-            <div class="app-icon" onclick="openApp('gallery')"><div class="icon" style="background: linear-gradient(135deg, #ff6d00, #e37400);"><span>🖼️</span></div></div>
         </div>
 
         <div class="nav-bar">
             <div class="nav-item active" onclick="handleNav('home')"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></div>
             <div class="nav-item" onclick="openDrawer()"><svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg><span>Apps</span></div>
             <div class="nav-item" onclick="openControlCenter()"><svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2h-4v2h4zm0-6v-2h-4v2h4z"/></svg><span>Control</span></div>
-            <div class="nav-item" onclick="openApp('settings')"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg><span>Settings</span></div>
         </div>
 
         <div class="app-window" id="appWindow">
@@ -731,8 +646,6 @@
         function closeDrawer() { isDrawerOpen = false; appDrawer.classList.remove('open'); }
         function openControlCenter() { isControlOpen = true; controlCenter.classList.add('open'); closeDrawer(); }
         function closeControlCenter() { isControlOpen = false; controlCenter.classList.remove('open'); }
-        function dismissPill() { document.querySelector('.pill-bar').style.display = 'none'; }
-
         function handleNav(page) {
             if (page === 'home') { closeApp(); closeDrawer(); closeControlCenter(); }
         }
