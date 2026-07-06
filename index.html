@@ -1335,7 +1335,7 @@
             },
             camera: {
                 title: 'Camera',
-                content: '<div style="padding:20px;text-align:center;"><div style="width:100%;aspect-ratio:4/3;background:#000;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;"><div style="font-size:80px;opacity:0.5;">📷</div><div style="position:absolute;bottom:12px;right:12px;font-size:12px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:4px;" id="camTime">00:00</div></div><div style="display:flex;justify-content:center;gap:24px;"><button style="width:48px;height:48px;border-radius:50%;border:2px solid white;background:transparent;cursor:pointer;"></button><button onclick="showToast(\'Photo taken!\')" style="width:64px;height:64px;border-radius:50%;border:4px solid white;background:white;cursor:pointer;"></button><button style="width:48px;height:48px;border-radius:50%;background:var(--surface-variant);cursor:pointer;font-size:20px;">🔄</button></div></div><script>setInterval(function(){var t=new Date();document.getElementById(\'camTime\').textContent=t.getHours().toString().padStart(2,\'0\')+\':\'+t.getMinutes().toString().padStart(2,\'0\');},1000);</script>'
+                content: '<div style="padding:20px;text-align:center;"><div style="width:100%;aspect-ratio:4/3;background:#000;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;"><div style="font-size:80px;opacity:0.5;">📷</div><div style="position:absolute;bottom:12px;right:12px;font-size:12px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:4px;" id="camTime">00:00</div></div><div style="display:flex;justify-content:center;gap:24px;"><button style="width:48px;height:48px;border-radius:50%;border:2px solid white;background:transparent;cursor:pointer;"></button><button onclick="showToast(\'Photo taken!\')" style="width:64px;height:64px;border-radius:50%;border:4px solid white;background:white;cursor:pointer;"></button><button style="width:48px;height:48px;border-radius:50%;background:var(--surface-variant);cursor:pointer;font-size:20px;">🔄</button></div></div>'
             },
             files: {
                 title: 'Files',
@@ -1364,6 +1364,15 @@
             // Initialize app-specific content
             if (name === 'calendar') setTimeout(renderCal, 50);
             if (name === 'terminal') setTimeout(function() { document.getElementById('termContent').innerHTML = termLines.join('<br>'); }, 50);
+            if (name === 'camera') {
+                setTimeout(function() {
+                    var camTimer = setInterval(function() {
+                        var t = new Date();
+                        var el = document.getElementById('camTime');
+                        if (el) el.textContent = t.getHours().toString().padStart(2,'0') + ':' + t.getMinutes().toString().padStart(2,'0');
+                    }, 1000);
+                }, 50);
+            }
         }
 
         // Close app
