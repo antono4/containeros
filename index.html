@@ -193,13 +193,13 @@
 
         /* Card Base */
         .card {
-            background: var(--surface-glass);
+            background: white;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-lg);
             padding: 20px;
             box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
         .card:active { transform: scale(0.98); }
@@ -845,23 +845,33 @@
                 <div class="card services-card">
                     <div class="services-grid">
                         <div class="service-item" onclick="openApp('wifi')">
-                            <div class="icon" style="background: linear-gradient(135deg, #007DFF, #0055CC);">📶</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #007DFF, #0055CC);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                            </div>
                             <span class="label">WiFi</span>
                         </div>
                         <div class="service-item" onclick="openApp('bluetooth')">
-                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">🔵</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
+                            </div>
                             <span class="label">Bluetooth</span>
                         </div>
                         <div class="service-item" onclick="openApp('airplane')">
-                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">✈️</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                            </div>
                             <span class="label">Flight</span>
                         </div>
                         <div class="service-item" onclick="openApp('location')">
-                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">📍</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
                             <span class="label">Location</span>
                         </div>
                         <div class="service-item" onclick="openApp('flashlight')">
-                            <div class="icon" style="background: linear-gradient(135deg, #FFD60A, #E6BE00);">🔦</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #FFD60A, #E6BE00);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M6 14l3 3v5h6v-5l3-3V9H6v5zm5-12h2v3h-2V2zM3.5 5.875L4.914 4.46l2.12 2.122L5.622 8 3.5 5.875zm13.46.71l2.123-2.12 1.414 1.414L18.375 8l-1.414-1.414z"/></svg>
+                            </div>
                             <span class="label">Light</span>
                         </div>
                     </div>
@@ -872,35 +882,51 @@
                     <h3>Frequently Used</h3>
                     <div class="apps-grid">
                         <div class="app-item" onclick="openApp('phone')">
-                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">📞</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #00C853, #009624);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                            </div>
                             <span class="label">Phone</span>
                         </div>
                         <div class="app-item" onclick="openApp('messages')">
-                            <div class="icon" style="background: linear-gradient(135deg, #007AFF, #0056CC);">💬</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #007AFF, #0056CC);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                            </div>
                             <span class="label">Messages</span>
                         </div>
                         <div class="app-item" onclick="openApp('browser')">
-                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">🌐</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #5856D6, #3D3A6D);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            </div>
                             <span class="label">Browser</span>
                         </div>
                         <div class="app-item" onclick="openApp('camera')">
-                            <div class="icon" style="background: linear-gradient(135deg, #FF3B30, #CC2F26);">📷</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #FF3B30, #CC2F26);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M12 15.2c1.86 0 3.41-1.55 3.41-3.46 0-1.91-1.55-3.46-3.41-3.46s-3.41 1.55-3.41 3.46c0 1.91 1.55 3.46 3.41 3.46zm-6.1 1.68l-.6-1.09c-.16-.28-.45-.46-.76-.46H4.5c-.31 0-.6.18-.76.46l-.6 1.09C2.67 17.6 2 19.06 2 20.64V21h16v-.36c0-1.58-.67-3.04-1.9-4.12l-.6-1.09zM9.5 12.74c1.82 0 3.35 1.17 3.86 2.76H5.64c.51-1.59 2.04-2.76 3.86-2.76z"/></svg>
+                            </div>
                             <span class="label">Camera</span>
                         </div>
                         <div class="app-item" onclick="openApp('gallery')">
-                            <div class="icon" style="background: linear-gradient(135deg, #FF9500, #CC7700);">🖼️</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #FF9500, #CC7700);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/></svg>
+                            </div>
                             <span class="label">Gallery</span>
                         </div>
                         <div class="app-item" onclick="openApp('terminal')">
-                            <div class="icon" style="background: linear-gradient(135deg, #1C1C1E, #000000);">💻</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #1C1C1E, #000000);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-5 14H7v-2h8v2zm3-4H7v-2h11v2zm0-4H7V8h11v2z"/></svg>
+                            </div>
                             <span class="label">Terminal</span>
                         </div>
                         <div class="app-item" onclick="openApp('settings')">
-                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">⚙️</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                            </div>
                             <span class="label">Settings</span>
                         </div>
                         <div class="app-item" onclick="openApp('store')">
-                            <div class="icon" style="background: linear-gradient(135deg, #00D4AA, #00A080);">🛒</div>
+                            <div class="icon" style="background: linear-gradient(135deg, #00D4AA, #00A080);">
+                                <svg viewBox="0 0 24 24" fill="white"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+                            </div>
                             <span class="label">Store</span>
                         </div>
                     </div>
@@ -1343,7 +1369,7 @@
             },
             settings: {
                 title: 'Settings',
-                content: '<div style="padding:20px;"><div onclick="showToast(\'WiFi Settings\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#007AFF;display:flex;align-items:center;justify-content:center;font-size:18px;color:white;">📶</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">WiFi</div><div style="font-size:12px;color:var(--text-secondary);">Connected to HomeNetwork</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'Bluetooth Settings\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#5856D6;display:flex;align-items:center;justify-content:center;font-size:18px;color:white;">🔵</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Bluetooth</div><div style="font-size:12px;color:var(--text-secondary);">On</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'Display Settings\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#FF9500;display:flex;align-items:center;justify-content:center;font-size:18px;color:white;">☀️</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Display</div><div style="font-size:12px;color:var(--text-secondary);">Brightness 70%</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'Docker Info\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#2496ed;display:flex;align-items:center;justify-content:center;font-size:18px;color:white;">🐳</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Docker</div><div style="font-size:12px;color:var(--text-secondary);">v24.0.7 - 12 containers</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div>'
+                content: '<div style="padding:20px;max-height:100%;overflow-y:auto;"><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin-bottom:12px;">Network</h4><div onclick="toggleWifi()" id="wifiToggle" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#007AFF;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">WiFi</div><div id="wifiStatus" style="font-size:12px;color:var(--text-secondary);">Connected to HomeNetwork</div></div><div id="wifiSwitch" style="width:50px;height:28px;background:var(--primary);border-radius:14px;position:relative;"><div style="width:24px;height:24px;background:white;border-radius:12px;position:absolute;right:2px;top:2px;"></div></div></div><div onclick="toggleBluetooth()" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#5856D6;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41V21h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Bluetooth</div><div id="btStatus" style="font-size:12px;color:var(--text-secondary);">On</div></div><div id="btSwitch" style="width:50px;height:28px;background:var(--primary);border-radius:14px;position:relative;"><div style="width:24px;height:24px;background:white;border-radius:12px;position:absolute;right:2px;top:2px;"></div></div></div><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin:20px 0 12px;">Display</h4><div onclick="toggleDarkMode()" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#FF9500;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Dark Mode</div><div id="darkStatus" style="font-size:12px;color:var(--text-secondary);">Off</div></div><div id="darkSwitch" style="width:50px;height:28px;background:#ccc;border-radius:14px;position:relative;"><div style="width:24px;height:24px;background:white;border-radius:12px;position:absolute;left:2px;top:2px;"></div></div></div><div style="padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><div style="font-weight:500;color:var(--text-primary);">Brightness</div><div id="brightValue" style="color:var(--text-secondary);">70%</div></div><input type="range" id="brightSlider" min="0" max="100" value="70" onchange="updateBrightness(this.value)" style="width:100%;accent-color:var(--primary);"></div><h4 style="font-size:13px;color:var(--text-secondary);text-transform:uppercase;margin:20px 0 12px;">System</h4><div onclick="showToast(\'Opening Docker Dashboard\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#2496ed;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73-1.63 7.03L12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Docker</div><div style="font-size:12px;color:var(--text-secondary);">v24.0.7 - 12 containers</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'Checking for updates...\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;margin-bottom:8px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:#00C853;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">Software Update</div><div style="font-size:12px;color:var(--text-secondary);">Up to date</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div><div onclick="showToast(\'About ContainerOS\')" style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--surface-variant);border-radius:12px;cursor:pointer;"><div style="width:40px;height:40px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;">C</div><div style="flex:1;"><div style="font-weight:500;color:var(--text-primary);">About</div><div style="font-size:12px;color:var(--text-secondary);">ContainerOS v4.0</div></div><svg style="width:20px;height:20px;fill:var(--text-tertiary);" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div></div>'
             },
             store: {
                 title: 'App Store',
