@@ -95,15 +95,22 @@
             color: white;
         }
         
-        /* Date/Time Widget */
+        /* Date/Time Widget - Side by side with Weather */
+        .top-widgets {
+            display: flex;
+            gap: 12px;
+            padding: 50px 0 24px;
+            align-items: stretch;
+        }
+        
         .datetime-widget {
-            padding: 50px 0 30px;
+            flex: 1;
             text-align: left;
         }
         
         .time-display {
             font-family: 'Google Sans', sans-serif;
-            font-size: 72px;
+            font-size: 56px;
             font-weight: 400;
             letter-spacing: -2px;
             line-height: 1;
@@ -111,10 +118,10 @@
         }
         
         .date-display {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 400;
             opacity: 0.9;
-            margin-top: 8px;
+            margin-top: 4px;
         }
         
         /* Google Search Bar */
@@ -137,23 +144,23 @@
         
         /* Weather Widget - Material You style */
         .weather-widget {
+            flex: 1;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-lg);
-            padding: 20px;
-            margin-bottom: 24px;
+            padding: 16px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
             cursor: pointer;
             border: 1px solid rgba(255,255,255,0.2);
         }
         
-        .weather-main { display: flex; align-items: center; gap: 16px; }
-        .weather-icon { font-size: 48px; }
-        .weather-temp { font-size: 40px; font-weight: 400; }
-        .weather-info { text-align: right; font-size: 14px; opacity: 0.9; }
+        .weather-main { display: flex; align-items: center; gap: 12px; }
+        .weather-icon { font-size: 36px; }
+        .weather-temp { font-size: 32px; font-weight: 400; }
+        .weather-info { font-size: 13px; opacity: 0.9; }
         .weather-info div:first-child { font-weight: 500; }
         
         /* Widgets Row */
@@ -654,25 +661,27 @@
         
         <div class="home-screen">
             <div class="home-content">
-                <div class="datetime-widget">
-                    <div class="time-display" id="homeTime">9:41</div>
-                    <div class="date-display" id="homeDate">Monday, July 6</div>
+                <div class="top-widgets">
+                    <div class="datetime-widget">
+                        <div class="time-display" id="homeTime">9:41</div>
+                        <div class="date-display" id="homeDate">Monday, July 6</div>
+                    </div>
+                    
+                    <div class="weather-widget" onclick="openApp('weather')">
+                        <div class="weather-main">
+                            <span class="weather-icon">☀️</span>
+                            <span class="weather-temp">28°</span>
+                        </div>
+                        <div class="weather-info">
+                            <div>Jakarta</div>
+                            <div>Sunny</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="search-bar" onclick="showToast('Google Search')">
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
                     <span>Search...</span>
-                </div>
-                
-                <div class="weather-widget" onclick="openApp('weather')">
-                    <div class="weather-main">
-                        <span class="weather-icon">☀️</span>
-                        <span class="weather-temp">28°</span>
-                    </div>
-                    <div class="weather-info">
-                        <div>Jakarta</div>
-                        <div>Sunny</div>
-                    </div>
                 </div>
                 
                 <div class="widgets-row">
