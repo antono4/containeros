@@ -296,17 +296,17 @@
             flex: 1;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            padding: 20px;
+            gap: 6px;
+            padding: 16px;
             background: #000;
         }
         .phone-btn {
-            aspect-ratio: 1.5;
+            aspect-ratio: 1;
             border: none;
             border-radius: 50%;
             background: #333;
             color: white;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 300;
             cursor: pointer;
             display: flex;
@@ -314,8 +314,8 @@
             align-items: center;
             justify-content: center;
         }
-        .phone-btn .sub { font-size: 10px; letter-spacing: 2px; opacity: 0.6; }
-        .phone-call { background: var(--green); border-radius: 50%; width: 72px; height: 72px; margin: 0 auto; }
+        .phone-btn .sub { font-size: 9px; letter-spacing: 1px; opacity: 0.6; }
+        .phone-call { background: var(--green); border-radius: 50%; width: 60px; height: 60px; margin: 0 auto; }
         
         /* Calendar */
         .calendar-header {
@@ -897,7 +897,7 @@
         var appContents = {
             calculator: '<div class="calc-display"><div class="expression" id="calcExpr"></div><div class="result" id="calcResult">0</div></div><div class="calc-buttons"><button class="calc-btn func" onclick="calcClear()">AC</button><button class="calc-btn func" onclick="calcPlusMinus()">+/-</button><button class="calc-btn func" onclick="calcPercent()">%</button><button class="calc-btn op" onclick="calcSetOp(\'/\')">÷</button><button class="calc-btn num" onclick="calcNum(\'7\')">7</button><button class="calc-btn num" onclick="calcNum(\'8\')">8</button><button class="calc-btn num" onclick="calcNum(\'9\')">9</button><button class="calc-btn op" onclick="calcSetOp(\'*\')">×</button><button class="calc-btn num" onclick="calcNum(\'4\')">4</button><button class="calc-btn num" onclick="calcNum(\'5\')">5</button><button class="calc-btn num" onclick="calcNum(\'6\')">6</button><button class="calc-btn op" onclick="calcSetOp(\'-\')">−</button><button class="calc-btn num" onclick="calcNum(\'1\')">1</button><button class="calc-btn num" onclick="calcNum(\'2\')">2</button><button class="calc-btn num" onclick="calcNum(\'3\')">3</button><button class="calc-btn op" onclick="calcSetOp(\'+\')">+</button><button class="calc-btn num zero" onclick="calcNum(\'0\')">0</button><button class="calc-btn num" onclick="calcNum(\'.\')">.</button><button class="calc-btn op" onclick="calcEquals()">=</button></div>',
             
-            phone: '<div class="phone-app"><div class="phone-display" id="phoneNumber">+62 812 3456 7890</div><div class="phone-keypad"><button class="phone-btn" onclick="phoneNum(\'1\')"><span>1</span></button><button class="phone-btn" onclick="phoneNum(\'2\')"><span>2</span><span class="sub">ABC</span></button><button class="phone-btn" onclick="phoneNum(\'3\')"><span>3</span><span class="sub">DEF</span></button><button class="phone-btn" onclick="phoneNum(\'4\')"><span>4</span><span class="sub">GHI</span></button><button class="phone-btn" onclick="phoneNum(\'5\')"><span>5</span><span class="sub">JKL</span></button><button class="phone-btn" onclick="phoneNum(\'6\')"><span>6</span><span class="sub">MNO</span></button><button class="phone-btn" onclick="phoneNum(\'7\')"><span>7</span><span class="sub">PQRS</span></button><button class="phone-btn" onclick="phoneNum(\'8\')"><span>8</span><span class="sub">TUV</span></button><button class="phone-btn" onclick="phoneNum(\'9\')"><span>9</span><span class="sub">WXYZ</span></button><button class="phone-btn" onclick="phoneNum(\'*\')"><span>*</span></button><button class="phone-btn" onclick="phoneNum(\'0\')"><span>0</span><span class="sub">+</span></button><button class="phone-btn" onclick="phoneNum(\'#\')"><span>#</span></button></div><div style="padding: 20px; display: flex; justify-content: center; gap: 50px; background: #000;"><div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">📋</div><button class="phone-call" onclick="showToast(\'Calling...\')"></button><div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer;" onclick="phoneNumStr=\'\';document.getElementById(\'phoneNumber\').textContent=\'+62 \';">⌫</div></div></div>',
+            phone: '<div class="phone-app"><div class="phone-display" id="phoneNumber">+62 812 3456 7890</div><div class="phone-keypad"><button class="phone-btn" onclick="phoneNum(\'1\')"><span>1</span></button><button class="phone-btn" onclick="phoneNum(\'2\')"><span>2</span><span class="sub">ABC</span></button><button class="phone-btn" onclick="phoneNum(\'3\')"><span>3</span><span class="sub">DEF</span></button><button class="phone-btn" onclick="phoneNum(\'4\')"><span>4</span><span class="sub">GHI</span></button><button class="phone-btn" onclick="phoneNum(\'5\')"><span>5</span><span class="sub">JKL</span></button><button class="phone-btn" onclick="phoneNum(\'6\')"><span>6</span><span class="sub">MNO</span></button><button class="phone-btn" onclick="phoneNum(\'7\')"><span>7</span><span class="sub">PQRS</span></button><button class="phone-btn" onclick="phoneNum(\'8\')"><span>8</span><span class="sub">TUV</span></button><button class="phone-btn" onclick="phoneNum(\'9\')"><span>9</span><span class="sub">WXYZ</span></button><button class="phone-btn" onclick="phoneNum(\'*\')"><span>*</span></button><button class="phone-btn" onclick="phoneNum(\'0\')"><span>0</span><span class="sub">+</span></button><button class="phone-btn" onclick="phoneNum(\'#\')"><span>#</span></button></div><div style="padding: 16px; display: flex; justify-content: center; gap: 40px; background: #000;"><div style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">📋</div><button class="phone-call" onclick="showToast(\'Calling...\')"></button><div style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer;" onclick="phoneNumStr=\'\';document.getElementById(\'phoneNumber\').textContent=\'+62 \';">⌫</div></div></div>',
             
             calendar: '<div class="calendar-header"><div class="calendar-nav" onclick="calPrev()">‹</div><div class="calendar-month" id="calMonth">July 2025</div><div class="calendar-nav" onclick="calNext()">›</div></div><div class="calendar-grid"><div class="calendar-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-days" id="calDays"></div></div><script>calMonth=new Date().getMonth();calYear=new Date().getFullYear();renderCal();<\/script>',
             
