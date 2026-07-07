@@ -49,7 +49,8 @@
         .phone-frame {
             width: 100%;
             max-width: 412px;
-            height: 917px;
+            height: 95vh;
+            max-height: 800px;
             background: var(--surface);
             border-radius: 40px;
             overflow: hidden;
@@ -95,29 +96,29 @@
             overflow-y: auto;
             overflow-x: hidden;
             padding-top: 60px;
-            padding-bottom: 100px;
+            padding-bottom: 80px;
         }
         
         .home-content {
-            padding: 20px;
+            padding: 16px;
             color: white;
         }
         
         /* Date Time Widget */
         .datetime-widget {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
         
         .time-display {
             font-family: 'Google Sans', sans-serif;
-            font-size: 72px;
+            font-size: 56px;
             font-weight: 400;
-            letter-spacing: -3px;
+            letter-spacing: -2px;
             line-height: 1;
         }
         
         .date-display {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             opacity: 0.9;
             margin-top: 4px;
@@ -225,8 +226,8 @@
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px 16px;
-            margin-bottom: 24px;
+            gap: 16px 12px;
+            margin-bottom: 16px;
         }
         
         .app-icon {
@@ -242,14 +243,14 @@
         }
         
         .app-icon .icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            margin-bottom: 6px;
+            font-size: 22px;
+            margin-bottom: 4px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
@@ -267,23 +268,23 @@
         /* Dock */
         .dock {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            border-radius: 32px;
-            padding: 12px 20px;
+            border-radius: 28px;
+            padding: 10px 16px;
             display: flex;
             justify-content: space-around;
             border: 1px solid rgba(255,255,255,0.2);
         }
         
         .dock .app-icon .icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
         }
         
         /* App Window */
