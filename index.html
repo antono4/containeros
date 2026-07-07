@@ -240,7 +240,7 @@
             padding: 18px 20px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: center;
             border-bottom: 1px solid var(--separator);
             flex-shrink: 0;
             position: sticky;
@@ -248,23 +248,34 @@
             z-index: 1002;
         }
         
+        .app-title { font-size: 17px; font-weight: 600; }
+        
         .app-back {
-            width: 44px;
-            height: 44px;
+            position: fixed;
+            bottom: 40px;
+            left: 24px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             border-radius: 50%;
-            background: rgba(0,122,255,0.1);
-            transition: background 0.2s;
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,122,255,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 1003;
         }
         
-        .app-back:hover { background: rgba(0,122,255,0.2); }
-        .app-back:active { background: rgba(0,122,255,0.3); }
-        .app-back svg { width: 20px; height: 20px; fill: var(--primary); }
-        
-        .app-title { font-size: 17px; font-weight: 600; flex: 1; }
+        .app-back:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 6px 20px rgba(0,122,255,0.5);
+        }
+        .app-back:active { 
+            transform: scale(0.95); 
+        }
+        .app-back svg { width: 24px; height: 24px; fill: white; }
         
         .app-content { flex: 1; overflow-y: auto; padding-bottom: 34px; }
         
@@ -807,12 +818,12 @@
         
         <div class="app-window" id="appWindow">
             <div class="app-header">
-                <div class="app-back" onclick="closeApp()">
-                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-                </div>
                 <span class="app-title" id="appTitle">App</span>
             </div>
             <div class="app-content" id="appContent"></div>
+            <div class="app-back" onclick="closeApp()">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </div>
         </div>
         
         <div class="toast" id="toast">App opened</div>
