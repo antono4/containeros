@@ -418,13 +418,13 @@
             bottom: 0;
             background: var(--bg-primary);
             z-index: 200;
-            display: none;
+            visibility: hidden;
             opacity: 0;
-            flex-direction: column;
+            transition: opacity 0.2s;
         }
 
         .app-modal.active {
-            display: flex;
+            visibility: visible;
             opacity: 1;
         }
 
