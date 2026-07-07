@@ -156,10 +156,38 @@
             justify-content: center;
             font-size: 28px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .app-icon:active .icon { transform: scale(0.9); }
+        .app-icon:active .icon { 
+            transform: scale(0.9); 
+        }
+        
+        /* Bounce animation on tap */
+        @keyframes bounce-effect {
+            0% { transform: scale(1); }
+            30% { transform: scale(0.9); }
+            50% { transform: scale(1.1); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        
+        .app-icon.bounce .icon {
+            animation: bounce-effect 0.5s cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+        
+        /* Dock bounce */
+        .dock .app-icon .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            font-size: 24px;
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .dock .app-icon:active .icon {
+            transform: scale(0.9);
+        }
         
         .app-icon .label {
             font-size: 11px;
@@ -940,12 +968,33 @@
             var content = appContents[name] || '<div style="padding: 40px; text-align: center; color: var(--text-secondary);"><div style="font-size: 60px; margin-bottom: 16px;">📱</div><div>App content coming soon</div></div>';
             document.getElementById('appTitle').textContent = title;
             document.getElementById('appContent').innerHTML = content;
-            document.getElementById('appWindow').classList.add('open');
+            
+            // Add bounce effect
+            var appIcons = document.querySelectorAll('.app-icon');
+            appIcons.forEach(function(icon) {
+                icon.classList.add('bounce');
+                setTimeout(function() { icon.classList.remove('bounce'); }, 500);
+            });
+            
+            // Open app with slight delay for bounce effect
+            setTimeout(function() {
+                document.getElementById('appWindow').classList.add('open');
+            }, 100);
+            
             showToast(title + ' opened');
         }
         
         function closeApp() {
-            document.getElementById('appWindow').classList.remove('open');
+            var appWindow = document.getElementById('appWindow');
+            appWindow.style.transform = 'scale(0.9)';
+            appWindow.style.opacity = '0';
+            appWindow.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            setTimeout(function() {
+                appWindow.classList.remove('open');
+                appWindow.style.transform = '';
+                appWindow.style.opacity = '';
+                appWindow.style.transition = '';
+            }, 300);
         }
     </script>
 </body>
