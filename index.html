@@ -419,23 +419,13 @@
             background: var(--bg-primary);
             z-index: 200;
             display: none;
+            opacity: 0;
             flex-direction: column;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
         }
 
         .app-modal.active {
             display: flex;
-            transform: translateY(0);
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-            }
-            to {
-                transform: translateY(0);
-            }
+            opacity: 1;
         }
 
         .modal-header {
@@ -1471,6 +1461,13 @@
         function closeApp() {
             document.getElementById('appModal').classList.remove('active');
         }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeApp();
+            }
+        });
 
         // Toast
         function showToast(message) {
