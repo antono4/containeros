@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ContainerOS - iOS Style</title>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ContainerOS - Android 14</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         :root {
-            --primary: #007AFF;
-            --green: #34C759;
-            --red: #FF3B30;
-            --orange: #FF9500;
-            --yellow: #FFCC00;
-            --purple: #AF52DE;
-            --pink: #FF2D55;
-            --teal: #5AC8FA;
-            --surface: #F2F2F7;
+            --primary: #4285F4;
+            --primary-dark: #1a73e8;
+            --surface: #FAFAFA;
+            --surface-dark: #1C1C1E;
             --surface-white: #FFFFFF;
-            --text: #000000;
-            --text-secondary: #8E8E93;
-            --separator: rgba(60,60,67,0.12);
+            --text: #1F1F1F;
+            --text-secondary: #5F6368;
+            --text-on-dark: #E8EAED;
+            --divider: rgba(60,60,67,0.12);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 28px;
         }
         
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #000;
+            font-family: 'Roboto', 'Google Sans', sans-serif;
+            background: #E8EAED;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -36,200 +39,220 @@
         
         .phone-frame {
             width: 100%;
-            max-width: 430px;
-            height: 932px;
+            max-width: 412px;
+            height: 917px;
             background: var(--surface);
-            border-radius: 50px;
-            overflow: visible;
+            border-radius: 40px;
+            overflow: hidden;
             position: relative;
-            z-index: 1;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-lg);
         }
         
-        /* Notch simulation */
-        .phone-frame::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 34px;
-            background: #000;
-            border-radius: 0 0 20px 20px;
-            z-index: 2000;
-        }
-        
+        /* Status Bar - Android 14 */
         .status-bar {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 48px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            padding: 18px 24px 10px;
-            z-index: 1001;
+            align-items: center;
+            padding: 12px 24px;
+            z-index: 1000;
             color: white;
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
         }
         
-        .status-bar .time { font-weight: 600; }
-        .status-bar .icons { display: flex; gap: 6px; align-items: center; }
-        .status-bar .icons svg { width: 16px; height: 16px; fill: white; }
+        .status-bar .time { font-weight: 500; }
+        .status-bar .icons { display: flex; gap: 8px; align-items: center; }
         
+        /* Home Screen - Android 14 */
         .home-screen {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(180deg, #5E5CE6 0%, #3D3A8B 100%);
+            background: linear-gradient(145deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             overflow-y: auto;
             overflow-x: hidden;
-            padding-top: 70px;
-            padding-bottom: 90px;
+            padding-top: 60px;
+            padding-bottom: 120px;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .home-content {
-            padding: 20px 24px;
+            padding: 16px 20px;
             color: white;
         }
         
-        .datetime { margin-bottom: 30px; }
+        /* Date/Time Widget */
+        .datetime-widget {
+            padding: 50px 0 30px;
+            text-align: left;
+        }
         
         .time-display {
-            font-size: 82px;
-            font-weight: 200;
-            letter-spacing: -3px;
+            font-family: 'Google Sans', sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            letter-spacing: -2px;
             line-height: 1;
+            color: white;
         }
         
         .date-display {
             font-size: 18px;
             font-weight: 400;
             opacity: 0.9;
-            margin-top: 4px;
+            margin-top: 8px;
         }
         
-        .weather-widget {
+        /* Google Search Bar */
+        .search-bar {
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 28px;
+            padding: 14px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .search-bar svg { width: 20px; height: 20px; fill: white; opacity: 0.8; }
+        .search-bar span { color: rgba(255,255,255,0.8); font-size: 15px; }
+        
+        /* Weather Widget - Material You style */
+        .weather-widget {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
-        .weather-main { display: flex; align-items: center; gap: 12px; }
-        .weather-icon { font-size: 48px; width: 48px; height: 48px; }
-        .weather-icon svg { width: 100%; height: 100%; color: white; }
-        .weather-temp { font-size: 42px; font-weight: 300; }
+        .weather-main { display: flex; align-items: center; gap: 16px; }
+        .weather-icon { font-size: 48px; }
+        .weather-temp { font-size: 40px; font-weight: 400; }
         .weather-info { text-align: right; font-size: 14px; opacity: 0.9; }
+        .weather-info div:first-child { font-weight: 500; }
         
+        /* Widgets Row */
+        .widgets-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        
+        .widget-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            min-width: 150px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .widget-title { font-size: 13px; font-weight: 500; margin-bottom: 8px; opacity: 0.9; }
+        .widget-value { font-size: 28px; font-weight: 500; }
+        .widget-sub { font-size: 12px; opacity: 0.7; margin-top: 4px; }
+        
+        /* Apps Grid - Android 14 style */
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 28px 20px;
-            margin-bottom: 30px;
+            gap: 24px 16px;
+            margin-bottom: 24px;
         }
         
         .app-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             cursor: pointer;
         }
         
         .app-icon .icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 14px;
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
         .app-icon .icon svg {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
         }
         
         .app-icon:active .icon { 
-            transform: scale(0.9); 
-        }
-        
-        /* Bounce animation on tap */
-        @keyframes bounce-effect {
-            0% { transform: scale(1); }
-            30% { transform: scale(0.9); }
-            50% { transform: scale(1.1); }
-            70% { transform: scale(0.95); }
-            100% { transform: scale(1); }
-        }
-        
-        .app-icon.bounce .icon {
-            animation: bounce-effect 0.5s cubic-bezier(0.28, 0.84, 0.42, 1);
-        }
-        
-        /* Dock */
-        .dock .app-icon .icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .dock .app-icon .icon svg {
-            width: 24px;
-            height: 24px;
-        }
-        
-        .dock .app-icon:active .icon {
-            transform: scale(0.9);
+            transform: scale(0.85); 
         }
         
         .app-icon .label {
-            font-size: 11px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 400;
             text-align: center;
             max-width: 70px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            color: white;
         }
         
+        /* Dock - Android 14 style */
         .dock {
             position: absolute;
-            bottom: 30px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            border-radius: 28px;
-            padding: 8px 20px;
+            border-radius: var(--radius-xl);
+            padding: 10px 24px;
             display: flex;
-            gap: 28px;
+            gap: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
         .dock .app-icon .icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            font-size: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
         }
         
-        /* App Window */
+        .dock .app-icon .icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        
+        /* App Window - Material 3 */
         .app-window {
             position: absolute;
             top: 0;
@@ -246,526 +269,377 @@
         
         .app-header {
             background: var(--surface);
-            padding: 18px 20px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid var(--separator);
+            gap: 16px;
             flex-shrink: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1002;
+            border-bottom: 1px solid var(--divider);
         }
         
-        .app-title { font-size: 17px; font-weight: 600; }
-        
         .app-back {
-            position: absolute;
-            bottom: 100px;
-            left: 24px;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             border-radius: 50%;
-            background: white;
-            color: black;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-            z-index: 1003;
+            background: transparent;
+            transition: background 0.2s;
         }
         
-        .app-back:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        .app-back:active { 
-            transform: scale(0.95); 
-        }
-        .app-back svg { width: 24px; height: 24px; fill: #000; }
+        .app-back:hover { background: rgba(0,0,0,0.05); }
+        .app-back:active { background: rgba(0,0,0,0.1); }
+        .app-back svg { width: 24px; height: 24px; fill: var(--text); }
         
-        .app-content { flex: 1; overflow-y: auto; padding-bottom: 34px; }
+        .app-title { font-size: 20px; font-weight: 500; flex: 1; }
         
-        /* Calculator */
+        .app-content { flex: 1; overflow-y: auto; padding-bottom: 24px; }
+        
+        /* Calculator - Material 3 */
         .calc-display {
             background: var(--surface);
-            padding: 20px 24px;
+            padding: 24px;
             text-align: right;
         }
         
         .calc-display .expression {
             font-size: 20px;
             color: var(--text-secondary);
-            min-height: 28px;
+            min-height: 24px;
         }
         
         .calc-display .result {
             font-size: 56px;
             font-weight: 300;
             color: var(--text);
+            line-height: 1.2;
         }
         
         .calc-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-            padding: 2px;
-            background: #000;
+            gap: 12px;
+            padding: 12px;
         }
         
         .calc-btn {
-            aspect-ratio: 1;
+            padding: 20px;
             border: none;
-            border-radius: 50%;
-            font-size: 28px;
+            border-radius: var(--radius-md);
+            font-size: 24px;
             font-weight: 400;
             cursor: pointer;
+            background: var(--surface-white);
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        
+        .calc-btn:active {
+            transform: scale(0.95);
+            background: #E8EAED;
+        }
+        
+        .calc-btn.operator {
+            background: #E8F0FE;
+            color: var(--primary);
+        }
+        
+        .calc-btn.equals {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Settings - Material 3 */
+        .settings-list {
+            padding: 8px 16px;
+        }
+        
+        .settings-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: opacity 0.1s;
-        }
-        
-        .calc-btn:active { opacity: 0.7; }
-        
-        .calc-btn.num { background: #333333; color: white; }
-        .calc-btn.op { background: #FF9500; color: white; }
-        .calc-btn.func { background: #A5A5A5; color: #000; }
-        .calc-btn.zero { grid-column: span 2; border-radius: 36px; aspect-ratio: auto; padding-left: 32px; justify-content: flex-start; }
-        
-        /* Phone */
-        .phone-app { height: 100%; display: flex; flex-direction: column; }
-        .phone-display {
-            padding: 30px 20px;
-            text-align: center;
-            color: white;
-            background: #000;
-            font-size: 36px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            min-height: 100px;
-        }
-        .phone-keypad {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            padding: 20px;
-            background: #000;
-        }
-        .phone-btn {
-            aspect-ratio: 1.5;
-            border: none;
-            border-radius: 50%;
-            background: #333;
-            color: white;
-            font-size: 28px;
-            font-weight: 300;
+            gap: 16px;
+            padding: 16px 12px;
+            border-radius: var(--radius-md);
             cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .settings-item:hover { background: rgba(0,0,0,0.03); }
+        
+        .settings-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-        .phone-btn .sub { font-size: 10px; letter-spacing: 2px; opacity: 0.6; }
-        .phone-call { background: var(--green); border-radius: 50%; width: 72px; height: 72px; margin: 0 auto; }
         
-        /* Calendar */
+        .settings-icon svg { width: 24px; height: 24px; }
+        
+        .settings-text { flex: 1; }
+        .settings-text h4 { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
+        .settings-text p { font-size: 13px; color: var(--text-secondary); }
+        
+        .settings-arrow {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-secondary);
+        }
+        
+        /* Weather App */
+        .weather-app {
+            padding: 24px 20px;
+            text-align: center;
+        }
+        
+        .weather-main-temp {
+            font-size: 96px;
+            font-weight: 200;
+            margin: 20px 0;
+        }
+        
+        .weather-condition {
+            font-size: 22px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .weather-detail-card {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        
+        .weather-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--divider);
+        }
+        
+        .weather-detail-row:last-child { border-bottom: none; }
+        .weather-detail-label { color: var(--text-secondary); }
+        .weather-detail-value { font-weight: 500; }
+        
+        /* Music App */
+        .music-player {
+            padding: 40px 24px;
+            text-align: center;
+        }
+        
+        .music-album {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: var(--radius-lg);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .music-album svg { width: 100px; height: 100px; fill: white; }
+        
+        .music-title { font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+        .music-artist { font-size: 16px; color: var(--text-secondary); margin-bottom: 30px; }
+        
+        .music-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--divider);
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .music-time { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-secondary); margin-bottom: 30px; }
+        
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .music-control {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .music-control svg { width: 24px; height: 24px; fill: var(--text); }
+        
+        .music-control.play {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+        }
+        
+        .music-control.play svg { width: 28px; height: 28px; fill: white; }
+        
+        /* Notes App */
+        .notes-list {
+            padding: 16px;
+        }
+        
+        .note-item {
+            background: var(--surface-white);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        
+        .note-title { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+        .note-preview { font-size: 14px; color: var(--text-secondary); }
+        .note-date { font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
+        
+        /* Calendar App */
         .calendar-header {
-            background: var(--surface);
-            padding: 16px 24px;
+            background: var(--surface-white);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .calendar-month {
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 16px;
+            gap: 8px;
+            text-align: center;
+        }
+        
+        .calendar-day {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px;
+        }
+        
+        .calendar-date {
+            font-size: 16px;
+            padding: 12px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .calendar-date.today {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .calendar-date.selected {
+            background: #E8F0FE;
+            color: var(--primary);
+        }
+        
+        /* Files App */
+        .files-header {
+            background: var(--surface-white);
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .calendar-nav { font-size: 32px; color: var(--primary); cursor: pointer; font-weight: 300; }
-        .calendar-month { font-size: 18px; font-weight: 600; }
-        .calendar-grid { padding: 16px; }
-        .calendar-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            text-align: center;
-        }
-        .calendar-day {
-            aspect-ratio: 1;
+        
+        .files-path {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .calendar-day.today { background: var(--primary); color: white; }
-        .calendar-day.other { color: var(--text-secondary); }
-        
-        /* Terminal */
-        .terminal {
-            background: #000;
-            color: #0f0;
-            font-family: 'SF Mono', 'Menlo', monospace;
-            font-size: 14px;
-            padding: 16px;
-            height: 100%;
-        }
-        .terminal-line { margin-bottom: 8px; }
-        .terminal-input { display: flex; align-items: center; }
-        .terminal-prompt { color: var(--green); margin-right: 8px; }
-        .terminal-input input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #0f0;
-            font-family: inherit;
-            font-size: 14px;
-            outline: none;
+            gap: 8px;
+            font-size: 15px;
         }
         
-        /* Camera */
-        .camera-app {
-            background: #000;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        .files-list {
+            padding: 8px 16px;
         }
-        .camera-viewfinder {
-            flex: 1;
-            background: #111;
+        
+        .file-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 60px;
-        }
-        .camera-controls {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            background: #000;
-        }
-        .camera-btn {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: white;
-            border: 4px solid #333;
-            cursor: pointer;
-        }
-        
-        /* Settings */
-        .settings-list { padding: 16px 0; }
-        .settings-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 20px;
-            cursor: pointer;
-        }
-        .settings-item:hover { background: rgba(0,0,0,0.05); }
-        .settings-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-        .settings-info { flex: 1; }
-        .settings-label { font-size: 16px; }
-        .settings-desc { font-size: 13px; color: var(--text-secondary); }
-        
-        /* Gallery/Photos */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            padding: 2px;
-        }
-        .gallery-item {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            cursor: pointer;
-        }
-        
-        /* Messages */
-        .messages-list { padding: 16px; }
-        .message-item {
-            display: flex;
-            gap: 12px;
+            gap: 16px;
             padding: 12px;
-            border-radius: 16px;
-            background: white;
-            margin-bottom: 8px;
+            border-radius: var(--radius-md);
             cursor: pointer;
         }
-        .message-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        
+        .file-item:hover { background: rgba(0,0,0,0.03); }
+        
+        .file-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
         }
-        .message-info { flex: 1; }
-        .message-name { font-weight: 600; margin-bottom: 4px; }
-        .message-preview { font-size: 14px; color: var(--text-secondary); }
         
-        /* Notes */
-        .notes-list { padding: 16px; }
-        .note-item {
-            padding: 16px;
-            background: #FFF9C4;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-        .note-title { font-weight: 600; margin-bottom: 4px; }
-        .note-preview { font-size: 14px; color: #666; }
+        .file-icon svg { width: 24px; height: 24px; }
         
-        /* Clock */
+        .file-info { flex: 1; }
+        .file-name { font-size: 15px; font-weight: 500; }
+        .file-meta { font-size: 13px; color: var(--text-secondary); }
+        
+        /* Clock App */
         .clock-display {
+            padding: 60px 20px;
             text-align: center;
-            padding: 60px 24px;
-            background: #000;
-            color: white;
         }
-        .clock-time { font-size: 72px; font-weight: 200; letter-spacing: -2px; }
-        .clock-date { font-size: 18px; opacity: 0.7; margin-top: 8px; }
+        
+        .clock-time {
+            font-size: 72px;
+            font-weight: 200;
+            font-family: 'Google Sans', sans-serif;
+        }
+        
+        .clock-date {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
         
         /* Toast */
         .toast {
             position: absolute;
-            bottom: 120px;
+            bottom: 140px;
             left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: rgba(0,0,0,0.8);
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.75);
             color: white;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-size: 15px;
-            font-weight: 500;
-            z-index: 2000;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 14px;
             opacity: 0;
-            transition: all 0.3s;
-        }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-        
-        /* App Store */
-        .store-header {
-            background: linear-gradient(135deg, #007AFF, #5856D6);
-            color: white;
-            padding: 20px 24px;
-        }
-        .store-title { font-size: 28px; font-weight: 700; }
-        .store-subtitle { font-size: 14px; opacity: 0.9; }
-        .store-apps {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-        .store-app {
-            background: white;
-            border-radius: 16px;
-            padding: 16px;
-            text-align: center;
-        }
-        .store-app-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 14px;
-            margin: 0 auto 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-        }
-        .store-app-name { font-weight: 600; margin-bottom: 4px; }
-        .store-app-desc { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
-        .store-app-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 18px;
-            font-size: 13px;
-            cursor: pointer;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 2000;
         }
         
-        /* Files */
-        .files-list { padding: 16px; }
-        .file-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px;
-            cursor: pointer;
-        }
-        .file-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        .file-info { flex: 1; }
-        .file-name { font-weight: 500; }
-        .file-meta { font-size: 12px; color: var(--text-secondary); }
+        .toast.show { opacity: 1; }
         
-        /* Music */
-        .music-display {
-            padding: 40px 24px;
-            text-align: center;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            min-height: 100%;
-        }
-        .music-album {
-            width: 280px;
-            height: 280px;
-            background: linear-gradient(135deg, #FC3C44, #FF2D55);
-            border-radius: 16px;
-            margin: 0 auto 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .music-title { font-size: 22px; font-weight: 600; }
-        .music-artist { font-size: 16px; opacity: 0.7; margin-top: 4px; }
-        .music-progress {
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            margin: 32px 0 24px;
-        }
-        .music-progress-bar { width: 35%; height: 100%; background: white; border-radius: 2px; }
-        .music-controls { display: flex; justify-content: center; gap: 40px; font-size: 28px; }
-        .music-play {
-            width: 64px;
-            height: 64px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+        /* Bounce animation */
+        @keyframes bounce-effect {
+            0% { transform: scale(1); }
+            30% { transform: scale(0.85); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
         }
         
-        /* Weather */
-        .weather-display {
-            padding: 40px 24px;
-            text-align: center;
-            background: linear-gradient(180deg, #5E5CE6 0%, #3D3A8B 100%);
-            color: white;
-            min-height: 100%;
+        .app-icon.bounce .icon {
+            animation: bounce-effect 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .weather-main-icon { font-size: 120px; margin-bottom: 16px; }
-        .weather-temp { font-size: 80px; font-weight: 200; }
-        .weather-condition { font-size: 24px; margin: 16px 0; }
-        .weather-location { font-size: 16px; opacity: 0.8; }
-        .weather-forecast {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-top: 40px;
-        }
-        .forecast-item { text-align: center; }
-        .forecast-day { font-size: 14px; opacity: 0.8; }
-        .forecast-icon { font-size: 28px; margin: 8px 0; }
-        .forecast-temp { font-size: 16px; font-weight: 500; }
-        
-        /* Browser/Safari */
-        .browser-toolbar {
-            background: var(--surface);
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid var(--separator);
-        }
-        .browser-url {
-            flex: 1;
-            background: var(--surface);
-            border-radius: 10px;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .browser-url input {
-            flex: 1;
-            border: none;
-            background: none;
-            font-size: 15px;
-            outline: none;
-        }
-        .browser-content { padding: 20px; }
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .quick-link {
-            background: white;
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .quick-link-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            margin: 0 auto 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        .quick-link-name { font-weight: 500; }
-        
-        /* Maps */
-        .maps-display {
-            padding: 40px 24px;
-            text-align: center;
-            background: #E8F5E9;
-            min-height: 100%;
-        }
-        .maps-icon { font-size: 100px; margin-bottom: 24px; }
-        .maps-title { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
-        .maps-location { color: var(--text-secondary); margin-bottom: 24px; }
-        .maps-card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: left;
-        }
-        .maps-card-title { font-weight: 600; margin-bottom: 8px; }
-        .maps-card-coords { color: var(--text-secondary); font-size: 14px; font-family: monospace; }
     </style>
 </head>
 <body>
@@ -773,22 +647,26 @@
         <div class="status-bar">
             <span class="time" id="statusTime">9:41</span>
             <div class="icons">
-                <svg viewBox="0 0 24 24"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73s3.15.25 4.6.72v3.1c0 .39.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M2 22h20V2zM20 20l-8-8V4h8v16z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7v18h10V4zm-4 16h-2v-2h2v2zm0-4h-2V8h2v8z"/></svg>
+                <svg viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                <svg viewBox="0 0 24 24" fill="white"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
             </div>
         </div>
         
         <div class="home-screen">
             <div class="home-content">
-                <div class="datetime">
+                <div class="datetime-widget">
                     <div class="time-display" id="homeTime">9:41</div>
                     <div class="date-display" id="homeDate">Monday, July 6</div>
                 </div>
                 
+                <div class="search-bar" onclick="showToast('Google Search')">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <span>Search...</span>
+                </div>
+                
                 <div class="weather-widget" onclick="openApp('weather')">
                     <div class="weather-main">
-                        <svg class="weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                        <span class="weather-icon">☀️</span>
                         <span class="weather-temp">28°</span>
                     </div>
                     <div class="weather-info">
@@ -797,42 +675,55 @@
                     </div>
                 </div>
                 
+                <div class="widgets-row">
+                    <div class="widget-card">
+                        <div class="widget-title">Battery</div>
+                        <div class="widget-value">85%</div>
+                        <div class="widget-sub">5h remaining</div>
+                    </div>
+                    <div class="widget-card">
+                        <div class="widget-title">Steps</div>
+                        <div class="widget-value">8,234</div>
+                        <div class="widget-sub">Goal: 10,000</div>
+                    </div>
+                </div>
+                
                 <div class="apps-grid">
                     <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: #34C759;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><span class="label">Phone</span></div>
-                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: #007AFF;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><span class="label">Messages</span></div>
-                    <div class="app-icon" onclick="openApp('browser')"><div class="icon" style="background: #5856D6;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><span class="label">Safari</span></div>
+                    <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: #4285F4;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><span class="label">Messages</span></div>
+                    <div class="app-icon" onclick="openApp('browser')"><div class="icon" style="background: #4285F4;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><span class="label">Chrome</span></div>
                     <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #1a1a1a, #333);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div><span class="label">Camera</span></div>
                     <div class="app-icon" onclick="openApp('photos')"><div class="icon" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><span class="label">Photos</span></div>
-                    <div class="app-icon" onclick="openApp('music')"><div class="icon" style="background: linear-gradient(135deg, #FC3C44, #FF6B6B);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M8 17V5l12-2v12"/></svg></div><span class="label">Music</span></div>
-                    <div class="app-icon" onclick="openApp('notes')"><div class="icon" style="background: linear-gradient(135deg, #FFCC00, #FFB800);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="label">Notes</span></div>
-                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: linear-gradient(135deg, #FF3B30, #FF6B6B);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span class="label">Calendar</span></div>
+                    <div class="app-icon" onclick="openApp('music')"><div class="icon" style="background: linear-gradient(135deg, #E91E63, #9C27B0);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M8 17V5l12-2v12"/></svg></div><span class="label">Music</span></div>
+                    <div class="app-icon" onclick="openApp('notes')"><div class="icon" style="background: linear-gradient(135deg, #FFB300, #FF6F00);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="label">Notes</span></div>
+                    <div class="app-icon" onclick="openApp('calendar')"><div class="icon" style="background: linear-gradient(135deg, #4285F4, #1a73e8);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span class="label">Calendar</span></div>
                     <div class="app-icon" onclick="openApp('clock')"><div class="icon" style="background: linear-gradient(135deg, #1a1a1a, #333);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="label">Clock</span></div>
-                    <div class="app-icon" onclick="openApp('weather')"><div class="icon" style="background: linear-gradient(135deg, #5AC8FA, #007AFF);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div><span class="label">Weather</span></div>
-                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #007AFF, #5856D6);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><span class="label">App Store</span></div>
-                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #8E8E93, #636366);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><span class="label">Settings</span></div>
+                    <div class="app-icon" onclick="openApp('weather')"><div class="icon" style="background: linear-gradient(135deg, #00BCD4, #2196F3);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div><span class="label">Weather</span></div>
+                    <div class="app-icon" onclick="openApp('store')"><div class="icon" style="background: linear-gradient(135deg, #4285F4, #34D399);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><span class="label">Play Store</span></div>
+                    <div class="app-icon" onclick="openApp('settings')"><div class="icon" style="background: linear-gradient(135deg, #5F6368, #3C4043);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><span class="label">Settings</span></div>
                     <div class="app-icon" onclick="openApp('calculator')"><div class="icon" style="background: linear-gradient(135deg, #1a1a1a, #333);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div><span class="label">Calculator</span></div>
                     <div class="app-icon" onclick="openApp('terminal')"><div class="icon" style="background: linear-gradient(135deg, #1a1a1a, #333);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div><span class="label">Terminal</span></div>
-                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #5AC8FA, #007AFF);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><span class="label">Files</span></div>
+                    <div class="app-icon" onclick="openApp('files')"><div class="icon" style="background: linear-gradient(135deg, #4285F4, #00BCD4);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><span class="label">Files</span></div>
                     <div class="app-icon" onclick="openApp('maps')"><div class="icon" style="background: linear-gradient(135deg, #34C759, #00A03D);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div><span class="label">Maps</span></div>
                 </div>
             </div>
             
             <div class="dock">
                 <div class="app-icon" onclick="openApp('phone')"><div class="icon" style="background: #34C759;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div></div>
-                <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: #007AFF;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div></div>
-                <div class="app-icon" onclick="openApp('browser')"><div class="icon" style="background: #5856D6;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div></div>
+                <div class="app-icon" onclick="openApp('messages')"><div class="icon" style="background: #4285F4;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div></div>
+                <div class="app-icon" onclick="openApp('browser')"><div class="icon" style="background: #4285F4;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div></div>
                 <div class="app-icon" onclick="openApp('camera')"><div class="icon" style="background: linear-gradient(135deg, #1a1a1a, #333);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div></div>
             </div>
         </div>
         
         <div class="app-window" id="appWindow">
             <div class="app-header">
+                <div class="app-back" onclick="closeApp()">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
                 <span class="app-title" id="appTitle">App</span>
             </div>
             <div class="app-content" id="appContent"></div>
-            <div class="app-back" onclick="closeApp()">
-                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-            </div>
         </div>
         
         <div class="toast" id="toast">App opened</div>
@@ -847,140 +738,75 @@
             const time = h + ':' + m;
             document.getElementById('statusTime').textContent = time;
             document.getElementById('homeTime').textContent = time;
+            
             const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            document.getElementById('homeDate').textContent = days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate();
+            const dateStr = days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate();
+            document.getElementById('homeDate').textContent = dateStr;
         }
         updateTime();
         setInterval(updateTime, 1000);
         
         // Toast
-        function showToast(msg) {
+        function showToast(message) {
             const toast = document.getElementById('toast');
-            toast.textContent = msg;
+            toast.textContent = message;
             toast.classList.add('show');
-            setTimeout(function() { toast.classList.remove('show'); }, 2000);
+            setTimeout(() => { toast.classList.remove('show'); }, 2000);
         }
-        
-        // Calculator
-        let calcVal = 0, calcOp = null, calcNew = true;
-        
-        function calcNum(n) {
-            const r = document.getElementById('calcResult');
-            if (calcNew) { r.textContent = n; calcNew = false; }
-            else { r.textContent = r.textContent === '0' ? n : r.textContent + n; }
-        }
-        
-        function calcClear() {
-            document.getElementById('calcResult').textContent = '0';
-            calcVal = 0; calcOp = null; calcNew = true;
-        }
-        
-        function calcSetOp(o) {
-            calcVal = parseFloat(document.getElementById('calcResult').textContent);
-            calcOp = o; calcNew = true;
-        }
-        
-        function calcEquals() {
-            let r = parseFloat(document.getElementById('calcResult').textContent);
-            if (calcOp === '+') r = calcVal + r;
-            else if (calcOp === '-') r = calcVal - r;
-            else if (calcOp === '*') r = calcVal * r;
-            else if (calcOp === '/') r = calcVal / r;
-            document.getElementById('calcResult').textContent = r;
-            calcVal = r; calcOp = null; calcNew = true;
-        }
-        
-        function calcPlusMinus() { document.getElementById('calcResult').textContent *= -1; }
-        function calcPercent() { document.getElementById('calcResult').textContent /= 100; }
-        
-        // Phone
-        let phoneNumStr = '';
-        function phoneNum(n) {
-            phoneNumStr += n;
-            document.getElementById('phoneNumber').textContent = phoneNumStr;
-        }
-        
-        // Calendar
-        let calMonth = new Date().getMonth(), calYear = new Date().getFullYear();
-        function renderCal() {
-            const days = document.getElementById('calDays');
-            const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            document.getElementById('calMonth').textContent = monthNames[calMonth] + ' ' + calYear;
-            const firstDay = new Date(calYear, calMonth, 1).getDay();
-            const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-            const today = new Date();
-            let html = '';
-            for (let i = 0; i < firstDay; i++) html += '<div class="calendar-day other"></div>';
-            for (let d = 1; d <= daysInMonth; d++) {
-                const isToday = d === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear();
-                html += '<div class="calendar-day' + (isToday ? ' today' : '') + '">' + d + '</div>';
-            }
-            days.innerHTML = html;
-        }
-        function calPrev() { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCal(); }
-        function calNext() { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCal(); }
-        
-        // Terminal
-        function runTerm(e) {
-            if (e.key === 'Enter') {
-                const cmd = document.getElementById('termInput').value;
-                let out = '';
-                if (cmd === 'clear') { document.getElementById('termOutput').innerHTML = ''; }
-                else if (cmd === 'date') { out = new Date().toString(); }
-                else if (cmd === 'whoami') { out = 'guest@containeros'; }
-                else if (cmd === 'pwd') { out = '/home/guest'; }
-                else if (cmd === 'ls') { out = 'Documents  Downloads  Pictures  Projects'; }
-                else if (cmd === 'help') { out = 'Commands: clear, date, whoami, pwd, ls, docker ps, uname -a'; }
-                else if (cmd === 'docker ps') { out = 'CONTAINER ID  IMAGE  STATUS\nabc123  gui:latest  Up 2 hours'; }
-                else if (cmd === 'uname -a') { out = 'ContainerOS 1.0.0 Docker Linux x86_64'; }
-                else if (cmd) { out = 'Command not found: ' + cmd; }
-                if (out) document.getElementById('termOutput').innerHTML += '<div class="terminal-line">$ ' + cmd + '<br>' + out + '</div>';
-                document.getElementById('termInput').value = '';
-            }
-        }
-        
-        // App titles
-        var appTitles = {
-            phone: 'Phone', messages: 'Messages', browser: 'Safari', camera: 'Camera',
-            photos: 'Photos', music: 'Music', notes: 'Notes', calendar: 'Calendar',
-            clock: 'Clock', weather: 'Weather', store: 'App Store', settings: 'Settings',
-            calculator: 'Calculator', terminal: 'Terminal', files: 'Files', maps: 'Maps'
-        };
         
         // App contents
-        var appContents = {
-            calculator: '<div class="calc-display"><div class="expression" id="calcExpr"></div><div class="result" id="calcResult">0</div></div><div class="calc-buttons"><button class="calc-btn func" onclick="calcClear()">AC</button><button class="calc-btn func" onclick="calcPlusMinus()">+/-</button><button class="calc-btn func" onclick="calcPercent()">%</button><button class="calc-btn op" onclick="calcSetOp(\'/\')">÷</button><button class="calc-btn num" onclick="calcNum(\'7\')">7</button><button class="calc-btn num" onclick="calcNum(\'8\')">8</button><button class="calc-btn num" onclick="calcNum(\'9\')">9</button><button class="calc-btn op" onclick="calcSetOp(\'*\')">×</button><button class="calc-btn num" onclick="calcNum(\'4\')">4</button><button class="calc-btn num" onclick="calcNum(\'5\')">5</button><button class="calc-btn num" onclick="calcNum(\'6\')">6</button><button class="calc-btn op" onclick="calcSetOp(\'-\')">−</button><button class="calc-btn num" onclick="calcNum(\'1\')">1</button><button class="calc-btn num" onclick="calcNum(\'2\')">2</button><button class="calc-btn num" onclick="calcNum(\'3\')">3</button><button class="calc-btn op" onclick="calcSetOp(\'+\')">+</button><button class="calc-btn num zero" onclick="calcNum(\'0\')">0</button><button class="calc-btn num" onclick="calcNum(\'.\')">.</button><button class="calc-btn op" onclick="calcEquals()">=</button></div>',
+        const appTitles = {
+            calculator: 'Calculator',
+            phone: 'Phone',
+            messages: 'Messages',
+            browser: 'Chrome',
+            camera: 'Camera',
+            photos: 'Photos',
+            music: 'YouTube Music',
+            notes: 'Keep Notes',
+            calendar: 'Calendar',
+            clock: 'Clock',
+            weather: 'Weather',
+            store: 'Play Store',
+            settings: 'Settings',
+            terminal: 'Terminal',
+            files: 'Files',
+            maps: 'Maps'
+        };
+        
+        const appContents = {
+            calculator: '<div class="calc-display"><div class="expression" id="calcExpr"></div><div class="result" id="calcResult">0</div></div><div class="calc-buttons"><button class="calc-btn" onclick="calcInput(\'C\')">C</button><button class="calc-btn" onclick="calcInput(\'()\')">( )</button><button class="calc-btn operator" onclick="calcInput(\'%\')">%</button><button class="calc-btn operator" onclick="calcInput(\'÷\')">÷</button><button class="calc-btn" onclick="calcInput(\'7\')">7</button><button class="calc-btn" onclick="calcInput(\'8\')">8</button><button class="calc-btn" onclick="calcInput(\'9\')">9</button><button class="calc-btn operator" onclick="calcInput(\'×\')">×</button><button class="calc-btn" onclick="calcInput(\'4\')">4</button><button class="calc-btn" onclick="calcInput(\'5\')">5</button><button class="calc-btn" onclick="calcInput(\'6\')">6</button><button class="calc-btn operator\" onclick="calcInput(\'-\')">−</button><button class="calc-btn" onclick="calcInput(\'1\')">1</button><button class="calc-btn" onclick="calcInput(\'2\')">2</button><button class="calc-btn" onclick="calcInput(\'3\')">3</button><button class="calc-btn operator" onclick="calcInput(\'+\')">+</button><button class="calc-btn" onclick="calcInput(\'±\')">±</button><button class="calc-btn" onclick="calcInput(\'0\')">0</button><button class="calc-btn" onclick="calcInput(\'.\')">.</button><button class="calc-btn equals" onclick="calcInput(\'=\')">=</button></div>',
             
-            phone: '<div class="phone-app"><div class="phone-display" id="phoneNumber">+62 812 3456 7890</div><div class="phone-keypad"><button class="phone-btn" onclick="phoneNum(\'1\')"><span>1</span></button><button class="phone-btn" onclick="phoneNum(\'2\')"><span>2</span><span class="sub">ABC</span></button><button class="phone-btn" onclick="phoneNum(\'3\')"><span>3</span><span class="sub">DEF</span></button><button class="phone-btn" onclick="phoneNum(\'4\')"><span>4</span><span class="sub">GHI</span></button><button class="phone-btn" onclick="phoneNum(\'5\')"><span>5</span><span class="sub">JKL</span></button><button class="phone-btn" onclick="phoneNum(\'6\')"><span>6</span><span class="sub">MNO</span></button><button class="phone-btn" onclick="phoneNum(\'7\')"><span>7</span><span class="sub">PQRS</span></button><button class="phone-btn" onclick="phoneNum(\'8\')"><span>8</span><span class="sub">TUV</span></button><button class="phone-btn" onclick="phoneNum(\'9\')"><span>9</span><span class="sub">WXYZ</span></button><button class="phone-btn" onclick="phoneNum(\'*\')"><span>*</span></button><button class="phone-btn" onclick="phoneNum(\'0\')"><span>0</span><span class="sub">+</span></button><button class="phone-btn" onclick="phoneNum(\'#\')"><span>#</span></button></div><div style="padding: 20px; display: flex; justify-content: center; gap: 50px; background: #000;"><div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">📋</div><button class="phone-call" onclick="showToast(\'Calling...\')"></button><div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer;" onclick="phoneNumStr=\'\';document.getElementById(\'phoneNumber\').textContent=\'+62 \';">⌫</div></div></div>',
+            settings: '<div class="settings-list"><div class="settings-item"><div class="settings-icon" style="background: #34C759;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="settings-text"><h4>Network</h4><p>WiFi, Bluetooth, Mobile Data</p></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="settings-item"><div class="settings-icon" style="background: #4285F4;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div><div class="settings-text"><h4>Display</h4><p>Brightness, Night Light, Dark theme</p></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="settings-item"><div class="settings-icon" style="background: #FF3B30;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="settings-text"><h4>Sounds</h4><p>Volume, Do Not Disturb</p></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="settings-item"><div class="settings-icon" style="background: #5856D6;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="settings-text"><h4>Security</h4><p>Fingerprint, Face Unlock</p></div><svg class="settings-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>',
             
-            calendar: '<div class="calendar-header"><div class="calendar-nav" onclick="calPrev()">‹</div><div class="calendar-month" id="calMonth">July 2025</div><div class="calendar-nav" onclick="calNext()">›</div></div><div class="calendar-grid"><div class="calendar-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-days" id="calDays"></div></div><script>calMonth=new Date().getMonth();calYear=new Date().getFullYear();renderCal();<\/script>',
+            weather: '<div class="weather-app"><div class="weather-main-temp">28°</div><div class="weather-condition">Sunny</div><div class="weather-detail-card"><div class="weather-detail-row"><span class="weather-detail-label">Location</span><span class="weather-detail-value">Jakarta, Indonesia</span></div><div class="weather-detail-row"><span class="weather-detail-label">Humidity</span><span class="weather-detail-value">65%</span></div><div class="weather-detail-row"><span class="weather-detail-label">Wind</span><span class="weather-detail-value">12 km/h</span></div><div class="weather-detail-row"><span class="weather-detail-label">Feels Like</span><span class="weather-detail-value">30°</span></div></div></div>',
             
-            clock: '<div class="clock-display"><div class="clock-time" id="clockTime">9:41</div><div class="clock-date" id="clockDate">Monday, July 6</div></div><script>function updateClock(){var now=new Date();document.getElementById(\'clockTime\').textContent=now.getHours().toString().padStart(2,\'0\')+\':\'+now.getMinutes().toString().padStart(2,\'0\');var days=[\'Sunday\',\'Monday\',\'Tuesday\',\'Wednesday\',\'Thursday\',\'Friday\',\'Saturday\'];var months=[\'January\',\'February\',\'March\',\'April\',\'May\',\'June\',\'July\',\'August\',\'September\',\'October\',\'November\',\'December\'];document.getElementById(\'clockDate\').textContent=days[now.getDay()]+\', \'+months[now.getMonth()]+\' \'+now.getDate();}updateClock();setInterval(updateClock,1000);<\/script>',
+            music: '<div class="music-player"><div class="music-album"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="white"/></svg></div><div class="music-title">Blinding Lights</div><div class="music-artist">The Weeknd</div><div class="music-progress"></div><div class="music-time"><span>1:23</span><span>3:20</span></div><div class="music-controls"><div class="music-control"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div><div class="music-control play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg></div><div class="music-control"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></div></div></div>',
             
-            terminal: '<div class="terminal"><div class="terminal-line">ContainerOS Terminal v1.0</div><div class="terminal-line">Type \'help\' for commands</div><div id="termOutput"></div><div class="terminal-input"><span class="terminal-prompt">$</span><input type="text" id="termInput" onkeypress="runTerm(event)"></div></div>',
+            notes: '<div class="notes-list"><div class="note-item"><div class="note-title">Shopping List</div><div class="note-preview">Milk, Bread, Eggs, Butter...</div><div class="note-date">Today</div></div><div class="note-item"><div class="note-title">Meeting Notes</div><div class="note-preview">Project deadline is next Friday...</div><div class="note-date">Yesterday</div></div><div class="note-item"><div class="note-title">Ideas</div><div class="note-preview">New app concept for productivity...</div><div class="note-date">July 4</div></div></div>',
             
-            camera: '<div class="camera-app"><div class="camera-viewfinder">📷</div><div class="camera-controls"><div style="width:50px;height:50px;border-radius:50%;background:#333;"></div><button class="camera-btn" onclick="showToast(\'Photo taken!\')"></button><div style="width:50px;height:50px;border-radius:50%;background:#007AFF;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;cursor:pointer;">↻</div></div></div>',
+            calendar: '<div class="calendar-header"><div class="calendar-month">July 2026</div></div><div class="calendar-grid"><div class="calendar-day">Sun</div><div class="calendar-day">Mon</div><div class="calendar-day">Tue</div><div class="calendar-day">Wed</div><div class="calendar-day">Thu</div><div class="calendar-day">Fri</div><div class="calendar-day">Sat</div></div><div class="calendar-grid"><div class="calendar-date"></div><div class="calendar-date"></div><div class="calendar-date"></div><div class="calendar-date"></div><div class="calendar-date"></div><div class="calendar-date"></div><div class="calendar-date">1</div><div class="calendar-date">2</div><div class="calendar-date">3</div><div class="calendar-date">4</div><div class="calendar-date">5</div><div class="calendar-date">6</div><div class="calendar-date today">7</div><div class="calendar-date">8</div><div class="calendar-date">9</div><div class="calendar-date">10</div><div class="calendar-date">11</div><div class="calendar-date">12</div></div>',
             
-            settings: '<div class="settings-list"><div class="settings-item" onclick="showToast(\'WiFi Settings\')"><div class="settings-icon" style="background:#007AFF;">📶</div><div class="settings-info"><div class="settings-label">WiFi</div><div class="settings-desc">Connected to HomeNetwork</div></div></div><div class="settings-item" onclick="showToast(\'Bluetooth Settings\')"><div class="settings-icon" style="background:#5856D6;">🔵</div><div class="settings-info"><div class="settings-label">Bluetooth</div><div class="settings-desc">On</div></div></div><div class="settings-item" onclick="showToast(\'Display Settings\')"><div class="settings-icon" style="background:#FF9500;">☀️</div><div class="settings-info"><div class="settings-label">Display & Brightness</div><div class="settings-desc">Brightness: 70%</div></div></div><div class="settings-item" onclick="showToast(\'Sound Settings\')"><div class="settings-icon" style="background:#FF3B30;">🔊</div><div class="settings-info"><div class="settings-label">Sounds & Haptics</div><div class="settings-desc">Ringtone: Default</div></div></div><div class="settings-item" onclick="showToast(\'Battery Settings\')"><div class="settings-icon" style="background:#34C759;">🔋</div><div class="settings-info"><div class="settings-label">Battery</div><div class="settings-desc">85% - 5h remaining</div></div></div><div class="settings-item" onclick="showToast(\'Privacy Settings\')"><div class="settings-icon" style="background:#5AC8FA;">🔒</div><div class="settings-info"><div class="settings-label">Privacy & Security</div><div class="settings-desc">Location Services: On</div></div></div><div class="settings-item" onclick="showToast(\'About ContainerOS\')"><div class="settings-icon" style="background:#8E8E93;">ℹ️</div><div class="settings-info"><div class="settings-label">About</div><div class="settings-desc">ContainerOS v4.0</div></div></div></div>',
+            clock: '<div class="clock-display"><div class="clock-time" id="clockTime">9:41</div><div class="clock-date" id="clockDate">Monday, July 6</div></div>',
             
-            messages: '<div class="messages-list"><div class="message-item"><div class="message-avatar" style="background:#34C759;">👤</div><div class="message-info"><div class="message-name">John Doe</div><div class="message-preview">Hey, are you available for meeting?</div></div></div><div class="message-item"><div class="message-avatar" style="background:#007AFF;">📧</div><div class="message-info"><div class="message-name">Work Team</div><div class="message-preview">Project deadline updated</div></div></div><div class="message-item"><div class="message-avatar" style="background:#FF9500;">📱</div><div class="message-info"><div class="message-name">Mom</div><div class="message-preview">Don\'t forget to call back!</div></div></div><div class="message-item"><div class="message-avatar" style="background:#AF52DE;">🎉</div><div class="message-info"><div class="message-name">Birthday Club</div><div class="message-preview">Happy birthday!</div></div></div></div>',
+            files: '<div class="files-header"><div class="files-path"><svg viewBox="0 0 24 24" fill="var(--text-secondary)" width="20" height="20"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg><span>Internal Storage</span></div></div><div class="files-list"><div class="file-item"><div class="file-icon" style="background: #E8F0FE;"><svg viewBox="0 0 24 24" fill="var(--primary)"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></div><div class="file-info"><div class="file-name">Documents</div><div class="file-meta">12 files</div></div></div><div class="file-item"><div class="file-icon" style="background: #E8F0FE;"><svg viewBox="0 0 24 24" fill="var(--primary)"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></div><div class="file-info"><div class="file-name">Downloads</div><div class="file-meta">24 files</div></div></div><div class="file-item"><div class="file-icon" style="background: #FCE8E6;"><svg viewBox="0 0 24 24" fill="#EA4335"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg></div><div class="file-info"><div class="file-name">report.pdf</div><div class="file-meta">2.4 MB</div></div></div></div>',
             
-            notes: '<div class="notes-list"><div class="note-item"><div class="note-title">Shopping List</div><div class="note-preview">Milk, Bread, Eggs, Coffee</div></div><div class="note-item" style="background:#E8F5E9;"><div class="note-title">Ideas</div><div class="note-preview">New app feature concepts</div></div><div class="note-item" style="background:#E3F2FD;"><div class="note-title">Meeting Notes</div><div class="note-preview">Discuss Q3 targets</div></div><div class="note-item" style="background:#FCE4EC;"><div class="note-title">Recipe</div><div class="note-preview">Chocolate cake ingredients</div></div></div>',
+            browser: '<div style="padding: 20px;"><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px;"><svg viewBox="0 0 24 24" fill="var(--text-secondary)" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z"/></svg><span style="color: var(--text-secondary);">Search or enter URL</span></div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;"><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 20px; text-align: center; cursor: pointer;"><div style="font-size: 32px; margin-bottom: 8px;">📺</div><div style="font-size: 14px;">YouTube</div></div><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 20px; text-align: center; cursor: pointer;"><div style="font-size: 32px; margin-bottom: 8px;">🐦</div><div style="font-size: 14px;">Twitter</div></div><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 20px; text-align: center; cursor: pointer;"><div style="font-size: 32px; margin-bottom: 8px;">💻</div><div style="font-size: 14px;">GitHub</div></div><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 20px; text-align: center; cursor: pointer;"><div style="font-size: 32px; margin-bottom: 8px;">📘</div><div style="font-size: 14px;">Facebook</div></div></div></div>',
             
-            photos: '<div class="gallery-grid"><div class="gallery-item">🖼️</div><div class="gallery-item" style="background:linear-gradient(135deg, #667eea, #764ba2);">🌅</div><div class="gallery-item" style="background:linear-gradient(135deg, #f093fb, #f5576c);">🌸</div><div class="gallery-item" style="background:linear-gradient(135deg, #4facfe, #00f2fe);">🌊</div><div class="gallery-item" style="background:linear-gradient(135deg, #43e97b, #38f9d7);">🌿</div><div class="gallery-item" style="background:linear-gradient(135deg, #fa709a, #fee140);">🌻</div><div class="gallery-item" style="background:linear-gradient(135deg, #a8edea, #fed6e3);">🏔️</div><div class="gallery-item" style="background:linear-gradient(135deg, #ff9a9e, #fecfef);">🌺</div><div class="gallery-item" style="background:linear-gradient(135deg, #ffecd2, #fcb69f);">🍂</div></div>',
+            phone: '<div style="padding: 20px; text-align: center;"><div style="font-size: 80px; margin-bottom: 20px;">📞</div><div style="font-size: 24px; font-weight: 500; margin-bottom: 30px;">No Recent Calls</div><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;"><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;"><div style="width: 56px; height: 56px; border-radius: 50%; background: #34C759; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg></div><span style="font-size: 14px;">Recents</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;"><div style="width: 56px; height: 56px; border-radius: 50%; background: #4285F4; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><span style="font-size: 14px;">Keypad</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;"><div style="width: 56px; height: 56px; border-radius: 50%; background: #FF3B30; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><span style="font-size: 14px;">Contacts</span></div></div></div>',
             
-            store: '<div class="store-header"><div class="store-title">App Store</div><div class="store-subtitle">Discover amazing apps</div></div><div class="store-apps"><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#ff0000,#cc0000);">📺</div><div class="store-app-name">Netflix</div><div class="store-app-desc">Entertainment</div><button class="store-app-btn" onclick="showToast(\'Installing Netflix...\')">Get</button></div><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬</div><div class="store-app-name">WhatsApp</div><div class="store-app-desc">Communication</div><button class="store-app-btn" style="background:#34C759;">Open</button></div><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#5856D6,#AF52DE);">🎮</div><div class="store-app-name">Gaming Pro</div><div class="store-app-desc">Games</div><button class="store-app-btn" onclick="showToast(\'Installing...\')">Get</button></div><div class="store-app"><div class="store-app-icon" style="background:linear-gradient(135deg,#007AFF,#5856D6);">📱</div><div class="store-app-name">Productivity</div><div class="store-app-desc">Work Tools</div><button class="store-app-btn" onclick="showToast(\'Installing...\')">Get</button></div></div>',
+            messages: '<div style="padding: 20px;"><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px;"><div style="display: flex; align-items: center; gap: 12px;"><div style="width: 48px; height: 48px; border-radius: 50%; background: #34C759; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500;">JD</div><div style="flex: 1;"><div style="font-weight: 500;">John Doe</div><div style="color: var(--text-secondary); font-size: 14px;">Hey, are you available for meeting?</div></div><div style="color: var(--text-secondary); font-size: 12px;">2m</div></div></div><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 16px;"><div style="display: flex; align-items: center; gap: 12px;"><div style="width: 48px; height: 48px; border-radius: 50%; background: #4285F4; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500;">SA</div><div style="flex: 1;"><div style="font-weight: 500;">Sarah A.</div><div style="color: var(--text-secondary); font-size: 14px;">Thanks for your help! 🙏</div></div><div style="color: var(--text-secondary); font-size: 12px;">15m</div></div></div></div>',
             
-            files: '<div class="files-list"><div class="file-item"><div class="file-icon" style="background:#5AC8FA;">📁</div><div class="file-info"><div class="file-name">Documents</div><div class="file-meta">12 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#34C759;">📁</div><div class="file-info"><div class="file-name">Downloads</div><div class="file-meta">5 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#FF9500;">📁</div><div class="file-info"><div class="file-name">Pictures</div><div class="file-meta">24 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#AF52DE;">📁</div><div class="file-info"><div class="file-name">Music</div><div class="file-meta">8 items</div></div></div><div class="file-item"><div class="file-icon" style="background:#FF3B30;">📁</div><div class="file-info"><div class="file-name">Videos</div><div class="file-meta">3 items</div></div></div></div>',
+            camera: '<div style="padding: 40px 20px; text-align: center;"><div style="font-size: 80px; margin-bottom: 20px;">📷</div><div style="font-size: 18px; color: var(--text-secondary);">Camera preview</div><div style="margin-top: 40px; display: flex; justify-content: center; gap: 40px;"><div style="width: 56px; height: 56px; border-radius: 50%; background: white; border: 4px solid var(--text-secondary);"></div></div></div>',
             
-            music: '<div class="music-display"><div class="music-album">🎵</div><div class="music-title">Now Playing</div><div class="music-artist">Song Title - Artist</div><div class="music-progress"><div class="music-progress-bar"></div></div><div class="music-controls"><span>⏮️</span><div class="music-play">▶️</div><span>⏭️</span></div></div>',
+            photos: '<div style="padding: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;"><div style="aspect-ratio: 1; background: linear-gradient(135deg, #FF6B6B, #FF8E53); border-radius: 4px;"></div><div style="aspect-ratio: 1; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 4px;"></div><div style="aspect-ratio: 1; background: linear-gradient(135deg, #34C759, #00BCD4); border-radius: 4px;"></div><div style="aspect-ratio: 1; background: linear-gradient(135deg, #FFB300, #FF6F00); border-radius: 4px;"></div><div style="aspect-ratio: 1; background: linear-gradient(135deg, #E91E63, #9C27B0); border-radius: 4px;"></div><div style="aspect-ratio: 1; background: linear-gradient(135deg, #00BCD4, #2196F3); border-radius: 4px;"></div></div>',
             
-            weather: '<div class="weather-display"><div class="weather-main-icon">☀️</div><div class="weather-temp">28°</div><div class="weather-condition">Sunny</div><div class="weather-location">Jakarta, Indonesia</div><div class="weather-forecast"><div class="forecast-item"><div class="forecast-day">Tue</div><div class="forecast-icon">🌤️</div><div class="forecast-temp">26°</div></div><div class="forecast-item"><div class="forecast-day">Wed</div><div class="forecast-icon">🌧️</div><div class="forecast-temp">24°</div></div><div class="forecast-item"><div class="forecast-day">Thu</div><div class="forecast-icon">⛈️</div><div class="forecast-temp">23°</div></div><div class="forecast-item"><div class="forecast-day">Fri</div><div class="forecast-icon">🌤️</div><div class="forecast-temp">27°</div></div></div></div>',
+            store: '<div style="padding: 20px;"><div style="font-size: 20px; font-weight: 500; margin-bottom: 16px;">Featured Apps</div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;"><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 16px;"><div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: var(--radius-md); margin-bottom: 12px;"></div><div style="font-weight: 500;">Instagram</div><div style="font-size: 12px; color: var(--text-secondary);">Social</div></div><div style="background: var(--surface-white); border-radius: var(--radius-md); padding: 16px;"><div style="width: 64px; height: 64px; background: linear-gradient(135deg, #4285F4, #34D399); border-radius: var(--radius-md); margin-bottom: 12px;"></div><div style="font-weight: 500;">Spotify</div><div style="font-size: 12px; color: var(--text-secondary);">Music</div></div></div></div>',
             
-            browser: '<div class="browser-toolbar"><div class="browser-url"><span>🔍</span><input type="text" value="google.com" readonly></div></div><div class="browser-content"><div class="quick-links"><div class="quick-link" onclick="showToast(\'Opening YouTube\')"><div class="quick-link-icon" style="background:#FF0000;">📺</div><div class="quick-link-name">YouTube</div></div><div class="quick-link" onclick="showToast(\'Opening Google\')"><div class="quick-link-icon" style="background:#4285F4;">🔍</div><div class="quick-link-name">Google</div></div><div class="quick-link" onclick="showToast(\'Opening Twitter\')"><div class="quick-link-icon" style="background:#1DA1F2;">🐦</div><div class="quick-link-name">Twitter</div></div><div class="quick-link" onclick="showToast(\'Opening GitHub\')"><div class="quick-link-icon" style="background:#333;">💻</div><div class="quick-link-name">GitHub</div></div></div></div>',
+            terminal: '<div style="padding: 20px; background: #1a1a1a; min-height: 100%; color: #00FF00; font-family: monospace;"><div style="margin-bottom: 8px;">root@containeros:~#</div><div style="margin-bottom: 16px;">Welcome to ContainerOS Terminal</div><div style="margin-bottom: 8px;">root@containeros:~# neofetch</div><div style="margin-bottom: 16px;">ContainerOS v4.0<br>Kernel: 6.8.0<br>Shell: bash 5.2<br>Display: 412x917</div><div style="margin-bottom: 8px;">root@containeros:~# _</div></div>',
             
-            maps: '<div class="maps-display"><div class="maps-icon">🗺️</div><div class="maps-title">Maps</div><div class="maps-location">Jakarta, Indonesia</div><div class="maps-card"><div class="maps-card-title">Current Location</div><div class="maps-card-coords">-6.2088° S, 106.8456° E</div></div></div>'
+            maps: '<div style="padding: 20px; text-align: center;"><div style="font-size: 80px; margin-bottom: 20px;">🗺️</div><div style="font-size: 20px; font-weight: 500; margin-bottom: 8px;">Jakarta, Indonesia</div><div style="font-size: 16px; color: var(--text-secondary);">-6.2088° S, 106.8456° E</div><div style="margin-top: 20px; background: var(--surface-white); border-radius: var(--radius-md); padding: 16px; text-align: left;"><div style="font-weight: 500; margin-bottom: 8px;">Recent Locations</div><div style="color: var(--text-secondary);">• Monas, Jakarta</div><div style="color: var(--text-secondary);">• Sudirman, Jakarta</div><div style="color: var(--text-secondary);">• Kemang, Jakarta</div></div></div>'
         };
         
         function openApp(name) {
@@ -989,14 +815,19 @@
             document.getElementById('appTitle').textContent = title;
             document.getElementById('appContent').innerHTML = content;
             
-            // Add bounce effect
+            // Update clock if opening clock app
+            if (name === 'clock') {
+                document.getElementById('clockTime').textContent = document.getElementById('homeTime').textContent;
+                document.getElementById('clockDate').textContent = document.getElementById('homeDate').textContent;
+            }
+            
+            // Bounce effect
             var appIcons = document.querySelectorAll('.app-icon');
             appIcons.forEach(function(icon) {
                 icon.classList.add('bounce');
-                setTimeout(function() { icon.classList.remove('bounce'); }, 500);
+                setTimeout(function() { icon.classList.remove('bounce'); }, 400);
             });
             
-            // Open app with slight delay for bounce effect
             setTimeout(function() {
                 document.getElementById('appWindow').classList.add('open');
             }, 100);
@@ -1005,16 +836,48 @@
         }
         
         function closeApp() {
-            var appWindow = document.getElementById('appWindow');
-            appWindow.style.transform = 'scale(0.9)';
-            appWindow.style.opacity = '0';
-            appWindow.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-            setTimeout(function() {
-                appWindow.classList.remove('open');
-                appWindow.style.transform = '';
-                appWindow.style.opacity = '';
-                appWindow.style.transition = '';
-            }, 300);
+            document.getElementById('appWindow').classList.remove('open');
+        }
+        
+        // Calculator logic
+        var calcExpr = '';
+        var calcResult = '0';
+        var calcNewNumber = true;
+        
+        function calcInput(val) {
+            if (val === 'C') {
+                calcExpr = '';
+                calcResult = '0';
+                calcNewNumber = true;
+            } else if (val === '=') {
+                try {
+                    calcExpr = calcExpr.replace(/×/g, '*').replace(/÷/g, '/');
+                    calcResult = eval(calcExpr).toString();
+                    if (calcResult.includes('.') && calcResult.length > 10) {
+                        calcResult = parseFloat(calcResult).toFixed(8).replace(/\.?0+$/, '');
+                    }
+                    calcExpr = calcResult;
+                } catch(e) {
+                    calcResult = 'Error';
+                }
+                calcNewNumber = true;
+            } else if (val === '±') {
+                if (calcResult !== '0') {
+                    calcResult = calcResult.startsWith('-') ? calcResult.slice(1) : '-' + calcResult;
+                    calcExpr = calcResult;
+                }
+            } else {
+                if (calcNewNumber && !isNaN(val)) {
+                    calcResult = val;
+                    calcNewNumber = false;
+                } else {
+                    calcResult += val;
+                }
+                calcExpr += val;
+            }
+            
+            document.getElementById('calcExpr').textContent = calcExpr;
+            document.getElementById('calcResult').textContent = calcResult;
         }
     </script>
 </body>
