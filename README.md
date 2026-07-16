@@ -1,5 +1,8 @@
 # ContainerOS - Android-Style Container OS
 
+> **Created by Antono**
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Planning-yellow?style=for-the-badge" alt="Status">
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge" alt="License">
